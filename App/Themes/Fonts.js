@@ -1,60 +1,83 @@
+import {s, vs, ms} from '../Lib/Scaling';
+import Colors from './Colors';
+
 const type = {
-  base: 'Avenir-Book',
-  bold: 'Avenir-Black',
-  emphasis: 'HelveticaNeue-Italic'
-}
+  bold: 'Roboto-Bold',
+  medium: 'Roboto-Medium',
+  regular: 'Roboto-Regular',
+};
 
 const size = {
-  h1: 38,
-  h2: 34,
-  h3: 30,
-  h4: 26,
-  h5: 20,
-  h6: 19,
-  input: 18,
-  regular: 17,
-  medium: 14,
-  small: 12,
-  tiny: 8.5
-}
+  title: s(24),
+  subTitle: s(20),
+  description: s(16),
+  subDescription: s(12),
+  footnote: s(10.5),
+};
 
 const style = {
-  h1: {
-    fontFamily: type.base,
-    fontSize: size.h1
+  alignCenter: {
+    textAlign: 'center',
   },
-  h2: {
-    fontWeight: 'bold',
-    fontSize: size.h2
+  alignJustify: {
+    textAlign: 'justify',
   },
-  h3: {
-    fontFamily: type.emphasis,
-    fontSize: size.h3
+  transformCapitalize: {
+    textTransform: 'capitalize',
   },
-  h4: {
-    fontFamily: type.base,
-    fontSize: size.h4
+  underline: {
+    textDecorationLine: 'underline',
   },
-  h5: {
-    fontFamily: type.base,
-    fontSize: size.h5
+
+  title: {
+    fontFamily: type.bold,
+    fontSize: size.title,
+    color: Colors.neural1,
   },
-  h6: {
-    fontFamily: type.emphasis,
-    fontSize: size.h6
+  subTitle: {
+    fontFamily: type.medium,
+    fontSize: size.subTitle,
+    color: Colors.neural1,
   },
-  normal: {
-    fontFamily: type.base,
-    fontSize: size.regular
+  descriptionBold: {
+    fontFamily: type.bold,
+    fontSize: size.description,
+    color: Colors.neural1,
   },
-  description: {
-    fontFamily: type.base,
-    fontSize: size.medium
-  }
-}
+  descriptionMedium: {
+    fontFamily: type.medium,
+    fontSize: size.description,
+    color: Colors.neural1,
+  },
+  descriptionRegular: {
+    fontFamily: type.regular,
+    fontSize: size.description,
+    color: Colors.neural1,
+  },
+  subDescriptionMedium: {
+    fontFamily: type.medium,
+    fontSize: size.subDescription,
+    color: Colors.neural1,
+  },
+  subDescriptionRegular: {
+    fontFamily: type.regular,
+    fontSize: size.subDescription,
+    color: Colors.neural1,
+  },
+  footnoteMedium: {
+    fontFamily: type.medium,
+    fontSize: size.footnote,
+    color: Colors.neural1,
+  },
+  footnoteRegular: {
+    fontFamily: type.regular,
+    fontSize: size.footnote,
+    color: Colors.neural1,
+  },
+};
 
 export default {
   type,
   size,
-  style
-}
+  style,
+};

@@ -1,26 +1,12 @@
 {
-   "signIn": "Sign In",
-   "logOut": "Log Out",
-   "loginLogoutExampleTitle": "Login/Logout Redux + Sagas Example",
-   "progressiveImageComponent": "Progressive Image Component",
-   "api": "API",
-   "locale": "I18n Locale",
-   "rnVectorIcons": "RN Vector Icons",
-   "loginWithFacebook": "Login with Facebook",
-   "rni18n": "RN i18n",
-   "igniteGenerated": "Ignite Generate Screens",
-   "forgotPassword": "Forgot Password",
-   "username": "Username",
-   "password": "Password",
-   "cancel": "Cancel",
-   "welcome": "Welcome",
-   "login": "Login",
-   "tempIndicator": "F",
-   "componentExamples": "Component Examples",
-   "usageExamples": "Usage Examples",
-   "apiTesting": "API Testing",
-   "themeSettings": "Theme Settings",
-   "deviceDetails": "Device Details",
-   "noItems": "No Items",
-   "search": "Search"
-}
+   "onboardingTitle0": "Jelajah Belitung dalam Genggamanmu",
+   "onboardingDescription0": "Temukan panduan untuk wisata, tempat makan, souvenir sampai transportasi di Belitung.",
+   "onboardingTitle1": "Update Langsung dari Warga Lokal",
+   "onboardingDescription1": "Velit integer porta eget egestas malesuada ac neque. Feugiat nisl, quis quis id in amet felis.",
+   "onboardingTitle2": "Berikan Pendapatmu",
+   "onboardingDescription2": "Velit integer porta eget egestas malesuada ac neque. Feugiat nisl, quis quis id in amet felis.",
+   
+   "close": "Close",
+   
+ }
+ 

@@ -1,35 +1,59 @@
-import React, {Component} from 'react';
-import {ScrollView, Text, Image, View} from 'react-native';
-import {Images} from '../Themes';
+import React, {useEffect} from 'react';
+import {Image, View} from 'react-native';
+import {connect} from 'react-redux';
 
-// Styles
-import styles from './Styles/LaunchScreenStyles';
+// import SessionActions from '../Redux/SessionRedux';
 
-export default class LaunchScreen extends Component {
-  render() {
-    return (
-      <View style={styles.mainContainer}>
-        <Image
-          source={Images.background}
-          style={styles.backgroundImage}
-          resizeMode="stretch"
-        />
-        <ScrollView style={styles.container}>
-          <View style={styles.centered}>
-            <Image source={Images.launch} style={styles.logo} />
-          </View>
+import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../Themes';
+import {s, vs} from '../Lib/Scaling';
 
-          <View style={styles.section}>
-            <Image source={Images.ready} />
-            <Text style={styles.sectionText}>
-              This probably isn't what your app is going to look like. Unless
-              your designer handed you this screen and, in that case, congrats!
-              You're ready to ship. For everyone else, this is where you'll see
-              a live preview of your fully functioning app using Ignite.
-            </Text>
-          </View>
-        </ScrollView>
-      </View>
-    );
-  }
+// import CustomImage from '../Components/CustomImage';
+
+function LaunchScreen({navigation, rehydrated, isFirstOpen}) {
+  const {navigate} = navigation;
+
+  // useEffect(() => {
+  //   if (rehydrated) {
+  //     if (isFirstOpen) navigate('Onboarding');
+  //     else navigate('Main');
+  //   }
+  // }, [rehydrated]);
+
+  useEffect(() => {
+    navigate('Onboarding');
+  }, []);
+
+  return (
+    <View
+      style={[AppStyles.flex1, AppStyles.alignCenter, AppStyles.justifyCenter]}>
+      <Image
+        source={Images.default11}
+        style={{
+          width: s(350),
+          height: s(350),
+        }}
+      />
+    </View>
+  );
 }
+
+const mapStateToProps = (state) => {
+  let rehydrated = false;
+  let isFirstOpen = true;
+  if (state._persist) {
+    rehydrated = state._persist.rehydrated;
+    isFirstOpen = state.session.isFirstOpen;
+  }
+  return {
+    rehydrated,
+    isFirstOpen,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    // removeOnboarding: () => dispatch(SessionActions.removeOnboarding()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LaunchScreen);
