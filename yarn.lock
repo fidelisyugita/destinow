@@ -7624,6 +7624,11 @@ human-signals@^1.1.1:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha512-SEQu7vl8KjNL2eoGBLF3+wAjpsNfA9XMlXAYj/3EdaNfAlxKthD1xjEQfGOUhllCGGJVNY34bRr6lPINhNjyZw==
 
+i18n-js@^3.0.11:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/i18n-js/-/i18n-js-3.8.0.tgz#b8fd6b12e1d88cb71f9806c29bca7c31c012e504"
+  integrity sha512-hDsGgPuvw/2P+lXSbOafAwspK8Ste8YrwuuUg17W3wEcO1JkQxBlPgsN1t2+852nTnz4YSYTjZc/1nAA2PC/nw==
+
 iconv-lite@0.4.24, iconv-lite@^0.4.17, iconv-lite@^0.4.24:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -7666,6 +7671,16 @@ iferr@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
   integrity sha1-xg7taebY/bazEEofy8ocGS3FtQE=
+
+ignite-i18n@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/ignite-i18n/-/ignite-i18n-1.2.0.tgz#092653d7e5d35adc8c22b31831de7a9175c3570d"
+  integrity sha512-tOTsPX9NZ75sx678Ii3oir1vGCkN+CU2lNT4PMIf1KMt0Pj01c/to1cQf7IbTyKuSzPGwnwq1GAKYOoz3uOY/A==
+
+ignite-redux-persist@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ignite-redux-persist/-/ignite-redux-persist-2.0.0.tgz#3a29ef338052bbad9361158e22ed30ee675a194e"
+  integrity sha512-YM0m3t8OQGTJBSJW/InzAID0CtvRv65W9btU8/LZrX7Tgy3BMYyj7C8SJokZRcqG9FWW0hdRxh0wYBxjIcvepQ==
 
 ignore@^3.0.11, ignore@^3.0.9, ignore@^3.2.0, ignore@^3.3.5:
   version "3.3.10"
@@ -11228,7 +11243,7 @@ ramda@^0.26.1:
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
   integrity sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==
 
-ramda@^0.27.0:
+ramda@^0.27.1:
   version "0.27.1"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.27.1.tgz#66fc2df3ef873874ffc2da6aa8984658abacf5c9"
   integrity sha512-PgIdVpn5y5Yns8vqb8FzBUEYn98V3xcPgawAkkgj0YJ0qDsnHCiNmZYfOGMgOvoB0eWFLpYbhxUR3mxfDIMvpw==
@@ -11440,6 +11455,13 @@ react-native-gesture-handler@1.6.1:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.4"
     prop-types "^15.7.2"
+
+react-native-i18n@2.0.14:
+  version "2.0.14"
+  resolved "https://registry.yarnpkg.com/react-native-i18n/-/react-native-i18n-2.0.14.tgz#21503bd6cb21988d67aa6cfa39f495dede740325"
+  integrity sha512-Cv38EgAfZTWjRBj0yPSb8c68qPME554d6k0dxGKM/wlHL8xV3bdvzP5F60MyNWdmTOUC4V2jFmGDvVU5VkFIpg==
+  dependencies:
+    i18n-js "^3.0.11"
 
 react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
@@ -11829,6 +11851,11 @@ recursive-readdir@2.2.2:
   integrity sha512-nRCcW9Sj7NuZwa2XvH9co8NPeXUBhZP7CRKJtU+cS6PW9FpCIFoI5ib0NT1ZrbNuPoRy0ylyCaUL8Gih4LSyFg==
   dependencies:
     minimatch "3.0.4"
+
+redux-persist@^5.10.0:
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.10.0.tgz#5d8d802c5571e55924efc1c3a9b23575283be62b"
+  integrity sha512-sSJAzNq7zka3qVHKce1hbvqf0Vf5DuTVm7dr4GtsqQVOexnrvbV47RWFiPxQ8fscnyiuWyD2O92DOxPl0tGCRg==
 
 redux-saga@^1.1.3:
   version "1.1.3"
