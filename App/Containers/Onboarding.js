@@ -18,11 +18,6 @@ import CustomCarausel from '../Components/CustomCarausel';
 
 const data = [
   {
-    title: I18n.t('onboardingTitle0'),
-    description: I18n.t('onboardingDescription0'),
-    ImageSvg: Svgs.Onboarding1,
-  },
-  {
     title: I18n.t('onboardingTitle1'),
     description: I18n.t('onboardingDescription1'),
     ImageSvg: Svgs.Onboarding1,
@@ -30,7 +25,12 @@ const data = [
   {
     title: I18n.t('onboardingTitle2'),
     description: I18n.t('onboardingDescription2'),
-    ImageSvg: Svgs.Onboarding1,
+    ImageSvg: Svgs.Onboarding2,
+  },
+  {
+    title: I18n.t('onboardingTitle3'),
+    description: I18n.t('onboardingDescription3'),
+    ImageSvg: Svgs.Onboarding3,
   },
 ];
 

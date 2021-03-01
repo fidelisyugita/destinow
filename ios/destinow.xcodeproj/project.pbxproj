@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* destinowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* destinowTests.m */; };
 		05789E798851E53874C947DA /* libPods-destinow-destinowTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB278286F815D5A4026F393 /* libPods-destinow-destinowTests.a */; };
+		06B6004429DB451389B15AA3 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 672FB9427B2840DFA37F41CB /* Roboto-Medium.ttf */; };
 		0784FD77DB81E64BC0724930 /* libPods-destinow-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 621BCF17C4E448A42319B129 /* libPods-destinow-tvOSTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -20,6 +21,8 @@
 		4CC5C3EA74AFB9AB82C9606A /* libPods-destinow-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BF5F93C25A485F52E3FDD9 /* libPods-destinow-tvOS.a */; };
 		7611D92D8486B454E99C0789 /* libPods-destinow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EED30F932659A457CB2261A /* libPods-destinow.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		C2B69AABE43341349259CCDF /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C9498C4F04B36A7BE6BED /* Roboto-Bold.ttf */; };
+		E8C1F7BB8EFC4A7D9B5DD149 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5F31079917F407182FEC5E1 /* Roboto-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +57,10 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = destinow/main.m; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* destinow-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "destinow-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* destinow-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "destinow-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A8C9498C4F04B36A7BE6BED /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		621BCF17C4E448A42319B129 /* libPods-destinow-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-destinow-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6437335F92C8CD8AAB035698 /* Pods-destinow-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-destinow-tvOS.release.xcconfig"; path = "Target Support Files/Pods-destinow-tvOS/Pods-destinow-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		672FB9427B2840DFA37F41CB /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		7EED30F932659A457CB2261A /* libPods-destinow.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-destinow.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = destinow/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8937B039771ECDC9ECA05760 /* Pods-destinow-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-destinow-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-destinow-tvOS/Pods-destinow-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +68,7 @@
 		A197D56DCBC17AC9CEF66F84 /* Pods-destinow-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-destinow-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-destinow-tvOSTests/Pods-destinow-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		A8BF5F93C25A485F52E3FDD9 /* libPods-destinow-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-destinow-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB278286F815D5A4026F393 /* libPods-destinow-destinowTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-destinow-destinowTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5F31079917F407182FEC5E1 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		E2108264770C824DAA8D3D4B /* Pods-destinow-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-destinow-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-destinow-tvOSTests/Pods-destinow-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
@@ -149,6 +155,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7FFE2DDEB04748EDB83DE3F2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3A8C9498C4F04B36A7BE6BED /* Roboto-Bold.ttf */,
+				672FB9427B2840DFA37F41CB /* Roboto-Medium.ttf */,
+				D5F31079917F407182FEC5E1 /* Roboto-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +181,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				DF2625EE5B680E8FD61DCB5D /* Pods */,
+				7FFE2DDEB04748EDB83DE3F2 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -194,7 +211,6 @@
 				E2108264770C824DAA8D3D4B /* Pods-destinow-tvOSTests.debug.xcconfig */,
 				A197D56DCBC17AC9CEF66F84 /* Pods-destinow-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -342,6 +358,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C2B69AABE43341349259CCDF /* Roboto-Bold.ttf in Resources */,
+				06B6004429DB451389B15AA3 /* Roboto-Medium.ttf in Resources */,
+				E8C1F7BB8EFC4A7D9B5DD149 /* Roboto-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
