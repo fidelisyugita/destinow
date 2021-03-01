@@ -29,8 +29,8 @@ function LaunchScreen({navigation, rehydrated, isFirstOpen}) {
       <Image
         source={Images.default11}
         style={{
-          width: s(350),
-          height: s(350),
+          width: s(334),
+          height: s(334),
         }}
       />
     </View>

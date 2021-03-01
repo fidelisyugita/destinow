@@ -6,6 +6,10 @@
    "onboardingTitle3": "Berikan Pendapatmu",
    "onboardingDescription3": "Velit integer porta eget egestas malesuada ac neque. Feugiat nisl, quis quis id in amet felis.",
    
+   "logIn": "Masuk",
+   "signUp": "Daftar",
+   "skip": "Lewati",
+   
    "close": "Close",
    
  }

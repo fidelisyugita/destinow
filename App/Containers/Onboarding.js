@@ -15,6 +15,7 @@ import {s, vs} from '../Lib/Scaling';
 import I18n from '../I18n';
 
 import CustomCarausel from '../Components/CustomCarausel';
+import ButtonDefault from '../Components/Button/ButtonDefault';
 
 const data = [
   {
@@ -62,17 +63,47 @@ function OnboardingScreen({navigation, removeOnboarding}) {
   return (
     <SafeAreaView>
       <ScrollView>
-        <View style={[AppStyles.alignCenter]}>
-          <Text>Destinow</Text>
-          <CustomCarausel
-            loop={false}
-            autoplay={false}
-            data={data}
-            style={{height: s(334) + vs(32) + s(76)}}
-            paginationStyle={{marginTop: vs(32)}}
-            renderItem={({item, index}) => renderItem(item, index)}
-          />
+        <View style={[AppStyles.alignCenter, {marginTop: vs(37)}]}>
+          <Svgs.LogoHorizontal width={s(135.25)} height={s(25)} />
         </View>
+
+        <CustomCarausel
+          loop={false}
+          autoplay={false}
+          data={data}
+          style={{height: s(334) + vs(32) + s(76)}}
+          paginationStyle={{marginTop: vs(36)}}
+          renderItem={({item, index}) => renderItem(item, index)}
+        />
+
+        <View
+          style={[
+            AppStyles.row,
+            AppStyles.justifyBetween,
+            {
+              marginHorizontal: s(16),
+              marginTop: vs(32),
+            },
+          ]}>
+          <ButtonDefault
+            text={I18n.t('logIn')}
+            textColor={Colors.blue}
+            buttonColor={Colors.white}
+            isBordered
+          />
+          <View style={{width: s(8)}} />
+          <ButtonDefault text={I18n.t('signUp')} />
+        </View>
+
+        <TouchableOpacity
+          style={[
+            AppStyles.alignCenter,
+            {marginTop: vs(20), marginBottom: vs(30)},
+          ]}>
+          <Text style={[Fonts.style.descriptionMedium, {color: Colors.blue}]}>
+            {I18n.t('skip')}
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
