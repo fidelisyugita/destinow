@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 
-// import SessionActions from '../../Redux/SessionRedux';
+import SessionActions from '../Redux/SessionRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../Themes';
 import {s, vs} from '../Lib/Scaling';
@@ -96,6 +96,10 @@ function OnboardingScreen({navigation, removeOnboarding}) {
         </View>
 
         <TouchableOpacity
+          onPress={() => {
+            removeOnboarding();
+            navigate('Main');
+          }}
           style={[
             AppStyles.alignCenter,
             {marginTop: vs(20), marginBottom: vs(30)},
@@ -112,13 +116,13 @@ function OnboardingScreen({navigation, removeOnboarding}) {
 const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
-    // isFirstOpen: state.session.isFirstOpen,
+    isFirstOpen: state.session.isFirstOpen,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // removeOnboarding: () => dispatch(SessionActions.removeOnboarding()),
+    removeOnboarding: () => dispatch(SessionActions.removeOnboarding()),
   };
 };
 
