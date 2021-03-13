@@ -1,22 +1,29 @@
 {
-   "onboardingTitle1": "Jelajah Belitung dalam Genggamanmu",
-   "onboardingDescription1": "Temukan panduan untuk wisata, tempat makan, souvenir sampai transportasi di Belitung.",
-   "onboardingTitle2": "Update Langsung dari Warga Lokal",
-   "onboardingDescription2": "Velit integer porta eget egestas malesuada ac neque. Feugiat nisl, quis quis id in amet felis.",
-   "onboardingTitle3": "Berikan Pendapatmu",
-   "onboardingDescription3": "Velit integer porta eget egestas malesuada ac neque. Feugiat nisl, quis quis id in amet felis.",
-   
-   "logIn": "Masuk",
-   "signUp": "Daftar",
-   "skip": "Lewati",
+  "onboardingTitle1": "Jelajah Belitung dalam Genggamanmu",
+  "onboardingDescription1": "Temukan panduan untuk wisata, tempat makan, souvenir sampai transportasi di Belitung.",
+  "onboardingTitle2": "Update Langsung dari Warga Lokal",
+  "onboardingDescription2": "Velit integer porta eget egestas malesuada ac neque. Feugiat nisl, quis quis id in amet felis.",
+  "onboardingTitle3": "Berikan Pendapatmu",
+  "onboardingDescription3": "Velit integer porta eget egestas malesuada ac neque. Feugiat nisl, quis quis id in amet felis.",
 
+  "logIn": "Masuk",
+  "signUp": "Daftar",
+  "skip": "Lewati",
 
-   "home": "Home",
-   "inbox": "Inbox",
-   "profile": "Profile",
+  "home": "Home",
+  "inbox": "Inbox",
+  "profile": "Profile",
 
-   
-   "close": "Close",
-   
- }
- 
+  "findYourFavoriteDestinationHere": "Temukan Destinasi Favoritmu Selama di Belitung",
+
+  "tourismPlace": "Wisata",
+  "restaurant": "Kuliner",
+  "souvenir": "Souvenir",
+  "transport": "Transport",
+
+  "favoriteDestination": "Destinasi Favorit",
+  "localPride": "Lokal Bersuara",
+  "news": "Berita Terbaru",
+
+  "close": "Close"
+}
