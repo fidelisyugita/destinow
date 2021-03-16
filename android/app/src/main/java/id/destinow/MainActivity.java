@@ -1,4 +1,4 @@
-package com.destinow;
+package id.destinow;
 
 import com.facebook.react.ReactActivity;
 

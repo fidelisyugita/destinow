@@ -5,21 +5,20 @@ import {
   ScrollView,
   Text,
   View,
-  TouchableOpacity,
   Image,
   FlatList,
 } from 'react-native';
 
 import SessionActions from '../../Redux/SessionRedux';
+import PlaceActions from '../../Redux/PlaceRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
 import ButtonIcon from '../../Components/Home/ButtonIcon';
-import RatingStar from '../../Components/Home/RatingStar';
 import PlaceCard from '../../Components/Home/PlaceCard';
 
-function HomeScreen({navigation, currentUser, logout}) {
+function HomeScreen({navigation, currentUser, places, getPlacesRequest}) {
   const {navigate} = navigation;
 
   const [isScrolling, setScrolling] = useState(false);
@@ -28,7 +27,9 @@ function HomeScreen({navigation, currentUser, logout}) {
     loadData();
   }, []);
 
-  function loadData() {}
+  function loadData() {
+    getPlacesRequest({});
+  }
 
   const onScroll = (event) => {
     const contentOffsetY = event.nativeEvent.contentOffset.y;
@@ -128,6 +129,7 @@ function HomeScreen({navigation, currentUser, logout}) {
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item, index) => item + index}
             contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
+            style={{marginTop: s(24 - 8)}}
             data={[
               {
                 name: 'Tanjung Kelayang Beach',
@@ -179,11 +181,14 @@ const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
     currentUser: state.session.user,
+    places: state.place.places,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   logout: (data, callback) => dispatch(SessionActions.logout(data, callback)),
+  getPlacesRequest: (data, callback) =>
+    dispatch(PlaceActions.getPlacesRequest(data, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "549530277887",
+    "firebase_url": "https://destinow-default-rtdb.firebaseio.com",
+    "project_id": "destinow",
+    "storage_bucket": "destinow.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549530277887:android:7b75895020bdfe54f8b9ca",
+        "android_client_info": {
+          "package_name": "id.destinow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549530277887-p0q38lc87u0s2e7mb4loga6egfef3e9e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.destinow",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "549530277887-jq64osrgg5vgjqk247o3vra4h4m08jhj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkQDYv7hG5fndb0NZdez3PBDAX8C4nvj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549530277887-jq64osrgg5vgjqk247o3vra4h4m08jhj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

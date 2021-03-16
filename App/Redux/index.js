@@ -11,6 +11,7 @@ export const reducers = combineReducers({
   search: require('./SearchRedux').reducer,
 
   session: require('./SessionRedux').reducer,
+  place: require('./PlaceRedux').reducer,
 });
 
 export default () => {
