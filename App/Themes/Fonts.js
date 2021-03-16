@@ -11,7 +11,8 @@ const size = {
   title: s(24),
   subTitle: s(20),
   description: s(16),
-  subDescription: s(12),
+  subDescription: s(14),
+  caption: s(12),
   footnote: s(10.5),
 };
 
@@ -62,6 +63,16 @@ const style = {
   subDescriptionRegular: {
     fontFamily: type.regular,
     fontSize: size.subDescription,
+    color: Colors.neural1,
+  },
+  captionMedium: {
+    fontFamily: type.medium,
+    fontSize: size.caption,
+    color: Colors.neural1,
+  },
+  captionRegular: {
+    fontFamily: type.regular,
+    fontSize: size.caption,
     color: Colors.neural1,
   },
   footnoteMedium: {

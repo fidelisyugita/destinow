@@ -15,7 +15,7 @@ import {PlaceTypes} from '../Redux/PlaceRedux';
 import {startup} from './StartupSagas';
 import {getUserAvatar} from './GithubSagas';
 
-import {getPlaces} from './PlaceSagas';
+import {getPlaces, getFavoritePlaces, getRecommendedPlaces} from './PlaceSagas';
 
 /* ------------- API ------------- */
 
@@ -34,5 +34,11 @@ export default function* root() {
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
 
     takeLatest(PlaceTypes.GET_PLACES_REQUEST, getPlaces, api),
+    takeLatest(PlaceTypes.GET_FAVORITE_PLACES_REQUEST, getFavoritePlaces, api),
+    takeLatest(
+      PlaceTypes.GET_RECOMMENDED_PLACES_REQUEST,
+      getRecommendedPlaces,
+      api,
+    ),
   ]);
 }

@@ -5,20 +5,21 @@ import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
 
-import RatingStar from './RatingStar';
+import RatingStar from '../RatingStar';
 
 const PlaceCard = ({
   containerStyle = {margin: s(8)},
+  onPress = () => {},
 
-  imageUri = null,
-  location = '',
+  imageSrc = Images.default34,
+  location = null,
   name = '',
   rating = 0,
 }) => (
-  <TouchableOpacity style={containerStyle}>
+  <TouchableOpacity style={containerStyle} onPress={onPress}>
     <View>
       <Image
-        source={{uri: imageUri}}
+        source={imageSrc}
         style={{width: s(225), height: s(300), borderRadius: s(16)}}
       />
       <Image
@@ -34,15 +35,17 @@ const PlaceCard = ({
         AppStyles.positionAbstolute,
         {bottom: s(16), left: s(16), width: s(225 - 32)},
       ]}>
-      <Text style={[Fonts.style.subDescriptionRegular, {color: Colors.white}]}>
-        {location}
-      </Text>
+      {location && (
+        <Text style={[Fonts.style.captionRegular, {color: Colors.white}]}>
+          {location}
+        </Text>
+      )}
       <Text
         style={[
           Fonts.style.descriptionBold,
           {color: Colors.white, marginTop: s(2)},
         ]}>
-        {name}
+        {name || '-'}
       </Text>
 
       <RatingStar totalStar={rating} />

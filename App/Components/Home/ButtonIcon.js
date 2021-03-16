@@ -9,7 +9,7 @@ const ButtonIcon = ({
   onPress = () => {},
   text = '',
 
-  textStyle = Fonts.style.subDescriptionMedium,
+  textStyle = Fonts.style.captionMedium,
   textColor = Colors.neural1,
   textDistance = s(4),
 

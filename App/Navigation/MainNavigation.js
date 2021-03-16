@@ -3,14 +3,14 @@ import {createStackNavigator} from 'react-navigation-stack';
 import BottomNav from './BottomNavigation';
 // import AuthNav from './AuthNavigation';
 
-// import DescriptionScreen from '../Containers/DescriptionScreen';
+import PlaceScreen from '../Containers/Place';
 
 const MainNav = createStackNavigator(
   {
     Bottom: BottomNav,
     // Auth: AuthNav,
 
-    // DescriptionScreen: {screen: DescriptionScreen},
+    PlaceScreen: {screen: PlaceScreen},
   },
   {
     headerMode: 'none',

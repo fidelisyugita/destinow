@@ -16,9 +16,16 @@ import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
 import ButtonIcon from '../../Components/Home/ButtonIcon';
-import PlaceCard from '../../Components/Home/PlaceCard';
+import PlaceCard from '../../Components/Card/PlaceCard';
+import LocalDiaryCard from '../../Components/Home/LocalDiaryCard';
+import TitleBar from '../../Components/TitleBar';
 
-function HomeScreen({navigation, currentUser, places, getPlacesRequest}) {
+function HomeScreen({
+  navigation,
+  currentUser,
+  getFavoritePlaces,
+  getFavoritePlacesRequest,
+}) {
   const {navigate} = navigation;
 
   const [isScrolling, setScrolling] = useState(false);
@@ -28,7 +35,7 @@ function HomeScreen({navigation, currentUser, places, getPlacesRequest}) {
   }, []);
 
   function loadData() {
-    getPlacesRequest({});
+    getFavoritePlacesRequest({});
   }
 
   const onScroll = (event) => {
@@ -96,6 +103,7 @@ function HomeScreen({navigation, currentUser, places, getPlacesRequest}) {
               {marginTop: s(24), marginHorizontal: s(30)},
             ]}>
             <ButtonIcon
+              onPress={() => navigate('PlaceScreen')}
               SvgIcon={Svgs.IconPlace}
               text={I18n.t('tourismPlace')}
               buttonStyle={{width: s(69)}}
@@ -117,13 +125,25 @@ function HomeScreen({navigation, currentUser, places, getPlacesRequest}) {
             />
           </View>
 
-          <Text
-            style={[
-              Fonts.style.title,
-              {marginTop: 56, marginHorizontal: s(16)},
-            ]}>
-            {I18n.t('favoriteDestination')}
-          </Text>
+          <TitleBar title={I18n.t('favoriteDestination')} />
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item, index) => item + index}
+            contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
+            style={{marginTop: s(24 - 8)}}
+            data={getFavoritePlaces.payload || []}
+            renderItem={({item, index}) => (
+              <PlaceCard
+                imageSrc={item.cover ? {uri: item.cover.src} : Images.default34}
+                location={item.location}
+                name={item.name}
+                rating={item.rating || 4}
+              />
+            )}
+          />
+
+          <TitleBar title={I18n.t('localDiary')} />
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -132,45 +152,39 @@ function HomeScreen({navigation, currentUser, places, getPlacesRequest}) {
             style={{marginTop: s(24 - 8)}}
             data={[
               {
-                name: 'Tanjung Kelayang Beach',
-                location: 'Tanjung Pandan',
-                rating: 4,
-                imageUri:
-                  'https://asset.kompas.com/crops/c0Myaf3AFwCFbsEvDrT3zLOCG2M=/171x0:1000x553/750x500/data/photo/2020/02/27/5e5788fb2f500.jpg',
+                cover: {
+                  src:
+                    'https://www.pesonaindo.com/wp-content/uploads/2016/04/Paket-Wisata-Belitung-Island-Pesona-Indonesia-Foto-Trip-1.jpg',
+                },
+                title:
+                  'Mi, at lobortis vitae pellentesque urna at senectus et ornare suspendisse et.',
+                description:
+                  'Nisl tristique facilisi lectus malesuada tristique in eget diam. Purus ultricies venenatis senec...',
+                author: 'Ronald Richards',
               },
               {
-                name: 'Hatchlings Babel SeaTurtle Conservation',
-                location: 'Sungailiat',
-                rating: 4,
-                imageUri:
-                  'https://share.america.gov/wp-content/uploads/2020/06/shutterstock_341379554-2-1024x512.jpg',
+                cover: {
+                  src:
+                    'https://cache.marriott.com/marriottassets/marriott/TJQSI/tjqsi-lobby-5988-hor-feat.jpg',
+                },
+                title:
+                  'Mi, at lobortis vitae pellentesque urna at senectus et ornare suspendisse et.',
+                description:
+                  'Nisl tristique facilisi lectus malesuada tristique in eget diam. Purus ultricies venenatis senec...',
+                author: 'Annette Black',
               },
             ]}
             renderItem={({item, index}) => (
-              <PlaceCard
-                imageUri={item.imageUri}
-                location={item.location}
-                name={item.name}
-                rating={item.rating}
+              <LocalDiaryCard
+                imageSrc={item.cover ? {uri: item.cover.src} : Images.default32}
+                title={item.title}
+                description={item.description}
+                author={item.author}
               />
             )}
           />
 
-          <Text
-            style={[
-              Fonts.style.title,
-              {marginTop: 56, marginHorizontal: s(16)},
-            ]}>
-            {I18n.t('localPride')}
-          </Text>
-
-          <Text
-            style={[
-              Fonts.style.title,
-              {marginTop: 56, marginHorizontal: s(16)},
-            ]}>
-            {I18n.t('news')}
-          </Text>
+          <TitleBar title={I18n.t('news')} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -181,14 +195,14 @@ const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
     currentUser: state.session.user,
-    places: state.place.places,
+    getFavoritePlaces: state.place.getFavoritePlaces,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   logout: (data, callback) => dispatch(SessionActions.logout(data, callback)),
-  getPlacesRequest: (data, callback) =>
-    dispatch(PlaceActions.getPlacesRequest(data, callback)),
+  getFavoritePlacesRequest: (data, callback) =>
+    dispatch(PlaceActions.getFavoritePlacesRequest(data, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
