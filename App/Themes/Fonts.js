@@ -33,57 +33,57 @@ const style = {
   title: {
     fontFamily: type.bold,
     fontSize: size.title,
-    color: Colors.neural1,
+    color: Colors.neutral1,
   },
   subTitle: {
     fontFamily: type.medium,
     fontSize: size.subTitle,
-    color: Colors.neural1,
+    color: Colors.neutral1,
   },
   descriptionBold: {
     fontFamily: type.bold,
     fontSize: size.description,
-    color: Colors.neural1,
+    color: Colors.neutral1,
   },
   descriptionMedium: {
     fontFamily: type.medium,
     fontSize: size.description,
-    color: Colors.neural1,
+    color: Colors.neutral1,
   },
   descriptionRegular: {
     fontFamily: type.regular,
     fontSize: size.description,
-    color: Colors.neural1,
+    color: Colors.neutral1,
   },
   subDescriptionMedium: {
     fontFamily: type.medium,
     fontSize: size.subDescription,
-    color: Colors.neural1,
+    color: Colors.neutral1,
   },
   subDescriptionRegular: {
     fontFamily: type.regular,
     fontSize: size.subDescription,
-    color: Colors.neural1,
+    color: Colors.neutral1,
   },
   captionMedium: {
     fontFamily: type.medium,
     fontSize: size.caption,
-    color: Colors.neural1,
+    color: Colors.neutral1,
   },
   captionRegular: {
     fontFamily: type.regular,
     fontSize: size.caption,
-    color: Colors.neural1,
+    color: Colors.neutral1,
   },
   footnoteMedium: {
     fontFamily: type.medium,
     fontSize: size.footnote,
-    color: Colors.neural1,
+    color: Colors.neutral1,
   },
   footnoteRegular: {
     fontFamily: type.regular,
     fontSize: size.footnote,
-    color: Colors.neural1,
+    color: Colors.neutral1,
   },
 };
 

@@ -18,6 +18,7 @@ import I18n from '../../I18n';
 import PlaceList from '../../Components/Place/PlaceList';
 import TitleBar from '../../Components/TitleBar';
 import PlaceCard from '../../Components/Card/PlaceCard';
+import CustomHeader from '../../Components/CustomHeader';
 
 function PlaceScreen({
   navigation,
@@ -31,7 +32,7 @@ function PlaceScreen({
 }) {
   const {navigate} = navigation;
 
-  const [isScrolling, setScrolling] = useState(false);
+  const [transparentOpacity, setTransparentOpacity] = useState(0);
 
   useEffect(() => {
     loadData();
@@ -45,38 +46,102 @@ function PlaceScreen({
   const onScroll = (event) => {
     const contentOffsetY = event.nativeEvent.contentOffset.y;
 
-    if (contentOffsetY > 0 && !isScrolling) setScrolling(true);
-    if (contentOffsetY <= 0 && isScrolling) setScrolling(false);
+    const tempTransparentOpacity = contentOffsetY / (Metrics.headerHeight * 3);
+
+    // if (tempTransparentOpacity <= 1)
+    setTransparentOpacity(tempTransparentOpacity);
+
+    console.log('transparentOpacity: ', transparentOpacity);
   };
 
   const renderHeader = () => {
     return (
       <View>
-        <TitleBar title={I18n.t('recommended')} />
-        <FlatList
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(item, index) => item + index}
-          contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
-          style={{marginTop: s(24 - 8)}}
-          data={getRecommendedPlaces.payload || []}
-          renderItem={({item, index}) => (
-            <PlaceCard
-              imageSrc={item.cover ? {uri: item.cover.src} : Images.default34}
-              location={item.location}
-              name={item.name}
-              rating={item.rating || 4}
-            />
-          )}
-        />
+        <View>
+          <Image
+            source={Images.tourismPlace}
+            style={[
+              AppStyles.positionAbstolute,
+              {width: s(414), height: s(225)},
+            ]}
+          />
+        </View>
 
-        <TitleBar title={I18n.t('allTourismPlace')} />
+        <View
+          style={[
+            AppStyles.flex1,
+            AppStyles.backgroundWhite,
+            {
+              marginTop: s(154),
+              borderTopLeftRadius: s(32),
+              borderTopRightRadius: s(32),
+            },
+          ]}>
+          <View
+            style={[
+              AppStyles.alignSelfCenter,
+              {
+                width: s(54),
+                height: s(4),
+                marginTop: s(8),
+                backgroundColor: Colors.neutral4,
+                borderRadius: s(2),
+              },
+            ]}
+          />
+          <View
+            style={[
+              AppStyles.row,
+              AppStyles.alignCenter,
+              {marginTop: s(24), marginHorizontal: s(16)},
+            ]}>
+            <Svgs.IconRecommendation width={s(32)} height={s(32)} />
+            <Text style={[Fonts.style.title, {marginLeft: s(8)}]}>
+              {I18n.t('recommended')}
+            </Text>
+          </View>
+
+          <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item, index) => item + index}
+            contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
+            style={{marginTop: s(24 - 8)}}
+            data={getRecommendedPlaces.payload || []}
+            renderItem={({item, index}) => (
+              <PlaceCard
+                imageSrc={item.cover ? {uri: item.cover.src} : Images.default34}
+                location={item.location}
+                name={item.name}
+                rating={item.rating || 4}
+              />
+            )}
+          />
+
+          <TitleBar title={I18n.t('allTourismPlace')} />
+        </View>
       </View>
     );
   };
 
   return (
     <SafeAreaView>
+      <CustomHeader
+        onBack={() => navigation.pop()}
+        // title={'test'}
+        // description={'test123'}
+        // rightIcons={[
+        //   {
+        //     SvgIcon: Svgs.IconStar,
+        //   },
+        //   {
+        //     SvgIcon: Svgs.IconStar,
+        //   },
+        // ]}
+        transparent={true}
+        transparentOpacity={transparentOpacity}
+      />
+
       <FlatList
         onScroll={(event) => onScroll(event)}
         showsVerticalScrollIndicator={false}

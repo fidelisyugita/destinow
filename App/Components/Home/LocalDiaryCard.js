@@ -6,6 +6,7 @@ import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
 
 import RatingStar from './RatingStar';
+import CustomImage from '../CustomImage';
 
 const LocalDiaryCard = ({
   containerStyle = {margin: s(8)},
@@ -17,8 +18,9 @@ const LocalDiaryCard = ({
   author = '',
 }) => (
   <TouchableOpacity style={containerStyle} onPress={onPress}>
-    <Image
+    <CustomImage
       source={imageSrc}
+      defaultSource={Images.default11}
       style={{width: s(300), height: s(200), borderRadius: s(16)}}
     />
     <Text
@@ -30,14 +32,15 @@ const LocalDiaryCard = ({
       numberOfLines={2}
       style={[
         Fonts.style.subDescriptionRegular,
-        {width: s(300), marginTop: s(2), color: Colors.neural2},
+        {width: s(300), marginTop: s(2), color: Colors.neutral2},
       ]}>
       {description || '-'}
     </Text>
 
     <View style={[AppStyles.row, AppStyles.alignCenter, {marginTop: s(8)}]}>
-      <Image
+      <CustomImage
         source={Images.defaultProfile}
+        defaultSource={Images.default11}
         style={{width: s(32), height: s(32), borderRadius: s(16)}}
       />
       <Text

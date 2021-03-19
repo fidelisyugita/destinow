@@ -1,15 +1,16 @@
 const colors = {
   black: '#000',
   white: '#FFF',
+  transparent: 'rgba(0,0,0,0)',
 
   darkBlue: '#026E78',
   blue: '#00A9BA',
   lightBlue: '#C6E8E9',
 
-  neural1: '#302F38',
-  neural2: '#8F8CA7',
-  neural3: '#E3E1EE',
-  neural4: '#F7F7FE',
+  neutral1: '#302F38',
+  neutral2: '#8F8CA7',
+  neutral3: '#E3E1EE',
+  neutral4: '#F7F7FE',
 };
 
 export default colors;

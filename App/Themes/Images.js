@@ -5,9 +5,13 @@ const images = {
   default32: require('../Images/default32.png'),
   default52: require('../Images/default52.png'),
 
-  homepage: require('../Images/homepage.png'),
   defaultProfile: require('../Images/defaultProfile.png'),
-  overlayBackground: require('../Images/overlayBackground.png'),
+
+  homepage: require('../Images/homepage.png'),
+  tourismPlace: require('../Images/tourismPlace.png'),
+
+  overlay11: require('../Images/overlay11.png'),
+  overlay34: require('../Images/overlay34.png'),
 };
 
 export default images;

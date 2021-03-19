@@ -90,7 +90,7 @@ function HomeScreen({
                 width: s(54),
                 height: s(4),
                 marginTop: s(8),
-                backgroundColor: Colors.neural4,
+                backgroundColor: Colors.neutral4,
                 borderRadius: s(2),
               },
             ]}

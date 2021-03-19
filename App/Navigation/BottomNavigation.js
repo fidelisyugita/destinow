@@ -56,7 +56,7 @@ const BottomNav = createBottomTabNavigator(
     initialRouteName: 'Home',
     tabBarOptions: {
       showLabel: false,
-      inactiveTintColor: Colors.neural3,
+      inactiveTintColor: Colors.neutral3,
       activeTintColor: Colors.blue,
       style: {
         // ...AppStyles.shadow,

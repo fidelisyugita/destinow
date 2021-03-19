@@ -10,7 +10,7 @@ const ButtonIcon = ({
   text = '',
 
   textStyle = Fonts.style.captionMedium,
-  textColor = Colors.neural1,
+  textColor = Colors.neutral1,
   textDistance = s(4),
 
   buttonColor = Colors.lightBlue,

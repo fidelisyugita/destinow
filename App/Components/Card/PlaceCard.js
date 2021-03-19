@@ -6,6 +6,7 @@ import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
 
 import RatingStar from '../RatingStar';
+import CustomImage from '../CustomImage';
 
 const PlaceCard = ({
   containerStyle = {margin: s(8)},
@@ -18,12 +19,14 @@ const PlaceCard = ({
 }) => (
   <TouchableOpacity style={containerStyle} onPress={onPress}>
     <View>
-      <Image
+      <CustomImage
         source={imageSrc}
+        defaultSource={Images.default34}
+        defa={imageSrc}
         style={{width: s(225), height: s(300), borderRadius: s(16)}}
       />
       <Image
-        source={Images.overlayBackground}
+        source={Images.overlay34}
         style={[
           AppStyles.positionAbstolute,
           {bottom: 0, width: s(225), height: s(145)},

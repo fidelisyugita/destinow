@@ -6,6 +6,7 @@ import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
 
 import RatingStar from '../RatingStar';
+import CustomImage from '../CustomImage';
 
 const PlaceList = ({
   containerStyle = {marginHorizontal: s(16)},
@@ -21,14 +22,15 @@ const PlaceList = ({
     style={[
       {
         paddingVertical: s(24),
-        borderColor: Colors.neural3,
+        borderColor: Colors.neutral3,
         borderBottomWidth: s(1),
       },
       containerStyle,
     ]}>
     <TouchableOpacity onPress={onPress} style={[AppStyles.row]}>
-      <Image
+      <CustomImage
         source={imageSrc}
+        defaultSource={Images.default11}
         style={{width: s(100), height: s(100), borderRadius: s(16)}}
       />
       <View style={{marginLeft: s(16)}}>
@@ -44,7 +46,7 @@ const PlaceList = ({
         <Text
           style={[
             Fonts.style.captionRegular,
-            {marginTop: s(2), color: Colors.neural2},
+            {marginTop: s(2), color: Colors.neutral2},
           ]}>
           {caption || '-'}
         </Text>

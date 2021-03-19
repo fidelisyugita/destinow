@@ -30,7 +30,7 @@ const RatingStar = ({
     {showText && (
       <Text
         style={[Fonts.style.captionMedium, {color: color, marginLeft: s(6)}]}>
-        {`${totalStar}`}
+        {parseFloat(totalStar).toFixed(1)}
       </Text>
     )}
   </View>

@@ -15,7 +15,7 @@ const PaginationDot = ({total = 2, index = 0, style = {}}) => {
           height: s(8),
           borderRadius: s(4),
           marginHorizontal: s(2),
-          backgroundColor: i === index ? Colors.blue : Colors.neural4,
+          backgroundColor: i === index ? Colors.blue : Colors.neutral4,
         }}
       />,
     );

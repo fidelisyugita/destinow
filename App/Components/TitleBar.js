@@ -4,10 +4,14 @@ import {Text} from 'react-native';
 import {Fonts} from '../Themes';
 import {s, vs} from '../Lib/Scaling';
 
-const TitleBar = ({title = ''}) => {
+const TitleBar = ({title = '', style = {}}) => {
   return (
     <Text
-      style={[Fonts.style.title, {marginTop: s(56), marginHorizontal: s(16)}]}>
+      style={[
+        Fonts.style.title,
+        {marginTop: s(56), marginHorizontal: s(16)},
+        style,
+      ]}>
       {title}
     </Text>
   );
