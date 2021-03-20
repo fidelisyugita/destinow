@@ -67,7 +67,7 @@ function PlaceScreen({
             {marginTop: s(64), marginHorizontal: s(16)},
           ]}>
           <Text style={[Fonts.style.title, {color: Colors.white}]}>
-            {I18n.t('allTourismPlace')}
+            {I18n.t('exploreBelitungTourismPlace')}
           </Text>
           <View
             style={{

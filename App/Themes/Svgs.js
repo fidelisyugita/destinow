@@ -9,7 +9,7 @@ import IconInbox from '../Svgs/Icons/IconInbox.svg';
 import IconProfile from '../Svgs/Icons/IconProfile.svg';
 
 import IconPlace from '../Svgs/Icons/IconPlace.svg';
-import IconRestaurant from '../Svgs/Icons/IconRestaurant.svg';
+import IconCulinary from '../Svgs/Icons/IconCulinary.svg';
 import IconSouvenir from '../Svgs/Icons/IconSouvenir.svg';
 import IconTransport from '../Svgs/Icons/IconTransport.svg';
 
@@ -32,7 +32,7 @@ const svgs = {
   IconProfile,
 
   IconPlace,
-  IconRestaurant,
+  IconCulinary,
   IconSouvenir,
   IconTransport,
 

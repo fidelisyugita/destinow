@@ -112,8 +112,8 @@ function HomeScreen({
               buttonStyle={{width: s(69)}}
             />
             <ButtonIcon
-              SvgIcon={Svgs.IconRestaurant}
-              text={I18n.t('restaurant')}
+              SvgIcon={Svgs.IconCulinary}
+              text={I18n.t('culinary')}
               buttonStyle={{width: s(69)}}
             />
             <ButtonIcon
