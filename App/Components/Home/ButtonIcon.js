@@ -1,26 +1,15 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
 
-const ButtonIcon = ({
-  onPress = () => {},
-  text = '',
-
-  textStyle = Fonts.style.captionMedium,
-  textColor = Colors.neutral1,
-  textDistance = s(4),
-
-  buttonColor = Colors.lightBlue,
-  buttonStyle = {},
-
-  SvgIcon = Svgs.IconPlace,
-  iconSize = s(40),
-
-  disabled = false,
-}) => (
+const ButtonIcon = memo(({onPress = () => {}, text = '',
+  textStyle = Fonts.style.captionMedium, textColor = Colors.neutral1, textDistance = s(4),
+  buttonColor = Colors.lightBlue, buttonStyle = {},
+  SvgIcon = Svgs.IconPlace, iconSize = s(40),
+  disabled = false}) => (
   <TouchableOpacity
     disabled={disabled}
     onPress={onPress}
@@ -43,6 +32,6 @@ const ButtonIcon = ({
       {text}
     </Text>
   </TouchableOpacity>
-);
+));
 
 export default ButtonIcon;

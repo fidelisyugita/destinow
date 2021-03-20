@@ -48,8 +48,8 @@ function PlaceScreen({
 
     const tempTransparentOpacity = contentOffsetY / (Metrics.headerHeight * 3);
 
-    // if (tempTransparentOpacity <= 1)
-    setTransparentOpacity(tempTransparentOpacity);
+    if (tempTransparentOpacity < 2)
+      setTransparentOpacity(tempTransparentOpacity);
 
     console.log('transparentOpacity: ', transparentOpacity);
   };
@@ -57,14 +57,30 @@ function PlaceScreen({
   const renderHeader = () => {
     return (
       <View>
-        <View>
-          <Image
-            source={Images.tourismPlace}
-            style={[
-              AppStyles.positionAbstolute,
-              {width: s(414), height: s(225)},
-            ]}
-          />
+        <Image
+          source={Images.tourismPlace}
+          style={[AppStyles.positionAbstolute, {width: s(414), height: s(225)}]}
+        />
+        <View
+          style={[
+            AppStyles.alignCenter,
+            {marginTop: s(64), marginHorizontal: s(16)},
+          ]}>
+          <Text style={[Fonts.style.title, {color: Colors.white}]}>
+            {I18n.t('allTourismPlace')}
+          </Text>
+          <View
+            style={{
+              marginTop: s(4),
+              paddingVertical: s(4),
+              paddingHorizontal: s(8),
+              borderRadius: s(16),
+              backgroundColor: Colors.blue,
+            }}>
+            <Text style={[Fonts.style.footnoteRegular, {color: Colors.white}]}>
+              {`1,350 ${I18n.t('tourismPlace')}`}
+            </Text>
+          </View>
         </View>
 
         <View
@@ -72,7 +88,7 @@ function PlaceScreen({
             AppStyles.flex1,
             AppStyles.backgroundWhite,
             {
-              marginTop: s(154),
+              marginTop: s(32),
               borderTopLeftRadius: s(32),
               borderTopRightRadius: s(32),
             },
@@ -142,8 +158,11 @@ function PlaceScreen({
         transparentOpacity={transparentOpacity}
       />
 
+      {/* {renderHeader()} */}
+
       <FlatList
         onScroll={(event) => onScroll(event)}
+        scrollEventThrottle={160} //  default 16
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => item + index}
         data={places}
@@ -156,6 +175,7 @@ function PlaceScreen({
           />
         )}
         ListHeaderComponent={renderHeader}
+        // ListFooterComponent={() => <View style={{height: 1080}} />}
       />
     </SafeAreaView>
   );

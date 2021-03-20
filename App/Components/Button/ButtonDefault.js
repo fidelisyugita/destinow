@@ -1,28 +1,15 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
 
-const ButtonDefault = ({
-  onPress = () => {},
-  text = '',
-
-  textStyle = Fonts.style.descriptionMedium,
-  textColor = Colors.white,
-
-  buttonColor = Colors.blue,
-  buttonStyle = {},
-
-  SvgIcon = null,
-  iconSize = s(24),
-  iconDistance = s(8),
-
-  isBordered = false,
-  disabled = false,
-  isLoading = false,
-}) => (
+const ButtonDefault = memo(({onPress = () => {}, text = '',
+  textStyle = Fonts.style.descriptionMedium, textColor = Colors.white,
+  buttonColor = Colors.blue, buttonStyle = {},
+  SvgIcon = null, iconSize = s(24), iconDistance = s(8),
+  isBordered = false, disabled = false, isLoading = false}) => (
   <TouchableOpacity
     disabled={disabled}
     onPress={onPress}
@@ -61,6 +48,6 @@ const ButtonDefault = ({
       </View>
     )}
   </TouchableOpacity>
-);
+));
 
 export default ButtonDefault;

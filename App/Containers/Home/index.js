@@ -47,7 +47,10 @@ function HomeScreen({
 
   return (
     <SafeAreaView>
-      <ScrollView onScroll={(event) => onScroll(event)}>
+      <ScrollView
+        onScroll={(event) => onScroll(event)}
+        scrollEventThrottle={1600} // default 16
+      >
         <Image
           source={Images.homepage}
           style={[
@@ -105,7 +108,7 @@ function HomeScreen({
             <ButtonIcon
               onPress={() => navigate('PlaceScreen')}
               SvgIcon={Svgs.IconPlace}
-              text={I18n.t('tourismPlace')}
+              text={I18n.t('tourism')}
               buttonStyle={{width: s(69)}}
             />
             <ButtonIcon

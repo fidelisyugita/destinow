@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
@@ -8,15 +8,8 @@ import I18n from '../../I18n';
 import RatingStar from '../RatingStar';
 import CustomImage from '../CustomImage';
 
-const PlaceCard = ({
-  containerStyle = {margin: s(8)},
-  onPress = () => {},
-
-  imageSrc = Images.default34,
-  location = null,
-  name = '',
-  rating = 0,
-}) => (
+const PlaceCard = memo(({containerStyle = {margin: s(8)}, onPress = () => {},
+  imageSrc = Images.default34, location = null, name = '', rating = 0}) => (
   <TouchableOpacity style={containerStyle} onPress={onPress}>
     <View>
       <CustomImage
@@ -54,6 +47,6 @@ const PlaceCard = ({
       <RatingStar totalStar={rating} />
     </View>
   </TouchableOpacity>
-);
+));
 
 export default PlaceCard;

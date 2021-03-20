@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {View} from 'react-native';
 
 import {Colors, AppStyles} from '../Themes';
 import {s, vs} from '../Lib/Scaling';
 
-const PaginationDot = ({total = 2, index = 0, style = {}}) => {
+const PaginationDot = memo(({total = 2, index = 0, style = {}}) => {
   let dots = [];
   for (let i = 0; i < total; i++) {
     dots.push(
@@ -22,6 +22,6 @@ const PaginationDot = ({total = 2, index = 0, style = {}}) => {
   }
 
   return <View style={[AppStyles.row, style]}>{dots}</View>;
-};
+});
 
 export default PaginationDot;

@@ -16,7 +16,7 @@
 
   "findYourFavoriteDestinationHere": "Temukan Destinasi Favoritmu Selama di Belitung",
 
-  "tourismPlace": "Wisata",
+  "tourism": "Wisata",
   "restaurant": "Kuliner",
   "souvenir": "Souvenir",
   "transport": "Transport",
@@ -26,6 +26,8 @@
   "news": "Berita Terbaru",
 
   "allTourismPlace": "Semua Tempat Wisata",
+  "exploreBelitungTourismPlace": "Jelajahi Wisata Belitung",
+  "tourismPlace": "Tempat Wisata",
   "recommended": "Rekomendasi",
 
   "close": "Close"

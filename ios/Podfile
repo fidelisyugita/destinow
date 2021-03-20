@@ -11,6 +11,10 @@ target 'destinow' do
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
   pod 'RNI18n', :path => '../node_modules/react-native-i18n'
+  
+  # add pods for desired Firebase products
+  # https://firebase.google.com/docs/ios/setup#available-pods
+  pod 'Firebase/Functions'
 
   target 'destinowTests' do
     inherit! :complete
