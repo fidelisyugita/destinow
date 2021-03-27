@@ -24,11 +24,6 @@ const CustomHeader = memo(
       transparent && transparentOpacity < 0.7 ? Colors.white : Colors.blue;
 
     return (
-      // <View
-      //   style={{
-      //     paddingTop: transparent ? distanceNotch : 0,
-      //     marginBottom: transparent ? distanceBody : 0,
-      //   }}>
       <View
         style={[
           AppStyles.zIndex1,
@@ -36,13 +31,15 @@ const CustomHeader = memo(
           AppStyles.alignCenter,
           transparent ? AppStyles.positionAbstolute : {},
           {
-            height: Metrics.headerHeight,
+            height: Metrics.headerHeight + s(transparentOpacity),
             width: '100%',
             backgroundColor: transparent
               ? `rgba(255,255,255, ${transparentOpacity})`
               : Colors.white,
             marginTop: transparent ? distanceNotch : 0,
             marginBottom: transparent ? distanceBody : 0,
+            borderBottomWidth: s(transparentOpacity),
+            borderColor: Colors.neutral3,
           },
           style,
         ]}>
@@ -96,7 +93,6 @@ const CustomHeader = memo(
           })}
         </View>
       </View>
-      // </View>
     );
   },
 );

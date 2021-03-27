@@ -15,10 +15,12 @@ import PlaceActions from '../../Redux/PlaceRedux';
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
+
 import ButtonIcon from '../../Components/Home/ButtonIcon';
 import PlaceCard from '../../Components/Card/PlaceCard';
 import LocalDiaryCard from '../../Components/Home/LocalDiaryCard';
 import TitleBar from '../../Components/TitleBar';
+import CustomBody from '../../Components/CustomBody';
 
 function HomeScreen({
   navigation,
@@ -76,29 +78,7 @@ function HomeScreen({
           </Text>
         </View>
 
-        <View
-          style={[
-            AppStyles.flex1,
-            AppStyles.backgroundWhite,
-            {
-              marginTop: s(16),
-              borderTopLeftRadius: s(32),
-              borderTopRightRadius: s(32),
-            },
-          ]}>
-          <View
-            style={[
-              AppStyles.alignSelfCenter,
-              {
-                width: s(54),
-                height: s(4),
-                marginTop: s(8),
-                backgroundColor: Colors.neutral4,
-                borderRadius: s(2),
-              },
-            ]}
-          />
-
+        <CustomBody>
           <View
             style={[
               AppStyles.row,
@@ -138,7 +118,8 @@ function HomeScreen({
             data={getFavoritePlaces.payload || []}
             renderItem={({item, index}) => (
               <PlaceCard
-                imageSrc={item.cover ? {uri: item.cover.src} : Images.default34}
+                onPress={() => navigate('PlaceDetailScreen', {item})}
+                imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
                 location={item.location}
                 name={item.name}
                 rating={item.rating || 4}
@@ -188,7 +169,8 @@ function HomeScreen({
           />
 
           <TitleBar title={I18n.t('news')} />
-        </View>
+        </CustomBody>
+        <View style={{height: s(56)}} />
       </ScrollView>
     </SafeAreaView>
   );

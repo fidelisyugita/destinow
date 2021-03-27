@@ -15,10 +15,12 @@ import PlaceActions from '../../Redux/PlaceRedux';
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
+
 import PlaceList from '../../Components/Place/PlaceList';
 import TitleBar from '../../Components/TitleBar';
 import PlaceCard from '../../Components/Card/PlaceCard';
 import CustomHeader from '../../Components/CustomHeader';
+import CustomBody from '../../Components/CustomBody';
 
 function PlaceScreen({
   navigation,
@@ -31,7 +33,6 @@ function PlaceScreen({
   getPlacesRequest,
 }) {
   const {navigate} = navigation;
-
   const [transparentOpacity, setTransparentOpacity] = useState(0);
 
   useEffect(() => {
@@ -83,28 +84,7 @@ function PlaceScreen({
           </View>
         </View>
 
-        <View
-          style={[
-            AppStyles.flex1,
-            AppStyles.backgroundWhite,
-            {
-              marginTop: s(32),
-              borderTopLeftRadius: s(32),
-              borderTopRightRadius: s(32),
-            },
-          ]}>
-          <View
-            style={[
-              AppStyles.alignSelfCenter,
-              {
-                width: s(54),
-                height: s(4),
-                marginTop: s(8),
-                backgroundColor: Colors.neutral4,
-                borderRadius: s(2),
-              },
-            ]}
-          />
+        <CustomBody style={{marginTop: s(32)}}>
           <View
             style={[
               AppStyles.row,
@@ -126,8 +106,9 @@ function PlaceScreen({
             data={getRecommendedPlaces.payload || []}
             renderItem={({item, index}) => (
               <PlaceCard
-                imageSrc={item.cover ? {uri: item.cover.src} : Images.default34}
-                location={item.location}
+                onPress={() => navigate('PlaceDetailScreen', {item})}
+                imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
+                location={item.city}
                 name={item.name}
                 rating={item.rating || 4}
               />
@@ -135,7 +116,7 @@ function PlaceScreen({
           />
 
           <TitleBar title={I18n.t('allTourismPlace')} />
-        </View>
+        </CustomBody>
       </View>
     );
   };
@@ -144,21 +125,9 @@ function PlaceScreen({
     <SafeAreaView>
       <CustomHeader
         onBack={() => navigation.pop()}
-        // title={'test'}
-        // description={'test123'}
-        // rightIcons={[
-        //   {
-        //     SvgIcon: Svgs.IconStar,
-        //   },
-        //   {
-        //     SvgIcon: Svgs.IconStar,
-        //   },
-        // ]}
         transparent={true}
         transparentOpacity={transparentOpacity}
       />
-
-      {/* {renderHeader()} */}
 
       <FlatList
         onScroll={(event) => onScroll(event)}
@@ -168,14 +137,16 @@ function PlaceScreen({
         data={places}
         renderItem={({item, index}) => (
           <PlaceList
-            imageSrc={item.cover ? {uri: item.cover.src} : Images.default34}
-            location={item.location}
+            onPress={() => navigate('PlaceDetailScreen', {item})}
+            imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
             name={item.name}
             rating={item.rating || 4}
+            description={`${item.city} | ${item.openingHours}`}
+            caption={item.distance}
           />
         )}
         ListHeaderComponent={renderHeader}
-        // ListFooterComponent={() => <View style={{height: 1080}} />}
+        ListFooterComponent={() => <View style={{height: 56}} />}
       />
     </SafeAreaView>
   );

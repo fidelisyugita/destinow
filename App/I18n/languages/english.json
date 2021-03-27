@@ -30,5 +30,11 @@
   "tourismPlace": "Tempat Wisata",
   "recommended": "Rekomendasi",
 
+  "distance": "Jarak",
+  "openingHours": "Jam Buka",
+  "priceEstimation": "Estimasi Harga",
+
+  "openLocation": "Lihat Lokasi",
+
   "close": "Close"
 }

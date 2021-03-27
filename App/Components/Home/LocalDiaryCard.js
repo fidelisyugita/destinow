@@ -5,7 +5,6 @@ import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
 
-import RatingStar from './RatingStar';
 import CustomImage from '../CustomImage';
 
 const LocalDiaryCard = memo(

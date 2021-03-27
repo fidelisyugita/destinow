@@ -61,8 +61,10 @@ function OnboardingScreen({navigation, removeOnboarding}) {
   };
 
   return (
+    // <SafeAreaView style={[AppStyles.flex1]}>
     <SafeAreaView>
       <ScrollView>
+        {/* <View style={[AppStyles.flex1, AppStyles.justifyEnd]}> */}
         <View style={[AppStyles.alignCenter, {marginTop: vs(37)}]}>
           <Svgs.LogoHorizontal width={s(135.25)} height={s(25)} />
         </View>
@@ -71,7 +73,12 @@ function OnboardingScreen({navigation, removeOnboarding}) {
           loop={false}
           autoplay={false}
           data={data}
-          style={{height: s(334) + vs(32) + s(76)}}
+          // style={{height: s(334) + vs(32) + s(76)}}
+
+          style={{
+            marginTop: vs(32),
+            height: Metrics.pureScreenHeight - vs(94) - vs(152),
+          }}
           paginationStyle={{marginTop: vs(36)}}
           renderItem={({item, index}) => renderItem(item, index)}
         />
@@ -108,6 +115,7 @@ function OnboardingScreen({navigation, removeOnboarding}) {
             {I18n.t('skip')}
           </Text>
         </TouchableOpacity>
+        {/* </View> */}
       </ScrollView>
     </SafeAreaView>
   );

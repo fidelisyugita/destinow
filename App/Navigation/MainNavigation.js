@@ -4,6 +4,7 @@ import BottomNav from './BottomNavigation';
 // import AuthNav from './AuthNavigation';
 
 import PlaceScreen from '../Containers/Place';
+import PlaceDetailScreen from '../Containers/Place/PlaceDetailScreen';
 
 const MainNav = createStackNavigator(
   {
@@ -11,6 +12,7 @@ const MainNav = createStackNavigator(
     // Auth: AuthNav,
 
     PlaceScreen: {screen: PlaceScreen},
+    PlaceDetailScreen: {screen: PlaceDetailScreen},
   },
   {
     headerMode: 'none',

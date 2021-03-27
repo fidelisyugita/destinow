@@ -20,6 +20,9 @@ import IconArrowLeft from '../Svgs/Icons/IconArrowLeft.svg';
 
 import IconRecommendation from '../Svgs/Icons/IconRecommendation.svg';
 
+import IconDirection from '../Svgs/Icons/IconDirection.svg';
+import IconPhone from '../Svgs/Icons/IconPhone.svg';
+
 const svgs = {
   LogoHorizontal,
 
@@ -42,6 +45,9 @@ const svgs = {
   IconArrowLeft,
 
   IconRecommendation,
+
+  IconDirection,
+  IconPhone,
 };
 
 export default svgs;
