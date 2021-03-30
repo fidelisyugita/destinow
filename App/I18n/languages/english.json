@@ -36,5 +36,17 @@
 
   "openLocation": "Lihat Lokasi",
 
+  "description": "Deskripsi",
+  "review": "Ulasan",
+
+  "aboutTourismPlace": "Tentang Tempat Wisata",
+  "facilities": "Fasilitas",
+  "travelTips": "Tips Perjalanan",
+
+  "emptyReview": "Tidak Ada Ulasan",
+  "emptyReviewDescription": "Sudah pernah mengunjungi tempat ini? Yuk, ceritakan pengalamanmu di sini.",
+
+  "submitYourReview": "Berikan Ulasanmu",
+
   "close": "Close"
 }
