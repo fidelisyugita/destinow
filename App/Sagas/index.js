@@ -9,6 +9,7 @@ import {StartupTypes} from '../Redux/StartupRedux';
 import {GithubTypes} from '../Redux/GithubRedux';
 
 import {PlaceTypes} from '../Redux/PlaceRedux';
+import {BannerTypes} from '../Redux/BannerRedux';
 
 /* ------------- Sagas ------------- */
 
@@ -16,6 +17,7 @@ import {startup} from './StartupSagas';
 import {getUserAvatar} from './GithubSagas';
 
 import {getPlaces, getFavoritePlaces, getRecommendedPlaces} from './PlaceSagas';
+import {getBanners} from './BannerSagas';
 
 /* ------------- API ------------- */
 
@@ -40,5 +42,7 @@ export default function* root() {
       getRecommendedPlaces,
       api,
     ),
+
+    takeLatest(BannerTypes.GET_BANNERS_REQUEST, getBanners, api),
   ]);
 }

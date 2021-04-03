@@ -60,7 +60,7 @@ export const getPlacesSuccess = (state, {payload}) => {
 export const getPlacesFailure = (state, {error}) => {
   return state.merge({
     ...state,
-    getPlaces: {fetching: false, error, payload: null},
+    getPlaces: {...state.getPlaces, fetching: false, error},
   });
 };
 
@@ -79,7 +79,7 @@ export const getFavoritePlacesSuccess = (state, {payload}) => {
 export const getFavoritePlacesFailure = (state, {error}) => {
   return state.merge({
     ...state,
-    getFavoritePlaces: {fetching: false, error, payload: null},
+    getFavoritePlaces: {...state.getFavoritePlaces, fetching: false, error},
   });
 };
 
@@ -98,7 +98,11 @@ export const getRecommendedPlacesSuccess = (state, {payload}) => {
 export const getRecommendedPlacesFailure = (state, {error}) => {
   return state.merge({
     ...state,
-    getRecommendedPlaces: {fetching: false, error, payload: null},
+    getRecommendedPlaces: {
+      ...state.getRecommendedPlaces,
+      fetching: false,
+      error,
+    },
   });
 };
 

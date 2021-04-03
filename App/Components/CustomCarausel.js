@@ -12,6 +12,7 @@ const CustomCarausel = memo(
     data = [],
     renderItem = () => <View />,
     style = {height: s(334)},
+    containerStyle = {},
     paginationStyle = {},
     loop = true,
     autoplay = true,
@@ -25,6 +26,7 @@ const CustomCarausel = memo(
         autoplay={autoplay}
         showsPagination={showsPagination}
         style={style}
+        containerStyle={containerStyle}
         renderPagination={(index, total) => (
           <PaginationDot
             index={index}

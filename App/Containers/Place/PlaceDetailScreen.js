@@ -76,16 +76,20 @@ function PlaceDetailScreen({
       });
 
     return (
-      <View style={{marginTop: s(24)}}>
-        <Text style={[Fonts.style.subTitle]}>
-          {I18n.t('aboutTourismPlace')}
-        </Text>
-        <HTML
-          source={{html: paramItem.description}}
-          // contentWidth={contentWidth}
-          containerStyle={{marginTop: s(24 - 16)}}
-          baseFontStyle={Fonts.style.descriptionRegular}
-        />
+      <View>
+        {paramItem.description && (
+          <View style={{marginTop: s(24)}}>
+            <Text style={[Fonts.style.subTitle]}>
+              {I18n.t('aboutTourismPlace')}
+            </Text>
+            <HTML
+              source={{html: paramItem.description}}
+              // contentWidth={contentWidth}
+              containerStyle={{marginTop: s(24 - 16)}}
+              baseFontStyle={Fonts.style.descriptionRegular}
+            />
+          </View>
+        )}
 
         {IsNotEmpty(facilities) && (
           <View style={{marginTop: s(40)}}>
@@ -122,15 +126,17 @@ function PlaceDetailScreen({
           </View>
         )}
 
-        <Text style={[Fonts.style.subTitle, {marginTop: s(40)}]}>
-          {I18n.t('travelTips')}
-        </Text>
-        <HTML
-          source={{html: paramItem.travelTips}}
-          // contentWidth={contentWidth}
-          containerStyle={{marginTop: s(24 - 16)}}
-          baseFontStyle={Fonts.style.descriptionRegular}
-        />
+        {paramItem.travelTips && (
+          <View style={{marginTop: s(40)}}>
+            <Text style={[Fonts.style.subTitle]}>{I18n.t('travelTips')}</Text>
+            <HTML
+              source={{html: paramItem.travelTips}}
+              // contentWidth={contentWidth}
+              containerStyle={{marginTop: s(24 - 16)}}
+              baseFontStyle={Fonts.style.descriptionRegular}
+            />
+          </View>
+        )}
       </View>
     );
   };

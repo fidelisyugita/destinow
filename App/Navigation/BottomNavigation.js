@@ -12,13 +12,13 @@ import ProfileScreen from '../Containers/Profile';
 
 const renderItem = (IconSvg = Svgs.LogoHorizontal, tintColor, title) => (
   <View style={[AppStyles.alignCenter]}>
-    <IconSvg width={s(20)} height={s(20)} fill={tintColor} />
+    <IconSvg width={s(24)} height={s(24)} fill={tintColor} />
     <Text
       numberOfLines={1}
       style={[
         Fonts.style.footnoteRegular,
         Fonts.style.alignCenter,
-        {marginTop: s(4), color: tintColor, width: s(65)},
+        {marginTop: s(2), color: tintColor, width: s(65)},
       ]}>
       {title}
     </Text>

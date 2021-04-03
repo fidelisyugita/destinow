@@ -7,10 +7,13 @@ import {
   View,
   Image,
   FlatList,
+  TouchableOpacity,
+  Linking,
 } from 'react-native';
 
 import SessionActions from '../../Redux/SessionRedux';
 import PlaceActions from '../../Redux/PlaceRedux';
+import BannerActions from '../../Redux/BannerRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
@@ -21,12 +24,18 @@ import PlaceCard from '../../Components/Card/PlaceCard';
 import LocalDiaryCard from '../../Components/Home/LocalDiaryCard';
 import TitleBar from '../../Components/TitleBar';
 import CustomBody from '../../Components/CustomBody';
+import CustomImage from '../../Components/CustomImage';
+import CustomCarausel from '../../Components/CustomCarausel';
+import {IsNotEmpty} from '../../Lib';
 
 function HomeScreen({
   navigation,
   currentUser,
+
   getFavoritePlaces,
   getFavoritePlacesRequest,
+  getBanners,
+  getBannersRequest,
 }) {
   const {navigate} = navigation;
 
@@ -37,7 +46,8 @@ function HomeScreen({
   }, []);
 
   function loadData() {
-    getFavoritePlacesRequest({});
+    getFavoritePlacesRequest();
+    getBannersRequest();
   }
 
   const onScroll = (event) => {
@@ -107,6 +117,45 @@ function HomeScreen({
               buttonStyle={{width: s(69)}}
             />
           </View>
+
+          {IsNotEmpty(getBanners.payload) && (
+            // <View style={{marginTop: s(48), width: s(414)}}>
+            <CustomCarausel
+              loop={true}
+              autoplay={true}
+              data={getBanners.payload || []}
+              style={{height: s(150)}}
+              containerStyle={{
+                marginTop: s(48),
+                // width: s(414 - 8),
+                // backgroundColor: Colors.lightBlue,
+              }}
+              paginationStyle={{marginTop: s(16)}}
+              renderItem={({item, index}) => (
+                <TouchableOpacity
+                  key={item + index}
+                  onPress={() => {
+                    if (item.url) Linking.openURL(item.url);
+                  }}
+                  style={[AppStyles.alignSelfCenter]}>
+                  <CustomImage
+                    source={
+                      item.cover ? {uri: item.cover.src} : Images.default31
+                    }
+                    defaultSource={Images.default31}
+                    style={{
+                      width: s(375),
+                      height: s(150),
+                      borderRadius: s(16),
+                      borderWidth: s(1),
+                      borderColor: Colors.neutral3,
+                    }}
+                  />
+                </TouchableOpacity>
+              )}
+            />
+            // </View>
+          )}
 
           <TitleBar title={I18n.t('favoriteDestination')} />
           <FlatList
@@ -180,7 +229,9 @@ const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
     currentUser: state.session.user,
+
     getFavoritePlaces: state.place.getFavoritePlaces,
+    getBanners: state.banner.getBanners,
   };
 };
 
@@ -188,6 +239,8 @@ const mapDispatchToProps = (dispatch) => ({
   logout: (data, callback) => dispatch(SessionActions.logout(data, callback)),
   getFavoritePlacesRequest: (data, callback) =>
     dispatch(PlaceActions.getFavoritePlacesRequest(data, callback)),
+  getBannersRequest: (data, callback) =>
+    dispatch(BannerActions.getBannersRequest(data, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

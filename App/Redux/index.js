@@ -12,6 +12,7 @@ export const reducers = combineReducers({
 
   session: require('./SessionRedux').reducer,
   place: require('./PlaceRedux').reducer,
+  banner: require('./BannerRedux').reducer,
 });
 
 export default () => {
