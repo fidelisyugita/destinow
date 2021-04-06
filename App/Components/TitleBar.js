@@ -4,7 +4,7 @@ import {Text} from 'react-native';
 import {Fonts} from '../Themes';
 import {s, vs} from '../Lib/Scaling';
 
-const TitleBar = memo(({title = '', style = {}}) => {
+const TitleBar = ({title = '', style = {}}) => {
   return (
     <Text
       style={[
@@ -15,6 +15,6 @@ const TitleBar = memo(({title = '', style = {}}) => {
       {title}
     </Text>
   );
-});
+};
 
 export default TitleBar;

@@ -22,7 +22,6 @@ const PlaceCard = memo(
         <CustomImage
           source={imageSrc}
           defaultSource={Images.default23}
-          defa={imageSrc}
           style={{width: s(225), height: s(300), borderRadius: s(16)}}
         />
         <Image

@@ -18,13 +18,16 @@ const PlaceList = memo(
     rating = 0,
     description = '',
     caption = '',
+    hideBorderTop = false,
+    hideBorderBottom = true,
   }) => (
     <View
       style={[
         {
           paddingVertical: s(24),
           borderColor: Colors.neutral3,
-          borderBottomWidth: s(1),
+          borderTopWidth: hideBorderTop ? 0 : s(1),
+          borderBottomWidth: hideBorderBottom ? 0 : s(1),
         },
         containerStyle,
       ]}>

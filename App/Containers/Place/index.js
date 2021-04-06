@@ -143,6 +143,7 @@ function PlaceScreen({
             rating={item.rating || 4}
             description={`${item.city} | ${item.openingHours}`}
             caption={item.distance}
+            hideBorderTop={index === 0}
           />
         )}
         ListHeaderComponent={renderHeader}

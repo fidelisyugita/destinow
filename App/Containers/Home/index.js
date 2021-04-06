@@ -18,6 +18,7 @@ import BannerActions from '../../Redux/BannerRedux';
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
+import {IsNotEmpty} from '../../Lib';
 
 import ButtonIcon from '../../Components/Home/ButtonIcon';
 import PlaceCard from '../../Components/Card/PlaceCard';
@@ -26,7 +27,9 @@ import TitleBar from '../../Components/TitleBar';
 import CustomBody from '../../Components/CustomBody';
 import CustomImage from '../../Components/CustomImage';
 import CustomCarausel from '../../Components/CustomCarausel';
-import {IsNotEmpty} from '../../Lib';
+import ButtonDefault from '../../Components/Button/ButtonDefault';
+import CustomFlatList from '../../Components/CustomFlatList';
+import NewsList from '../../Components/List/NewsList';
 
 function HomeScreen({
   navigation,
@@ -119,7 +122,6 @@ function HomeScreen({
           </View>
 
           {IsNotEmpty(getBanners.payload) && (
-            // <View style={{marginTop: s(48), width: s(414)}}>
             <CustomCarausel
               loop={true}
               autoplay={true}
@@ -154,7 +156,6 @@ function HomeScreen({
                 </TouchableOpacity>
               )}
             />
-            // </View>
           )}
 
           <TitleBar title={I18n.t('favoriteDestination')} />
@@ -176,13 +177,16 @@ function HomeScreen({
             )}
           />
 
-          <TitleBar title={I18n.t('localDiary')} />
+          <TitleBar
+            title={I18n.t('localDiary')}
+            style={{marginTop: s(56 - 8)}}
+          />
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
             keyExtractor={(item, index) => item + index}
             contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
-            style={{marginTop: s(24 - 8)}}
+            style={{marginTop: s(24)}}
             data={[
               {
                 cover: {
@@ -216,8 +220,62 @@ function HomeScreen({
               />
             )}
           />
+          <ButtonDefault
+            text={I18n.t('viewAll')}
+            buttonStyle={{marginTop: s(32), marginHorizontal: s(16)}}
+            buttonColor={Colors.white}
+            textColor={Colors.blue}
+            isBordered
+          />
 
           <TitleBar title={I18n.t('news')} />
+          <CustomFlatList
+            data={[
+              {
+                cover: {
+                  src:
+                    'https://www.pesonaindo.com/wp-content/uploads/2016/04/Paket-Wisata-Belitung-Island-Pesona-Indonesia-Foto-Trip-1.jpg',
+                },
+                title: '3 jam yang lalu',
+                description:
+                  'Nisl tristique facilisi lectus malesuada tristique in eget diam. Purus ultricies venenatis senec...',
+              },
+              {
+                cover: {
+                  src:
+                    'https://cache.marriott.com/marriottassets/marriott/TJQSI/tjqsi-lobby-5988-hor-feat.jpg',
+                },
+                title: '1 hari yang lalu',
+                description:
+                  'Nisl tristique facilisi lectus malesuada tristique in eget diam. Purus ultricies venenatis senec...',
+              },
+              {
+                cover: {
+                  src:
+                    'https://www.pesonaindo.com/wp-content/uploads/2016/04/Paket-Wisata-Belitung-Island-Pesona-Indonesia-Foto-Trip-1.jpg',
+                },
+                title: '3 jam yang lalu',
+                description:
+                  'Nisl tristique facilisi lectus malesuada tristique in eget diam. Purus ultricies venenatis senec...',
+              },
+            ]}
+            style={{marginTop: s(24 - 8)}}
+            renderItem={({item, index}) => (
+              <NewsList
+                imageSrc={item.cover ? {uri: item.cover.src} : Images.default11}
+                caption={item.title}
+                text={item.description}
+                hideBorderTop={index === 0}
+              />
+            )}
+          />
+          <ButtonDefault
+            text={I18n.t('viewAll')}
+            buttonStyle={{marginTop: s(32 - 16), marginHorizontal: s(16)}}
+            buttonColor={Colors.white}
+            textColor={Colors.blue}
+            isBordered
+          />
         </CustomBody>
         <View style={{height: s(56)}} />
       </ScrollView>
