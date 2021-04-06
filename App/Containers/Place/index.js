@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 import {
   SafeAreaView,
@@ -36,8 +36,12 @@ function PlaceScreen({
   getPlaces,
   getPlacesRequest,
 }) {
+  const flatListRef = useRef();
+
   const {navigate} = navigation;
   const [transparentOpacity, setTransparentOpacity] = useState(0);
+
+  const [isEnd, setEnd] = useState(false);
 
   const [page, setPage] = useState(0);
 
@@ -70,6 +74,12 @@ function PlaceScreen({
 
     if (!fetching && payload && payload.length === Consts.DATA_PER_PAGE)
       setPage(page + 1);
+
+    setEnd(!payload || payload.length !== Consts.DATA_PER_PAGE);
+  };
+
+  const goToTop = () => {
+    flatListRef.current.scrollToOffset({animated: true, offset: 0});
   };
 
   const onScroll = (event) => {
@@ -149,6 +159,36 @@ function PlaceScreen({
     );
   };
 
+  const renderFooter = () => {
+    return (
+      <View style={{marginBottom: s(56)}}>
+        {getPlaces.fetching && <CustomLoader />}
+        {isEnd && (
+          <View
+            style={[
+              AppStyles.alignCenter,
+              {marginTop: s(48 - 24), marginHorizontal: s(16)},
+            ]}>
+            <Text
+              style={[Fonts.style.captionRegular, {color: Colors.neutral2}]}>
+              {I18n.t('youHaveSeenAllTourismPlaces')}
+            </Text>
+            <Text
+              onPress={goToTop}
+              style={[
+                Fonts.style.captionRegular,
+                Fonts.style.underline,
+                {marginTop: s(2), color: Colors.blue},
+              ]}>
+              {I18n.t('backToTop')}
+            </Text>
+          </View>
+        )}
+        {/* <View style={{height: s(56)}} /> */}
+      </View>
+    );
+  };
+
   return (
     <SafeAreaView>
       <CustomHeader
@@ -158,6 +198,7 @@ function PlaceScreen({
       />
 
       <FlatList
+        ref={flatListRef}
         onScroll={(event) => onScroll(event)}
         scrollEventThrottle={160} //  default 16
         showsVerticalScrollIndicator={false}
@@ -175,12 +216,7 @@ function PlaceScreen({
           />
         )}
         ListHeaderComponent={renderHeader}
-        ListFooterComponent={() => (
-          <View style={{marginBottom: s(56)}}>
-            {getPlaces.fetching && <CustomLoader />}
-            {/* <View style={{height: s(56)}} /> */}
-          </View>
-        )}
+        ListFooterComponent={renderFooter}
         onEndReachedThreshold={0.3}
         onEndReached={loadMore}
       />
