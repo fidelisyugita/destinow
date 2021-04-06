@@ -189,6 +189,7 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
+    implementation 'com.facebook.fresco:animated-gif:2.0.0'
 
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:26.7.0')

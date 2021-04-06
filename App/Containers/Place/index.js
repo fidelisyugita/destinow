@@ -14,6 +14,7 @@ import PlaceActions from '../../Redux/PlaceRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
+import * as Consts from '../../Lib/Consts';
 import I18n from '../../I18n';
 
 import PlaceList from '../../Components/Place/PlaceList';
@@ -21,28 +22,55 @@ import TitleBar from '../../Components/TitleBar';
 import PlaceCard from '../../Components/Card/PlaceCard';
 import CustomHeader from '../../Components/CustomHeader';
 import CustomBody from '../../Components/CustomBody';
+import CustomLoader from '../../Components/CustomLoader';
 
 function PlaceScreen({
   navigation,
   currentUser,
 
+  places,
+
   getRecommendedPlaces,
   getRecommendedPlacesRequest,
 
-  places,
+  getPlaces,
   getPlacesRequest,
 }) {
   const {navigate} = navigation;
   const [transparentOpacity, setTransparentOpacity] = useState(0);
 
+  const [page, setPage] = useState(0);
+
   useEffect(() => {
     loadData();
   }, []);
 
+  useEffect(() => {
+    loadPlaces();
+  }, [page]);
+
   function loadData() {
-    getRecommendedPlacesRequest({});
-    getPlacesRequest({});
+    getRecommendedPlacesRequest();
+    loadPlaces(0);
   }
+
+  function loadPlaces(forcePage) {
+    const data = {
+      limit: Consts.DATA_PER_PAGE,
+      page: forcePage || page,
+    };
+
+    console.log('data: ', data);
+
+    if (!getPlaces.fetching || forcePage === 0) getPlacesRequest(data);
+  }
+
+  const loadMore = () => {
+    const {fetching, payload} = getPlaces;
+
+    if (!fetching && payload && payload.length === Consts.DATA_PER_PAGE)
+      setPage(page + 1);
+  };
 
   const onScroll = (event) => {
     const contentOffsetY = event.nativeEvent.contentOffset.y;
@@ -147,7 +175,14 @@ function PlaceScreen({
           />
         )}
         ListHeaderComponent={renderHeader}
-        ListFooterComponent={() => <View style={{height: 56}} />}
+        ListFooterComponent={() => (
+          <View style={{marginBottom: s(56)}}>
+            {getPlaces.fetching && <CustomLoader />}
+            {/* <View style={{height: s(56)}} /> */}
+          </View>
+        )}
+        onEndReachedThreshold={0.3}
+        onEndReached={loadMore}
       />
     </SafeAreaView>
   );
@@ -157,8 +192,10 @@ const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
     currentUser: state.session.user,
-    getRecommendedPlaces: state.place.getRecommendedPlaces,
     places: state.place.places,
+
+    getRecommendedPlaces: state.place.getRecommendedPlaces,
+    getPlaces: state.place.getPlaces,
   };
 };
 

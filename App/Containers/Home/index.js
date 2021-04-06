@@ -262,6 +262,7 @@ function HomeScreen({
             style={{marginTop: s(24 - 8)}}
             renderItem={({item, index}) => (
               <NewsList
+                key={item + index}
                 imageSrc={item.cover ? {uri: item.cover.src} : Images.default11}
                 caption={item.title}
                 text={item.description}
