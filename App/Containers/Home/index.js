@@ -105,16 +105,19 @@ function HomeScreen({
               buttonStyle={{width: s(69)}}
             />
             <ButtonIcon
+              onPress={() => navigate('RestaurantScreen')}
               SvgIcon={Svgs.IconCulinary}
               text={I18n.t('culinary')}
               buttonStyle={{width: s(69)}}
             />
             <ButtonIcon
+              onPress={() => navigate('SouvenirScreen')}
               SvgIcon={Svgs.IconSouvenir}
               text={I18n.t('souvenir')}
               buttonStyle={{width: s(69)}}
             />
             <ButtonIcon
+              onPress={() => navigate('TransportScreen')}
               SvgIcon={Svgs.IconTransport}
               text={I18n.t('transport')}
               buttonStyle={{width: s(69)}}

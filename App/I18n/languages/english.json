@@ -25,10 +25,22 @@
   "localDiary": "Lokal Bersuara",
   "news": "Berita Terbaru",
 
-  "allTourismPlace": "Semua Tempat Wisata",
-  "exploreBelitungTourismPlace": "Jelajahi Wisata Belitung",
-  "tourismPlace": "Tempat Wisata",
   "recommended": "Rekomendasi",
+
+  "tourismPlace": "Tempat Wisata",
+
+  "allTourismPlaces": "Semua Tempat Wisata",
+  "exploreBelitungTourismPlace": "Jelajahi Wisata Belitung",
+
+  "allCulinaryPlaces": "Semua Tempat Kuliner",
+  "exploreBelitungCulinary": "Jelajahi Kuliner Belitung",
+
+  "allSouvenirPlaces": "Semua Tempat Souvenir",
+  "exploreBelitungSouvenir": "Jelajahi Souvenir Belitung",
+
+  "transportProvider": "Penyedia Transportasi",
+  "allTransportProviders": "Semua Penyedia Transportasi",
+  "transportProviderPlaces": "Tempat Penyedia Transportasi",
 
   "distance": "Jarak",
   "openingHours": "Jam Buka",
@@ -40,6 +52,12 @@
   "review": "Ulasan",
 
   "aboutTourismPlace": "Tentang Tempat Wisata",
+  "aboutCulinary": "Tentang Kuliner",
+  "aboutSouvenir": "Tentang Souvenir",
+
+  "rentPolicy": "Kebijakan Sewa",
+  "rentTermsCondition": "Syarat dan Ketentuan Sewa",
+
   "facilities": "Fasilitas",
   "travelTips": "Tips Perjalanan",
 
@@ -51,6 +69,10 @@
   "viewAll": "Lihat Semua",
 
   "youHaveSeenAllTourismPlaces": "Kamu sudah melihat semua tempat wisata",
+  "youHaveSeenAllCulinaryPlaces": "Kamu sudah melihat semua tempat kuliner",
+  "youHaveSeenAllSouvenirPlaces": "Kamu sudah melihat semua tempat souvenir",
+  "youHaveSeenAllTransportProviders": "Kamu sudah melihat semua penyedia transportasi",
+
   "backToTop": "Kembali ke atas",
 
   "close": "Close"

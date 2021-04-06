@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import SessionActions from '../../Redux/SessionRedux';
-import PlaceActions from '../../Redux/PlaceRedux';
+import RestaurantActions from '../../Redux/RestaurantRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
@@ -24,17 +24,17 @@ import CustomHeader from '../../Components/CustomHeader';
 import CustomBody from '../../Components/CustomBody';
 import CustomLoader from '../../Components/CustomLoader';
 
-function PlaceScreen({
+function RestaurantScreen({
   navigation,
   currentUser,
 
-  places,
+  restaurants,
 
-  getRecommendedPlaces,
-  getRecommendedPlacesRequest,
+  getRecommendedRestaurants,
+  getRecommendedRestaurantsRequest,
 
-  getPlaces,
-  getPlacesRequest,
+  getRestaurants,
+  getRestaurantsRequest,
 }) {
   const flatListRef = useRef();
 
@@ -50,15 +50,15 @@ function PlaceScreen({
   }, []);
 
   useEffect(() => {
-    loadPlaces();
+    loadRestaurants();
   }, [page]);
 
   function loadData() {
-    getRecommendedPlacesRequest();
-    loadPlaces(0);
+    getRecommendedRestaurantsRequest();
+    loadRestaurants(0);
   }
 
-  function loadPlaces(forcePage) {
+  function loadRestaurants(forcePage) {
     const data = {
       limit: Consts.DATA_PER_PAGE,
       page: forcePage || page,
@@ -66,11 +66,12 @@ function PlaceScreen({
 
     console.log('data: ', data);
 
-    if (!getPlaces.fetching || forcePage === 0) getPlacesRequest(data);
+    if (!getRestaurants.fetching || forcePage === 0)
+      getRestaurantsRequest(data);
   }
 
   const loadMore = () => {
-    const {fetching, payload} = getPlaces;
+    const {fetching, payload} = getRestaurants;
 
     if (!fetching && payload && payload.length === Consts.DATA_PER_PAGE)
       setPage(page + 1);
@@ -106,7 +107,7 @@ function PlaceScreen({
             {marginTop: s(64), marginHorizontal: s(16)},
           ]}>
           <Text style={[Fonts.style.title, {color: Colors.white}]}>
-            {I18n.t('exploreBelitungTourismPlace')}
+            {I18n.t('exploreBelitungCulinary')}
           </Text>
           <View
             style={{
@@ -117,7 +118,7 @@ function PlaceScreen({
               backgroundColor: Colors.blue,
             }}>
             <Text style={[Fonts.style.footnoteRegular, {color: Colors.white}]}>
-              {`1,350 ${I18n.t('tourismPlace')}`}
+              {`1,350 ${I18n.t('culinary')}`}
             </Text>
           </View>
         </View>
@@ -141,10 +142,10 @@ function PlaceScreen({
             keyExtractor={(item, index) => item + index}
             contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
             style={{marginTop: s(24 - 8)}}
-            data={getRecommendedPlaces.payload || []}
+            data={getRecommendedRestaurants.payload || []}
             renderItem={({item, index}) => (
               <PlaceCard
-                onPress={() => navigate('PlaceDetailScreen', {item})}
+                onPress={() => navigate('RestaurantDetailScreen', {item})}
                 imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
                 location={item.city}
                 name={item.name}
@@ -153,7 +154,7 @@ function PlaceScreen({
             )}
           />
 
-          <TitleBar title={I18n.t('allTourismPlaces')} />
+          <TitleBar title={I18n.t('allCulinaryPlaces')} />
         </CustomBody>
       </View>
     );
@@ -162,7 +163,7 @@ function PlaceScreen({
   const renderFooter = () => {
     return (
       <View style={{marginBottom: s(56)}}>
-        {getPlaces.fetching && <CustomLoader />}
+        {getRestaurants.fetching && <CustomLoader />}
         {isEnd && (
           <View
             style={[
@@ -171,7 +172,7 @@ function PlaceScreen({
             ]}>
             <Text
               style={[Fonts.style.captionRegular, {color: Colors.neutral2}]}>
-              {I18n.t('youHaveSeenAllTourismPlaces')}
+              {I18n.t('youHaveSeenAllCulinaryPlaces')}
             </Text>
             <Text
               onPress={goToTop}
@@ -203,10 +204,10 @@ function PlaceScreen({
         scrollEventThrottle={160} //  default 16
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => item + index}
-        data={places}
+        data={restaurants}
         renderItem={({item, index}) => (
           <PlaceList
-            onPress={() => navigate('PlaceDetailScreen', {item})}
+            onPress={() => navigate('RestaurantDetailScreen', {item})}
             imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
             name={item.name}
             rating={item.rating || 4}
@@ -228,19 +229,21 @@ const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
     currentUser: state.session.user,
-    places: state.place.places,
+    restaurants: state.restaurant.restaurants,
 
-    getRecommendedPlaces: state.place.getRecommendedPlaces,
-    getPlaces: state.place.getPlaces,
+    getRecommendedRestaurants: state.restaurant.getRecommendedRestaurants,
+    getRestaurants: state.restaurant.getRestaurants,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   logout: (data, callback) => dispatch(SessionActions.logout(data, callback)),
-  getRecommendedPlacesRequest: (data, callback) =>
-    dispatch(PlaceActions.getRecommendedPlacesRequest(data, callback)),
-  getPlacesRequest: (data, callback) =>
-    dispatch(PlaceActions.getPlacesRequest(data, callback)),
+  getRecommendedRestaurantsRequest: (data, callback) =>
+    dispatch(
+      RestaurantActions.getRecommendedRestaurantsRequest(data, callback),
+    ),
+  getRestaurantsRequest: (data, callback) =>
+    dispatch(RestaurantActions.getRestaurantsRequest(data, callback)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlaceScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(RestaurantScreen);

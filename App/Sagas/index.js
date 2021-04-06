@@ -8,16 +8,24 @@ import DebugConfig from '../Config/DebugConfig';
 import {StartupTypes} from '../Redux/StartupRedux';
 import {GithubTypes} from '../Redux/GithubRedux';
 
-import {PlaceTypes} from '../Redux/PlaceRedux';
 import {BannerTypes} from '../Redux/BannerRedux';
+
+import {PlaceTypes} from '../Redux/PlaceRedux';
+import {RestaurantTypes} from '../Redux/RestaurantRedux';
+import {SouvenirTypes} from '../Redux/SouvenirRedux';
+import {TransportTypes} from '../Redux/TransportRedux';
 
 /* ------------- Sagas ------------- */
 
 import {startup} from './StartupSagas';
 import {getUserAvatar} from './GithubSagas';
 
-import {getPlaces, getFavoritePlaces, getRecommendedPlaces} from './PlaceSagas';
 import {getBanners} from './BannerSagas';
+
+import {getPlaces, getFavoritePlaces, getRecommendedPlaces} from './PlaceSagas';
+import {getRestaurants, getRecommendedRestaurants} from './RestaurantSagas';
+import {getSouvenirs, getRecommendedSouvenirs} from './SouvenirSagas';
+import {getTransports, getRecommendedTransports} from './TransportSagas';
 
 /* ------------- API ------------- */
 
@@ -35,6 +43,8 @@ export default function* root() {
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
 
+    takeLatest(BannerTypes.GET_BANNERS_REQUEST, getBanners, api),
+
     takeLatest(PlaceTypes.GET_PLACES_REQUEST, getPlaces, api),
     takeLatest(PlaceTypes.GET_FAVORITE_PLACES_REQUEST, getFavoritePlaces, api),
     takeLatest(
@@ -43,6 +53,25 @@ export default function* root() {
       api,
     ),
 
-    takeLatest(BannerTypes.GET_BANNERS_REQUEST, getBanners, api),
+    takeLatest(RestaurantTypes.GET_RESTAURANTS_REQUEST, getRestaurants, api),
+    takeLatest(
+      RestaurantTypes.GET_RECOMMENDED_RESTAURANTS_REQUEST,
+      getRecommendedRestaurants,
+      api,
+    ),
+
+    takeLatest(SouvenirTypes.GET_SOUVENIRS_REQUEST, getSouvenirs, api),
+    takeLatest(
+      SouvenirTypes.GET_RECOMMENDED_SOUVENIRS_REQUEST,
+      getRecommendedSouvenirs,
+      api,
+    ),
+
+    takeLatest(TransportTypes.GET_TRANSPORTS_REQUEST, getTransports, api),
+    takeLatest(
+      TransportTypes.GET_RECOMMENDED_TRANSPORTS_REQUEST,
+      getRecommendedTransports,
+      api,
+    ),
   ]);
 }
