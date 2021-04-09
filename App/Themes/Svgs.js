@@ -27,6 +27,15 @@ import IconPhone from '../Svgs/Icons/IconPhone.svg';
 
 import IconCheckMark from '../Svgs/Icons/IconCheckMark.svg';
 
+import IconParking from '../Svgs/Icons/IconParking.svg';
+import IconToilet from '../Svgs/Icons/IconToilet.svg';
+import IconWifi from '../Svgs/Icons/IconWifi.svg';
+import IconMushola from '../Svgs/Icons/IconMushola.svg';
+import IconRestaurant from '../Svgs/Icons/IconRestaurant.svg';
+import IconLivingPlace from '../Svgs/Icons/IconLivingPlace.svg';
+import IconPlayground from '../Svgs/Icons/IconPlayground.svg';
+import IconWatersport from '../Svgs/Icons/IconWatersport.svg';
+
 const svgs = {
   LogoHorizontal,
 
@@ -56,6 +65,15 @@ const svgs = {
   IconPhone,
 
   IconCheckMark,
+
+  IconParking,
+  IconToilet,
+  IconWifi,
+  IconMushola,
+  IconRestaurant,
+  IconLivingPlace,
+  IconPlayground,
+  IconWatersport,
 };
 
 export default svgs;

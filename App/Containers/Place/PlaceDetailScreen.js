@@ -33,6 +33,7 @@ import ButtonDefault from '../../Components/Button/ButtonDefault';
 import MainDetails from '../../Components/MainDetails';
 import CarauselTop from '../../Components/CarauselTop';
 import CustomFlatList from '../../Components/CustomFlatList';
+import FacilitiesCard from '../../Components/Card/FacilitiesCard';
 
 function PlaceDetailScreen({
   navigation,
@@ -67,14 +68,6 @@ function PlaceDetailScreen({
   }
 
   const renderDescription = () => {
-    let facilities = [];
-
-    if (paramItem.facilities)
-      Object.entries(paramItem.facilities).forEach((item) => {
-        console.log(`${item[0]}: ${item[1]}`);
-        if (item[1]) facilities.push(item[0]);
-      });
-
     return (
       <View>
         {paramItem.description && (
@@ -91,40 +84,7 @@ function PlaceDetailScreen({
           </View>
         )}
 
-        {IsNotEmpty(facilities) && (
-          <View style={{marginTop: s(40)}}>
-            <Text style={[Fonts.style.subTitle]}>{I18n.t('facilities')}</Text>
-            <CustomFlatList
-              data={facilities}
-              numColumns={2}
-              renderItem={({item, index}) => (
-                <View
-                  key={item + index}
-                  style={[
-                    AppStyles.flex1,
-                    AppStyles.row,
-                    AppStyles.alignCenter,
-                    {marginTop: s(16)},
-                  ]}>
-                  <Svgs.IconCheckMark
-                    width={s(24)}
-                    height={s(24)}
-                    fill={Colors.blue}
-                  />
-                  <Text
-                    style={[
-                      Fonts.style.descriptionRegular,
-                      Fonts.style.transformCapitalize,
-                      Fonts.style.alignCenter,
-                      {marginLeft: s(8)},
-                    ]}>
-                    {item}
-                  </Text>
-                </View>
-              )}
-            />
-          </View>
-        )}
+        <FacilitiesCard paramFacilities={paramItem.facilities} />
 
         {paramItem.travelTips && (
           <View style={{marginTop: s(40)}}>
@@ -132,7 +92,7 @@ function PlaceDetailScreen({
             <HTML
               source={{html: paramItem.travelTips}}
               // contentWidth={contentWidth}
-              containerStyle={{marginTop: s(24 - 16)}}
+              containerStyle={{marginTop: s(24)}}
               baseFontStyle={Fonts.style.descriptionRegular}
             />
           </View>
