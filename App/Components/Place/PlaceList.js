@@ -8,19 +8,19 @@ import I18n from '../../I18n';
 import RatingStar from '../RatingStar';
 import CustomImage from '../CustomImage';
 
-const PlaceList = memo(
-  ({
-    containerStyle = {marginHorizontal: s(16)},
-    onPress = () => {},
+const PlaceList = ({
+  containerStyle = {marginHorizontal: s(16)},
+  onPress = () => {},
 
-    imageSrc = Images.default11,
-    name = '',
-    rating = 0,
-    description = '',
-    caption = '',
-    hideBorderTop = false,
-    hideBorderBottom = true,
-  }) => (
+  imageSrc = Images.default11,
+  name = '',
+  rating = 0,
+  description = '',
+  caption = '',
+  hideBorderTop = false,
+  hideBorderBottom = true,
+}) => (
+  <View style={AppStyles.backgroundWhite}>
     <View
       style={[
         {
@@ -57,7 +57,7 @@ const PlaceList = memo(
         </View>
       </TouchableOpacity>
     </View>
-  ),
+  </View>
 );
 
 export default PlaceList;

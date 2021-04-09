@@ -5,6 +5,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import {connect} from 'react-redux';
 
@@ -66,7 +67,15 @@ function OnboardingScreen({navigation, removeOnboarding}) {
       <ScrollView>
         {/* <View style={[AppStyles.flex1, AppStyles.justifyEnd]}> */}
         <View style={[AppStyles.alignCenter, {marginTop: vs(37)}]}>
-          <Svgs.LogoHorizontal width={s(135.25)} height={s(25)} />
+          {/* <Svgs.LogoHorizontal width={s(135.25)} height={s(25)} /> */}
+          <Image
+            source={Images.logoHorizontal}
+            style={{
+              width: s(135.25),
+              height: s(25),
+            }}
+            resizeMode="contain"
+          />
         </View>
 
         <CustomCarausel

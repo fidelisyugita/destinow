@@ -1,6 +1,7 @@
 // leave off @2x/@3x
 const images = {
   logo: require('../Images/logo.png'),
+  logoHorizontal: require('../Images/logoHorizontal.png'),
   loader: require('../Images/Animations/loader.gif'),
 
   default11: require('../Images/default11.png'),

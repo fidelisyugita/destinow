@@ -4,7 +4,7 @@ import {View} from 'react-native';
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../Themes';
 import {s, vs} from '../Lib/Scaling';
 
-const VerticalLine = memo(({style = {}}) => {
+const VerticalLine = ({style = {}}) => {
   return (
     <View
       style={[
@@ -18,6 +18,6 @@ const VerticalLine = memo(({style = {}}) => {
       ]}
     />
   );
-});
+};
 
 export default VerticalLine;

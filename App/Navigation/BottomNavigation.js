@@ -10,7 +10,7 @@ import HomeScreen from '../Containers/Home';
 import InboxScreen from '../Containers/Inbox';
 import ProfileScreen from '../Containers/Profile';
 
-const renderItem = (IconSvg = Svgs.LogoHorizontal, tintColor, title) => (
+const renderItem = (IconSvg = Svgs.IconHome, tintColor, title) => (
   <View style={[AppStyles.alignCenter]}>
     <IconSvg width={s(24)} height={s(24)} fill={tintColor} />
     <Text

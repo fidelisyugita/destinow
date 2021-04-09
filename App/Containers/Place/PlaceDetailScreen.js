@@ -176,7 +176,7 @@ function PlaceDetailScreen({
   const onScroll = (event) => {
     const contentOffsetY = event.nativeEvent.contentOffset.y;
 
-    const tempTransparentOpacity = contentOffsetY / (Metrics.headerHeight * 3);
+    const tempTransparentOpacity = contentOffsetY / s(359 + 90);
 
     if (tempTransparentOpacity < 2)
       setTransparentOpacity(tempTransparentOpacity);
@@ -190,16 +190,19 @@ function PlaceDetailScreen({
         onBack={() => navigation.pop()}
         transparent={true}
         transparentOpacity={transparentOpacity}
+        title={transparentOpacity > 0.8 ? paramItem.name : null}
+        titleColor={`rgba(48,47,56, ${transparentOpacity - 0.2})`}
+        iconColor={transparentOpacity > 0.5 ? Colors.blue : Colors.white}
       />
+      <CarauselTop images={paramItem.images} cover={paramItem.cover} />
       <ScrollView
         onScroll={(event) => onScroll(event)}
         scrollEventThrottle={160} // default 16
       >
-        <CarauselTop images={paramItem.images} cover={paramItem.cover} />
-
         <CustomBody style={{marginTop: s(359)}}>
           <MainDetails
             name={paramItem.name}
+            nameColor={`rgba(48,47,56, ${1 - transparentOpacity})`}
             address={paramItem.address}
             rating={paramItem.rating}
             distance={paramItem.distance}

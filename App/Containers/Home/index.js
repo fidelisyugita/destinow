@@ -62,10 +62,7 @@ function HomeScreen({
 
   return (
     <SafeAreaView>
-      <ScrollView
-        onScroll={(event) => onScroll(event)}
-        scrollEventThrottle={1600} // default 16
-      >
+      <View style={[AppStyles.positionAbstolute, {width: '100%'}]}>
         <Image
           source={Images.homepage}
           style={[
@@ -73,7 +70,6 @@ function HomeScreen({
             {width: s(447), height: s(337), top: -s(69)},
           ]}
         />
-
         <View style={{marginTop: s(80), marginHorizontal: s(16)}}>
           <View style={[AppStyles.row, AppStyles.alignCenter]}>
             <Image
@@ -90,7 +86,12 @@ function HomeScreen({
             {`${I18n.t('findYourFavoriteDestinationHere')}!`}
           </Text>
         </View>
+      </View>
 
+      <ScrollView
+        onScroll={(event) => onScroll(event)}
+        scrollEventThrottle={1600} // default 16
+      >
         <CustomBody>
           <View
             style={[
@@ -152,6 +153,7 @@ function HomeScreen({
                       borderWidth: s(1),
                       borderColor: Colors.neutral3,
                     }}
+                    // resizeMode="contain"
                   />
                 </TouchableOpacity>
               )}

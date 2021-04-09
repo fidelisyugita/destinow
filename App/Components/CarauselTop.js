@@ -9,50 +9,48 @@ import {IsNotEmpty} from '../Lib';
 import CustomCarausel from './CustomCarausel';
 import CustomImage from './CustomImage';
 
-const CarauselTop = memo(
-  ({
-    style = {},
-    images = [],
-    cover = null,
-    width = s(414),
-    height = s(414),
-  }) => {
-    const renderItem = ({src}, index) => {
-      return (
+const CarauselTop = ({
+  style = {},
+  images = [],
+  cover = null,
+  width = s(414),
+  height = s(414),
+}) => {
+  const renderItem = ({src}, index) => {
+    return (
+      <CustomImage
+        key={src}
+        source={src ? {uri: src} : Images.default11}
+        defaultSource={Images.default11}
+        style={{width: width, height: height}}
+      />
+    );
+  };
+
+  return (
+    <View style={[AppStyles.positionAbstolute, style]}>
+      {IsNotEmpty(images) ? (
+        <CustomCarausel
+          loop={true}
+          autoplay={true}
+          data={images}
+          style={{height: height}}
+          paginationStyle={{top: -s(8 + 48 + Metrics.statusBarHeight)}}
+          renderItem={({item, index}) => renderItem(item, index)}
+        />
+      ) : (
         <CustomImage
-          key={src}
-          source={src ? {uri: src} : Images.default11}
+          source={cover ? {uri: cover.src} : Images.default11}
           defaultSource={Images.default11}
           style={{width: width, height: height}}
         />
-      );
-    };
-
-    return (
-      <View style={[AppStyles.positionAbstolute, style]}>
-        {IsNotEmpty(images) ? (
-          <CustomCarausel
-            loop={true}
-            autoplay={true}
-            data={images}
-            style={{height: height}}
-            paginationStyle={{top: -s(8 + 48 + Metrics.statusBarHeight)}}
-            renderItem={({item, index}) => renderItem(item, index)}
-          />
-        ) : (
-          <CustomImage
-            source={cover ? {uri: cover.src} : Images.default11}
-            defaultSource={Images.default11}
-            style={{width: width, height: height}}
-          />
-        )}
-        <Image
-          source={Images.overlayHeader}
-          style={[AppStyles.positionAbstolute, {width: width, height: s(121)}]}
-        />
-      </View>
-    );
-  },
-);
+      )}
+      <Image
+        source={Images.overlayHeader}
+        style={[AppStyles.positionAbstolute, {width: width, height: s(121)}]}
+      />
+    </View>
+  );
+};
 
 export default CarauselTop;

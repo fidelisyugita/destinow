@@ -5,10 +5,13 @@ import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../Themes';
 import {s, vs} from '../Lib/Scaling';
 import I18n from '../I18n';
 
-const RatingStar = memo(({totalStar = 4,
+const RatingStar = ({
+  totalStar = 4,
   containerStyle = {marginTop: s(8)},
-  iconSize = s(12), color = Colors.lightBlue,
-  showText = true}) => (
+  iconSize = s(12),
+  color = Colors.lightBlue,
+  showText = true,
+}) => (
   <View style={[AppStyles.row, AppStyles.alignCenter, containerStyle]}>
     {Array(5)
       .fill({})
@@ -28,6 +31,6 @@ const RatingStar = memo(({totalStar = 4,
       </Text>
     )}
   </View>
-));
+);
 
 export default RatingStar;

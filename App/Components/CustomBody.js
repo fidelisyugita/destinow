@@ -4,14 +4,14 @@ import {View} from 'react-native';
 import {AppStyles, Colors} from '../Themes';
 import {s, vs} from '../Lib/Scaling';
 
-const CustomBody = memo(({style = {}, children}) => {
+const CustomBody = ({style = {}, children}) => {
   return (
     <View
       style={[
         AppStyles.flex1,
         AppStyles.backgroundWhite,
         {
-          marginTop: s(16),
+          marginTop: s(186),
           borderTopLeftRadius: s(32),
           borderTopRightRadius: s(32),
         },
@@ -32,6 +32,6 @@ const CustomBody = memo(({style = {}, children}) => {
       {children && children}
     </View>
   );
-});
+};
 
 export default CustomBody;
