@@ -85,7 +85,7 @@ function PlaceScreen({
   const onScroll = (event) => {
     const contentOffsetY = event.nativeEvent.contentOffset.y;
 
-    const tempTransparentOpacity = contentOffsetY / (Metrics.headerHeight * 3);
+    const tempTransparentOpacity = contentOffsetY / s(186 + 64);
 
     if (tempTransparentOpacity < 2)
       setTransparentOpacity(tempTransparentOpacity);
@@ -96,33 +96,7 @@ function PlaceScreen({
   const renderHeader = () => {
     return (
       <View>
-        <Image
-          source={Images.tourismPlace}
-          style={[AppStyles.positionAbstolute, {width: s(414), height: s(225)}]}
-        />
-        <View
-          style={[
-            AppStyles.alignCenter,
-            {marginTop: s(64), marginHorizontal: s(16)},
-          ]}>
-          <Text style={[Fonts.style.title, {color: Colors.white}]}>
-            {I18n.t('exploreBelitungTourismPlace')}
-          </Text>
-          <View
-            style={{
-              marginTop: s(4),
-              paddingVertical: s(4),
-              paddingHorizontal: s(8),
-              borderRadius: s(16),
-              backgroundColor: Colors.blue,
-            }}>
-            <Text style={[Fonts.style.footnoteRegular, {color: Colors.white}]}>
-              {`1,350 ${I18n.t('tourismPlace')}`}
-            </Text>
-          </View>
-        </View>
-
-        <CustomBody style={{marginTop: s(32)}}>
+        <CustomBody>
           <View
             style={[
               AppStyles.row,
@@ -130,7 +104,14 @@ function PlaceScreen({
               {marginTop: s(24), marginHorizontal: s(16)},
             ]}>
             <Svgs.IconRecommendation width={s(32)} height={s(32)} />
-            <Text style={[Fonts.style.title, {marginLeft: s(8)}]}>
+            <Text
+              style={[
+                Fonts.style.title,
+                {
+                  marginLeft: s(8),
+                  color: `rgba(48,47,56, ${1 - transparentOpacity})`,
+                },
+              ]}>
               {I18n.t('recommended')}
             </Text>
           </View>
@@ -195,7 +176,37 @@ function PlaceScreen({
         onBack={() => navigation.pop()}
         transparent={true}
         transparentOpacity={transparentOpacity}
+        title={transparentOpacity > 0.8 ? I18n.t('recommended') : null}
+        titleColor={`rgba(48,47,56, ${transparentOpacity - 0.2})`}
+        iconColor={transparentOpacity > 0.5 ? Colors.blue : Colors.white}
       />
+      <View style={[AppStyles.positionAbstolute, {width: '100%'}]}>
+        <Image
+          source={Images.tourismPlace}
+          style={[AppStyles.positionAbstolute, {width: s(414), height: s(225)}]}
+        />
+        <View
+          style={[
+            AppStyles.alignCenter,
+            {marginTop: s(64), marginHorizontal: s(16)},
+          ]}>
+          <Text style={[Fonts.style.title, {color: Colors.white}]}>
+            {I18n.t('exploreBelitungTourismPlace')}
+          </Text>
+          <View
+            style={{
+              marginTop: s(4),
+              paddingVertical: s(4),
+              paddingHorizontal: s(8),
+              borderRadius: s(16),
+              backgroundColor: Colors.blue,
+            }}>
+            <Text style={[Fonts.style.footnoteRegular, {color: Colors.white}]}>
+              {`1,350 ${I18n.t('tourismPlace')}`}
+            </Text>
+          </View>
+        </View>
+      </View>
 
       <FlatList
         ref={flatListRef}
