@@ -87,5 +87,7 @@
   "emptyNotification": "Belum Ada Notifikasi",
   "emptyNotificationDescription": "Semua notifikasi yang kami kirim akan muncul di sini. Kamu bisa mengeceknya dengan mudah.",
 
+  "transportType": "Tipe Kendaraan",
+
   "close": "Close"
 }

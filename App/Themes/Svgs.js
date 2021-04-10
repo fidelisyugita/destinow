@@ -37,6 +37,11 @@ import IconLodging from '../Svgs/Icons/IconLodging.svg';
 import IconPlayground from '../Svgs/Icons/IconPlayground.svg';
 import IconWatersport from '../Svgs/Icons/IconWatersport.svg';
 
+import IconCar from '../Svgs/Icons/IconCar.svg';
+import IconMotorcycle from '../Svgs/Icons/IconMotorcycle.svg';
+import IconBike from '../Svgs/Icons/IconBike.svg';
+import IconBoat from '../Svgs/Icons/IconBoat.svg';
+
 const svgs = {
   LogoHorizontal,
 
@@ -76,6 +81,11 @@ const svgs = {
   IconLodging,
   IconPlayground,
   IconWatersport,
+
+  IconCar,
+  IconMotorcycle,
+  IconBike,
+  IconBoat,
 };
 
 export default svgs;

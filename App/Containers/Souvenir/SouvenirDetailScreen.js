@@ -87,7 +87,7 @@ function SouvenirDetailScreen({navigation, currentUser}) {
 
         {IsNotEmpty(facilities) && (
           <View style={{marginTop: s(40)}}>
-            <Text style={[Fonts.style.subTitle]}>{I18n.t('facilities')}</Text>
+            <Text style={[Fonts.style.subTitle]}>{I18n.t('facility')}</Text>
             <CustomFlatList
               data={facilities}
               numColumns={2}

@@ -28,7 +28,7 @@ export const DEFAULT_STATE = {
 };
 
 export const INITIAL_STATE = Immutable({
-  tranports: [],
+  transports: [],
 
   getTransports: DEFAULT_STATE,
   getRecommendedTransports: DEFAULT_STATE,
@@ -49,7 +49,7 @@ export const getTransportsSuccess = (state, {payload}) => {
   return state.merge({
     ...state,
     getTransports: {DEFAULT_STATE, payload},
-    tranports: page > 0 ? [...state.tranports, ...payload] : [...payload],
+    transports: page > 0 ? [...state.transports, ...payload] : [...payload],
   });
 };
 export const getTransportsFailure = (state, {error}) => {

@@ -33,6 +33,7 @@ import ButtonDefault from '../../Components/Button/ButtonDefault';
 import MainDetails from '../../Components/MainDetails';
 import CarauselTop from '../../Components/CarauselTop';
 import CustomFlatList from '../../Components/CustomFlatList';
+import TypesCard from '../../Components/Card/TypesCard';
 
 function TransportDetailScreen({navigation, currentUser}) {
   const {navigate} = navigation;
@@ -61,14 +62,6 @@ function TransportDetailScreen({navigation, currentUser}) {
   }
 
   const renderDescription = () => {
-    let facilities = [];
-
-    if (paramItem.facilities)
-      Object.entries(paramItem.facilities).forEach((item) => {
-        console.log(`${item[0]}: ${item[1]}`);
-        if (item[1]) facilities.push(item[0]);
-      });
-
     return (
       <View>
         {paramItem.policy && (
@@ -83,44 +76,13 @@ function TransportDetailScreen({navigation, currentUser}) {
           </View>
         )}
 
-        {IsNotEmpty(facilities) && (
-          <View style={{marginTop: s(40)}}>
-            <Text style={[Fonts.style.subTitle]}>{I18n.t('facilities')}</Text>
-            <CustomFlatList
-              data={facilities}
-              numColumns={2}
-              renderItem={({item, index}) => (
-                <View
-                  key={item + index}
-                  style={[
-                    AppStyles.flex1,
-                    AppStyles.row,
-                    AppStyles.alignCenter,
-                    {marginTop: s(16)},
-                  ]}>
-                  <Svgs.IconCheckMark
-                    width={s(24)}
-                    height={s(24)}
-                    fill={Colors.blue}
-                  />
-                  <Text
-                    style={[
-                      Fonts.style.descriptionRegular,
-                      Fonts.style.transformCapitalize,
-                      Fonts.style.alignCenter,
-                      {marginLeft: s(8)},
-                    ]}>
-                    {item}
-                  </Text>
-                </View>
-              )}
-            />
-          </View>
-        )}
+        <TypesCard paramTransportTypes={paramItem.types} />
 
         {paramItem.termConditions && (
           <View style={{marginTop: s(40)}}>
-            <Text style={[Fonts.style.subTitle]}>{I18n.t('rentTermsCondition')}</Text>
+            <Text style={[Fonts.style.subTitle]}>
+              {I18n.t('rentTermsCondition')}
+            </Text>
             <HTML
               source={{html: paramItem.termConditions}}
               // contentWidth={contentWidth}
