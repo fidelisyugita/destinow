@@ -5,6 +5,7 @@ import Onboarding2 from '../Svgs/Onboarding2.svg';
 import Onboarding3 from '../Svgs/Onboarding3.svg';
 
 import EmptyReview from '../Svgs/EmptyReview.svg';
+import EmptyNotification from '../Svgs/EmptyNotification.svg';
 
 import IconHome from '../Svgs/Icons/IconHome.svg';
 import IconInbox from '../Svgs/Icons/IconInbox.svg';
@@ -32,7 +33,7 @@ import IconToilet from '../Svgs/Icons/IconToilet.svg';
 import IconWifi from '../Svgs/Icons/IconWifi.svg';
 import IconMushola from '../Svgs/Icons/IconMushola.svg';
 import IconRestaurant from '../Svgs/Icons/IconRestaurant.svg';
-import IconLivingPlace from '../Svgs/Icons/IconLivingPlace.svg';
+import IconLodging from '../Svgs/Icons/IconLodging.svg';
 import IconPlayground from '../Svgs/Icons/IconPlayground.svg';
 import IconWatersport from '../Svgs/Icons/IconWatersport.svg';
 
@@ -44,6 +45,7 @@ const svgs = {
   Onboarding3,
 
   EmptyReview,
+  EmptyNotification,
 
   IconHome,
   IconInbox,
@@ -71,7 +73,7 @@ const svgs = {
   IconWifi,
   IconMushola,
   IconRestaurant,
-  IconLivingPlace,
+  IconLodging,
   IconPlayground,
   IconWatersport,
 };

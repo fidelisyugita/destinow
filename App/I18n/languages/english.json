@@ -84,5 +84,8 @@
   "playground": "Tempat Bermain",
   "watersport": "Wahana Air",
 
+  "emptyNotification": "Belum Ada Notifikasi",
+  "emptyNotificationDescription": "Semua notifikasi yang kami kirim akan muncul di sini. Kamu bisa mengeceknya dengan mudah.",
+
   "close": "Close"
 }

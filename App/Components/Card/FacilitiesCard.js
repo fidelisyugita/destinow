@@ -57,10 +57,10 @@ const FacilitiesCard = ({
       name: I18n.t('restaurant'),
     });
   }
-  if (facilities.includes('livingPlace')) {
+  if (facilities.includes('lodging')) {
     facilityData.push({
-      SvgIcon: Svgs.IconLivingPlace,
-      name: I18n.t('livingPlace'),
+      SvgIcon: Svgs.IconLodging,
+      name: I18n.t('lodging'),
     });
   }
   if (facilities.includes('playground')) {
