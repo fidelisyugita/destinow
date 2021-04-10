@@ -63,13 +63,19 @@ function HomeScreen({
 
   return (
     <SafeAreaView>
-      <View style={[AppStyles.positionAbstolute, {width: '100%'}]}>
+      <View
+        style={[
+          AppStyles.positionAbstolute,
+          {
+            marginTop: Platform.OS === 'ios' ? Metrics.statusBarHeight : 0,
+            width: '100%',
+          },
+        ]}>
         <Image
           source={Images.homepage}
           style={[
             AppStyles.positionAbstolute,
             {
-              marginTop: Platform.OS === 'ios' ? Metrics.statusBarHeight : 0,
               width: s(447),
               height: s(337),
               top: -s(69),
@@ -97,7 +103,7 @@ function HomeScreen({
       <ScrollView
         onScroll={(event) => onScroll(event)}
         scrollEventThrottle={1600} // default 16
-      >
+        showsVerticalScrollIndicator={false}>
         <CustomBody>
           <View
             style={[

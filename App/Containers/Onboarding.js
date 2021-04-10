@@ -64,7 +64,7 @@ function OnboardingScreen({navigation, removeOnboarding}) {
   return (
     // <SafeAreaView style={[AppStyles.flex1]}>
     <SafeAreaView>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {/* <View style={[AppStyles.flex1, AppStyles.justifyEnd]}> */}
         <View style={[AppStyles.alignCenter, {marginTop: vs(37)}]}>
           {/* <Svgs.LogoHorizontal width={s(135.25)} height={s(25)} /> */}

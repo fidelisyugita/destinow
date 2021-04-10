@@ -158,7 +158,7 @@ function PlaceDetailScreen({
       <ScrollView
         onScroll={(event) => onScroll(event)}
         scrollEventThrottle={160} // default 16
-      >
+        showsVerticalScrollIndicator={false}>
         <CustomBody style={{marginTop: s(359)}}>
           <MainDetails
             name={paramItem.name}

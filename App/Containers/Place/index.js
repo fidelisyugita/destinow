@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useMemo} from 'react';
 import {connect} from 'react-redux';
 import {
   SafeAreaView,
@@ -24,6 +24,7 @@ import PlaceCard from '../../Components/Card/PlaceCard';
 import CustomHeader from '../../Components/CustomHeader';
 import CustomBody from '../../Components/CustomBody';
 import CustomLoader from '../../Components/CustomLoader';
+import CustomFlatList from '../../Components/CustomFlatList';
 
 function PlaceScreen({
   navigation,
@@ -96,48 +97,45 @@ function PlaceScreen({
 
   const renderHeader = () => {
     return (
-      <View>
-        <CustomBody>
-          <View
+      <CustomBody>
+        <View
+          style={[
+            AppStyles.row,
+            AppStyles.alignCenter,
+            {marginTop: s(24), marginHorizontal: s(16)},
+          ]}>
+          <Svgs.IconRecommendation width={s(32)} height={s(32)} />
+          <Text
             style={[
-              AppStyles.row,
-              AppStyles.alignCenter,
-              {marginTop: s(24), marginHorizontal: s(16)},
+              Fonts.style.title,
+              {
+                marginLeft: s(8),
+                color: `rgba(48,47,56, ${1 - transparentOpacity})`,
+              },
             ]}>
-            <Svgs.IconRecommendation width={s(32)} height={s(32)} />
-            <Text
-              style={[
-                Fonts.style.title,
-                {
-                  marginLeft: s(8),
-                  color: `rgba(48,47,56, ${1 - transparentOpacity})`,
-                },
-              ]}>
-              {I18n.t('recommended')}
-            </Text>
-          </View>
+            {I18n.t('recommended')}
+          </Text>
+        </View>
 
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item, index) => item + index}
-            contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
-            style={{marginTop: s(24 - 8)}}
-            data={getRecommendedPlaces.payload || []}
-            renderItem={({item, index}) => (
-              <PlaceCard
-                onPress={() => navigate('PlaceDetailScreen', {item})}
-                imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
-                location={item.city}
-                name={item.name}
-                rating={item.rating || 4}
-              />
-            )}
-          />
+        <CustomFlatList
+          horizontal
+          contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
+          style={{marginTop: s(24 - 8)}}
+          data={getRecommendedPlaces.payload || []}
+          renderItem={({item, index}) => (
+            <PlaceCard
+              key={item + index}
+              onPress={() => navigate('PlaceDetailScreen', {item})}
+              imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
+              location={item.city}
+              name={item.name}
+              rating={item.rating || 4}
+            />
+          )}
+        />
 
-          <TitleBar title={I18n.t('allTourismPlace')} />
-        </CustomBody>
-      </View>
+        <TitleBar title={I18n.t('allTourismPlace')} />
+      </CustomBody>
     );
   };
 
