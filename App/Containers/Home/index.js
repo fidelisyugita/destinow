@@ -9,6 +9,7 @@ import {
   FlatList,
   TouchableOpacity,
   Linking,
+  Platform,
 } from 'react-native';
 
 import SessionActions from '../../Redux/SessionRedux';
@@ -67,7 +68,12 @@ function HomeScreen({
           source={Images.homepage}
           style={[
             AppStyles.positionAbstolute,
-            {width: s(447), height: s(337), top: -s(69)},
+            {
+              marginTop: Platform.OS === 'ios' ? Metrics.headerHeight : 0,
+              width: s(447),
+              height: s(337),
+              top: -s(69),
+            },
           ]}
         />
         <View style={{marginTop: s(80), marginHorizontal: s(16)}}>

@@ -1,5 +1,5 @@
 import React, {memo} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, Platform} from 'react-native';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../Themes';
 import {s, vs} from '../Lib/Scaling';
@@ -28,7 +28,12 @@ const CarauselTop = ({
   };
 
   return (
-    <View style={[AppStyles.positionAbstolute, style]}>
+    <View
+      style={[
+        AppStyles.positionAbstolute,
+        {marginTop: Platform.OS === 'ios' ? Metrics.headerHeight : 0},
+        style,
+      ]}>
       {IsNotEmpty(images) ? (
         <CustomCarausel
           loop={true}

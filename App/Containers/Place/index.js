@@ -7,6 +7,7 @@ import {
   View,
   Image,
   FlatList,
+  Platform,
 } from 'react-native';
 
 import SessionActions from '../../Redux/SessionRedux';
@@ -180,7 +181,14 @@ function PlaceScreen({
         titleColor={`rgba(48,47,56, ${transparentOpacity - 0.2})`}
         iconColor={transparentOpacity > 0.5 ? Colors.blue : Colors.white}
       />
-      <View style={[AppStyles.positionAbstolute, {width: '100%'}]}>
+      <View
+        style={[
+          AppStyles.positionAbstolute,
+          {
+            marginTop: Platform.OS === 'ios' ? Metrics.headerHeight : 0,
+            width: '100%',
+          },
+        ]}>
         <Image
           source={Images.tourismPlace}
           style={[AppStyles.positionAbstolute, {width: s(414), height: s(225)}]}
