@@ -185,7 +185,7 @@ function PlaceScreen({
         style={[
           AppStyles.positionAbstolute,
           {
-            marginTop: Platform.OS === 'ios' ? Metrics.headerHeight : 0,
+            marginTop: Platform.OS === 'ios' ? Metrics.statusBarHeight : 0,
             width: '100%',
           },
         ]}>

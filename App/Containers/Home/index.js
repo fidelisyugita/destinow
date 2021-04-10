@@ -69,7 +69,7 @@ function HomeScreen({
           style={[
             AppStyles.positionAbstolute,
             {
-              marginTop: Platform.OS === 'ios' ? Metrics.headerHeight : 0,
+              marginTop: Platform.OS === 'ios' ? Metrics.statusBarHeight : 0,
               width: s(447),
               height: s(337),
               top: -s(69),

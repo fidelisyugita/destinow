@@ -31,7 +31,7 @@ const CarauselTop = ({
     <View
       style={[
         AppStyles.positionAbstolute,
-        {marginTop: Platform.OS === 'ios' ? Metrics.headerHeight : 0},
+        {marginTop: Platform.OS === 'ios' ? Metrics.statusBarHeight : 0},
         style,
       ]}>
       {IsNotEmpty(images) ? (
