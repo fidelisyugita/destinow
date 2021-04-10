@@ -80,7 +80,7 @@ const FacilitiesCard = ({
 
   return (
     <View style={containerStyle}>
-      <Text style={[Fonts.style.subTitle]}>{I18n.t('facilities')}</Text>
+      <Text style={[Fonts.style.subTitle]}>{I18n.t('facility')}</Text>
       <CustomFlatList
         data={facilityData}
         numColumns={2}
