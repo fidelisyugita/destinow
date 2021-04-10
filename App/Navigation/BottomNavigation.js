@@ -60,7 +60,7 @@ const BottomNav = createBottomTabNavigator(
       activeTintColor: Colors.blue,
       style: {
         // ...AppStyles.shadow,
-        height: s(56),
+        height: Metrics.bottomNavigationHeight,
       },
     },
   },

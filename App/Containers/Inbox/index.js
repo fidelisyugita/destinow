@@ -13,11 +13,10 @@ import SessionActions from '../../Redux/SessionRedux';
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
+import EmptyState from '../../Components/EmptyState';
 
 function InboxScreen({navigation, currentUser, logout}) {
   const {navigate} = navigation;
-
-  const [isScrolling, setScrolling] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -25,20 +24,18 @@ function InboxScreen({navigation, currentUser, logout}) {
 
   function loadData() {}
 
-  const onScroll = (event) => {
-    const contentOffsetY = event.nativeEvent.contentOffset.y;
-
-    if (contentOffsetY > 0 && !isScrolling) setScrolling(true);
-    if (contentOffsetY <= 0 && isScrolling) setScrolling(false);
-  };
-
   return (
     <SafeAreaView>
-      <ScrollView onScroll={(event) => onScroll(event)}>
-        <TouchableOpacity>
-          <Text>{I18n.t('inbox')}</Text>
-        </TouchableOpacity>
-        <View style={{height: s(1080)}} />
+      <ScrollView>
+        <EmptyState
+          containerStyle={{
+            minHeight:
+              Metrics.pureScreenHeight - Metrics.bottomNavigationHeight,
+          }}
+          SvgImage={Svgs.EmptyNotification}
+          text={I18n.t('emptyNotification')}
+          caption={I18n.t('emptyNotificationDescription')}
+        />
       </ScrollView>
     </SafeAreaView>
   );
