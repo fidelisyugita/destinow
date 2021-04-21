@@ -53,7 +53,11 @@ function OnboardingScreen({navigation, removeOnboarding}) {
             {title}
           </Text>
           <Text
-            style={[Fonts.style.descriptionRegular, Fonts.style.alignCenter]}>
+            style={[
+              Fonts.style.descriptionRegular,
+              Fonts.style.alignCenter,
+              {marginTop: vs(8)},
+            ]}>
             {description}
           </Text>
         </View>
@@ -85,7 +89,8 @@ function OnboardingScreen({navigation, removeOnboarding}) {
           // style={{height: s(334) + vs(32) + s(76)}}
 
           style={{
-            marginTop: vs(32),
+            marginTop: vs(20),
+            // height: s(334) + vs(32) + s(28) + vs(8) + s(44) + vs(36) + s(8),
             height: Metrics.pureScreenHeight - vs(94) - vs(152),
           }}
           paginationStyle={{marginTop: vs(36)}}
