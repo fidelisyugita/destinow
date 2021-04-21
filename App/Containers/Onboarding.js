@@ -71,8 +71,8 @@ function OnboardingScreen({navigation, removeOnboarding}) {
           <Image
             source={Images.logoHorizontal}
             style={{
-              width: s(135.25),
-              height: s(25),
+              width: s(154),
+              height: s(37),
             }}
             resizeMode="contain"
           />

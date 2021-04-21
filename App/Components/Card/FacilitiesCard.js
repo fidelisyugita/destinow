@@ -75,6 +75,48 @@ const FacilitiesCard = ({
       name: I18n.t('watersport'),
     });
   }
+  if (facilities.includes('open24Hour')) {
+    facilityData.push({
+      SvgIcon: Svgs.Icon24Hour,
+      name: I18n.t('open24Hour'),
+    });
+  }
+  if (facilities.includes('deliveryService')) {
+    facilityData.push({
+      SvgIcon: Svgs.IconDeliveryService,
+      name: I18n.t('deliveryService'),
+    });
+  }
+  if (facilities.includes('liveMusic')) {
+    facilityData.push({
+      SvgIcon: Svgs.IconLiveMusic,
+      name: I18n.t('liveMusic'),
+    });
+  }
+  if (facilities.includes('outdoorSheets')) {
+    facilityData.push({
+      SvgIcon: Svgs.IconOutdoorSheets,
+      name: I18n.t('outdoorSheets'),
+    });
+  }
+  if (facilities.includes('reservation')) {
+    facilityData.push({
+      SvgIcon: Svgs.IconReservation,
+      name: I18n.t('reservation'),
+    });
+  }
+  if (facilities.includes('smokingArea')) {
+    facilityData.push({
+      SvgIcon: Svgs.IconSmokingArea,
+      name: I18n.t('smokingArea'),
+    });
+  }
+  if (facilities.includes('takeAway')) {
+    facilityData.push({
+      SvgIcon: Svgs.IconTakeAway,
+      name: I18n.t('takeAway'),
+    });
+  }
 
   if (!IsNotEmpty(facilityData)) return <View />;
 

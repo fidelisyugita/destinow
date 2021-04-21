@@ -36,6 +36,13 @@ import IconRestaurant from '../Svgs/Icons/IconRestaurant.svg';
 import IconLodging from '../Svgs/Icons/IconLodging.svg';
 import IconPlayground from '../Svgs/Icons/IconPlayground.svg';
 import IconWatersport from '../Svgs/Icons/IconWatersport.svg';
+import Icon24Hour from '../Svgs/Icons/Icon24Hour.svg';
+import IconDeliveryService from '../Svgs/Icons/IconDeliveryService.svg';
+import IconLiveMusic from '../Svgs/Icons/IconLiveMusic.svg';
+import IconOutdoorSheets from '../Svgs/Icons/IconOutdoorSheets.svg';
+import IconReservation from '../Svgs/Icons/IconReservation.svg';
+import IconSmokingArea from '../Svgs/Icons/IconSmokingArea.svg';
+import IconTakeAway from '../Svgs/Icons/IconTakeAway.svg';
 
 const svgs = {
   LogoHorizontal,
@@ -76,6 +83,13 @@ const svgs = {
   IconLodging,
   IconPlayground,
   IconWatersport,
+  Icon24Hour,
+  IconDeliveryService,
+  IconLiveMusic,
+  IconOutdoorSheets,
+  IconReservation,
+  IconSmokingArea,
+  IconTakeAway,
 };
 
 export default svgs;
