@@ -34,7 +34,9 @@ function ProfileScreen({navigation, currentUser, logout}) {
 
   return (
     <SafeAreaView>
-      <ScrollView onScroll={(event) => onScroll(event)}>
+      <ScrollView
+        onScroll={(event) => onScroll(event)}
+        showsVerticalScrollIndicator={false}>
         <TouchableOpacity>
           <Text>{I18n.t('profile')}</Text>
         </TouchableOpacity>

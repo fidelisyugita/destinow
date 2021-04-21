@@ -26,7 +26,7 @@ function InboxScreen({navigation, currentUser, logout}) {
 
   return (
     <SafeAreaView>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <EmptyState
           containerStyle={{
             minHeight:

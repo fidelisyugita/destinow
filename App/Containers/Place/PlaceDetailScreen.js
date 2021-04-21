@@ -80,6 +80,9 @@ function PlaceDetailScreen({
               // contentWidth={contentWidth}
               containerStyle={{marginTop: s(24 - 16)}}
               baseFontStyle={Fonts.style.descriptionRegular}
+              classesStyles={{
+                'ql-align-justify': Fonts.style.alignJustify,
+              }}
             />
           </View>
         )}
@@ -94,6 +97,9 @@ function PlaceDetailScreen({
               // contentWidth={contentWidth}
               containerStyle={{marginTop: s(24)}}
               baseFontStyle={Fonts.style.descriptionRegular}
+              classesStyles={{
+                'ql-align-justify': Fonts.style.alignJustify,
+              }}
             />
           </View>
         )}
@@ -158,7 +164,7 @@ function PlaceDetailScreen({
       <ScrollView
         onScroll={(event) => onScroll(event)}
         scrollEventThrottle={160} // default 16
-      >
+        showsVerticalScrollIndicator={false}>
         <CustomBody style={{marginTop: s(359)}}>
           <MainDetails
             name={paramItem.name}
