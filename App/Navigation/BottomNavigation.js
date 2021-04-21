@@ -32,7 +32,11 @@ const BottomNav = createBottomTabNavigator(
       navigationOptions: (navigation) => ({
         title: I18n.t('home'),
         tabBarIcon: ({focused, tintColor}) =>
-          renderItem(Svgs.IconHome, tintColor, I18n.t('home')),
+          renderItem(
+            focused ? Svgs.IconHomeOn : Svgs.IconHome,
+            tintColor,
+            I18n.t('home'),
+          ),
       }),
     },
     Inbox: {
@@ -40,7 +44,11 @@ const BottomNav = createBottomTabNavigator(
       navigationOptions: (navigation) => ({
         title: I18n.t('inbox'),
         tabBarIcon: ({focused, tintColor}) =>
-          renderItem(Svgs.IconInbox, tintColor, I18n.t('inbox')),
+          renderItem(
+            focused ? Svgs.IconInboxOn : Svgs.IconInbox,
+            tintColor,
+            I18n.t('inbox'),
+          ),
       }),
     },
     Profile: {
@@ -48,7 +56,11 @@ const BottomNav = createBottomTabNavigator(
       navigationOptions: (navigation) => ({
         title: I18n.t('profile'),
         tabBarIcon: ({focused, tintColor}) =>
-          renderItem(Svgs.IconProfile, tintColor, I18n.t('profile')),
+          renderItem(
+            focused ? Svgs.IconProfileOn : Svgs.IconProfile,
+            tintColor,
+            I18n.t('profile'),
+          ),
       }),
     },
   },

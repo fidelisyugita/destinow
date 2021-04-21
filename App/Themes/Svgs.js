@@ -10,6 +10,9 @@ import EmptyNotification from '../Svgs/EmptyNotification.svg';
 import IconHome from '../Svgs/Icons/IconHome.svg';
 import IconInbox from '../Svgs/Icons/IconInbox.svg';
 import IconProfile from '../Svgs/Icons/IconProfile.svg';
+import IconHomeOn from '../Svgs/Icons/IconHomeOn.svg';
+import IconInboxOn from '../Svgs/Icons/IconInboxOn.svg';
+import IconProfileOn from '../Svgs/Icons/IconProfileOn.svg';
 
 import IconPlace from '../Svgs/Icons/IconPlace.svg';
 import IconCulinary from '../Svgs/Icons/IconCulinary.svg';
@@ -57,6 +60,9 @@ const svgs = {
   IconHome,
   IconInbox,
   IconProfile,
+  IconHomeOn,
+  IconInboxOn,
+  IconProfileOn,
 
   IconPlace,
   IconCulinary,

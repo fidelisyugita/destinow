@@ -78,7 +78,7 @@ function PlaceDetailScreen({
             <HTML
               source={{html: paramItem.description}}
               // contentWidth={contentWidth}
-              containerStyle={{marginTop: s(24 - 16)}}
+              containerStyle={{marginTop: s(24 - 20)}}
               baseFontStyle={Fonts.style.descriptionRegular}
               classesStyles={{
                 'ql-align-justify': Fonts.style.alignJustify,
@@ -95,7 +95,7 @@ function PlaceDetailScreen({
             <HTML
               source={{html: paramItem.travelTips}}
               // contentWidth={contentWidth}
-              containerStyle={{marginTop: s(24)}}
+              containerStyle={{marginTop: s(24 - 4)}}
               baseFontStyle={Fonts.style.descriptionRegular}
               classesStyles={{
                 'ql-align-justify': Fonts.style.alignJustify,
