@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Destinow membutuhkan akses lokasi anda untuk memberikan estimasi jarak ke lokasi tujuan</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Destinow membutuhkan akses lokasi anda untuk memberikan estimasi jarak ke lokasi tujuan</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -41,6 +37,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Destinow membutuhkan akses lokasi anda untuk memberikan estimasi jarak ke lokasi tujuan</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Destinow membutuhkan akses lokasi anda untuk memberikan estimasi jarak ke lokasi tujuan</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Bold.ttf</string>

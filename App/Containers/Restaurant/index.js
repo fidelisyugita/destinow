@@ -7,6 +7,7 @@ import {
   View,
   Image,
   FlatList,
+  Platform,
 } from 'react-native';
 
 import SessionActions from '../../Redux/SessionRedux';
@@ -14,6 +15,7 @@ import RestaurantActions from '../../Redux/RestaurantRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
+import {GetDistance} from '../../Lib';
 import * as Consts from '../../Lib/Consts';
 import I18n from '../../I18n';
 
@@ -23,10 +25,13 @@ import PlaceCard from '../../Components/Card/PlaceCard';
 import CustomHeader from '../../Components/CustomHeader';
 import CustomBody from '../../Components/CustomBody';
 import CustomLoader from '../../Components/CustomLoader';
+import CustomFlatList from '../../Components/CustomFlatList';
+import BackgroundImage from '../../Components/BackgroundImage';
 
 function RestaurantScreen({
   navigation,
   currentUser,
+  userPosition,
 
   restaurants,
 
@@ -90,73 +95,49 @@ function RestaurantScreen({
 
     if (tempTransparentOpacity < 2)
       setTransparentOpacity(tempTransparentOpacity);
-
-    console.log('transparentOpacity: ', transparentOpacity);
   };
 
   const renderHeader = () => {
     return (
-      <View>
-        <Image
-          source={Images.tourismPlace}
-          style={[AppStyles.positionAbstolute, {width: s(414), height: s(225)}]}
-        />
+      <CustomBody>
         <View
           style={[
+            AppStyles.row,
             AppStyles.alignCenter,
-            {marginTop: s(64), marginHorizontal: s(16)},
+            {marginTop: s(24), marginHorizontal: s(16)},
           ]}>
-          <Text style={[Fonts.style.title, {color: Colors.white}]}>
-            {I18n.t('exploreBelitungCulinary')}
+          <Svgs.IconRecommendation width={s(32)} height={s(32)} />
+          <Text
+            style={[
+              Fonts.style.title,
+              {
+                marginLeft: s(8),
+                color: `rgba(48,47,56, ${1 - transparentOpacity})`,
+              },
+            ]}>
+            {I18n.t('recommended')}
           </Text>
-          <View
-            style={{
-              marginTop: s(4),
-              paddingVertical: s(4),
-              paddingHorizontal: s(8),
-              borderRadius: s(16),
-              backgroundColor: Colors.blue,
-            }}>
-            <Text style={[Fonts.style.footnoteRegular, {color: Colors.white}]}>
-              {`1,350 ${I18n.t('culinary')}`}
-            </Text>
-          </View>
         </View>
 
-        <CustomBody style={{marginTop: s(32)}}>
-          <View
-            style={[
-              AppStyles.row,
-              AppStyles.alignCenter,
-              {marginTop: s(24), marginHorizontal: s(16)},
-            ]}>
-            <Svgs.IconRecommendation width={s(32)} height={s(32)} />
-            <Text style={[Fonts.style.title, {marginLeft: s(8)}]}>
-              {I18n.t('recommended')}
-            </Text>
-          </View>
+        <CustomFlatList
+          horizontal
+          contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
+          style={{marginTop: s(24 - 8)}}
+          data={getRecommendedRestaurants.payload || []}
+          renderItem={({item, index}) => (
+            <PlaceCard
+              key={item + index}
+              onPress={() => navigate('RestaurantDetailScreen', {item})}
+              imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
+              location={item.city}
+              name={item.name}
+              rating={item.rating || 4}
+            />
+          )}
+        />
 
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item, index) => item + index}
-            contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
-            style={{marginTop: s(24 - 8)}}
-            data={getRecommendedRestaurants.payload || []}
-            renderItem={({item, index}) => (
-              <PlaceCard
-                onPress={() => navigate('RestaurantDetailScreen', {item})}
-                imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
-                location={item.city}
-                name={item.name}
-                rating={item.rating || 4}
-              />
-            )}
-          />
-
-          <TitleBar title={I18n.t('allCulinaryPlaces')} />
-        </CustomBody>
-      </View>
+        <TitleBar title={I18n.t('allCulinaryPlaces')} />
+      </CustomBody>
     );
   };
 
@@ -196,6 +177,14 @@ function RestaurantScreen({
         onBack={() => navigation.pop()}
         transparent={true}
         transparentOpacity={transparentOpacity}
+        title={transparentOpacity > 0.8 ? I18n.t('recommended') : null}
+        titleColor={`rgba(48,47,56, ${transparentOpacity - 0.2})`}
+        iconColor={transparentOpacity > 0.5 ? Colors.blue : Colors.white}
+      />
+      <BackgroundImage
+        imageSrc={Images.tourismPlace}
+        text={I18n.t('exploreBelitungCulinary')}
+        description={`1,350 ${I18n.t('culinary')}`}
       />
 
       <FlatList
@@ -212,7 +201,7 @@ function RestaurantScreen({
             name={item.name}
             rating={item.rating || 4}
             description={`${item.city} | ${item.openingHours}`}
-            caption={item.distance}
+            caption={GetDistance(userPosition, item.position)}
             hideBorderTop={index === 0}
           />
         )}
@@ -229,6 +218,8 @@ const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
     currentUser: state.session.user,
+    userPosition: state.session.userPosition,
+
     restaurants: state.restaurant.restaurants,
 
     getRecommendedRestaurants: state.restaurant.getRecommendedRestaurants,

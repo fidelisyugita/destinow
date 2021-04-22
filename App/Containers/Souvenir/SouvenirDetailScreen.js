@@ -16,7 +16,7 @@ import SouvenirActions from '../../Redux/SouvenirRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
-import {IsNotEmpty} from '../../Lib';
+import {GetDistance, IsNotEmpty} from '../../Lib';
 import I18n from '../../I18n';
 
 import ButtonIcon from '../../Components/Home/ButtonIcon';
@@ -33,8 +33,9 @@ import ButtonDefault from '../../Components/Button/ButtonDefault';
 import MainDetails from '../../Components/MainDetails';
 import CarauselTop from '../../Components/CarauselTop';
 import CustomFlatList from '../../Components/CustomFlatList';
+import FacilitiesCard from '../../Components/Card/FacilitiesCard';
 
-function SouvenirDetailScreen({navigation, currentUser}) {
+function SouvenirDetailScreen({navigation, currentUser, userPosition}) {
   const {navigate} = navigation;
   const [transparentOpacity, setTransparentOpacity] = useState(0);
 
@@ -61,64 +62,26 @@ function SouvenirDetailScreen({navigation, currentUser}) {
   }
 
   const renderDescription = () => {
-    let facilities = [];
-
-    if (paramItem.facilities)
-      Object.entries(paramItem.facilities).forEach((item) => {
-        console.log(`${item[0]}: ${item[1]}`);
-        if (item[1]) facilities.push(item[0]);
-      });
-
     return (
       <View>
         {paramItem.description && (
           <View style={{marginTop: s(24)}}>
             <Text style={[Fonts.style.subTitle]}>
-              {I18n.t('aboutSouvenir')}
+              {I18n.t('aboutTourismPlace')}
             </Text>
             <HTML
               source={{html: paramItem.description}}
               // contentWidth={contentWidth}
-              containerStyle={{marginTop: s(24 - 16)}}
+              containerStyle={{marginTop: s(24 - 20)}}
               baseFontStyle={Fonts.style.descriptionRegular}
+              classesStyles={{
+                'ql-align-justify': Fonts.style.alignJustify,
+              }}
             />
           </View>
         )}
 
-        {IsNotEmpty(facilities) && (
-          <View style={{marginTop: s(40)}}>
-            <Text style={[Fonts.style.subTitle]}>{I18n.t('facility')}</Text>
-            <CustomFlatList
-              data={facilities}
-              numColumns={2}
-              renderItem={({item, index}) => (
-                <View
-                  key={item + index}
-                  style={[
-                    AppStyles.flex1,
-                    AppStyles.row,
-                    AppStyles.alignCenter,
-                    {marginTop: s(16)},
-                  ]}>
-                  <Svgs.IconCheckMark
-                    width={s(24)}
-                    height={s(24)}
-                    fill={Colors.blue}
-                  />
-                  <Text
-                    style={[
-                      Fonts.style.descriptionRegular,
-                      Fonts.style.transformCapitalize,
-                      Fonts.style.alignCenter,
-                      {marginLeft: s(8)},
-                    ]}>
-                    {item}
-                  </Text>
-                </View>
-              )}
-            />
-          </View>
-        )}
+        <FacilitiesCard paramFacilities={paramItem.facilities} />
 
         {paramItem.travelTips && (
           <View style={{marginTop: s(40)}}>
@@ -126,8 +89,11 @@ function SouvenirDetailScreen({navigation, currentUser}) {
             <HTML
               source={{html: paramItem.travelTips}}
               // contentWidth={contentWidth}
-              containerStyle={{marginTop: s(24 - 16)}}
+              containerStyle={{marginTop: s(24 - 4)}}
               baseFontStyle={Fonts.style.descriptionRegular}
+              classesStyles={{
+                'ql-align-justify': Fonts.style.alignJustify,
+              }}
             />
           </View>
         )}
@@ -184,16 +150,19 @@ function SouvenirDetailScreen({navigation, currentUser}) {
         onBack={() => navigation.pop()}
         transparent={true}
         transparentOpacity={transparentOpacity}
+        title={transparentOpacity > 0.8 ? paramItem.name : null}
+        titleColor={`rgba(48,47,56, ${transparentOpacity - 0.2})`}
+        iconColor={transparentOpacity > 0.5 ? Colors.blue : Colors.white}
       />
+      <CarauselTop images={paramItem.images} cover={paramItem.cover} />
       <ScrollView
         onScroll={(event) => onScroll(event)}
         scrollEventThrottle={160} // default 16
       >
-        <CarauselTop images={paramItem.images} cover={paramItem.cover} />
-
         <CustomBody style={{marginTop: s(359)}}>
           <MainDetails
             name={paramItem.name}
+            nameColor={`rgba(48,47,56, ${1 - transparentOpacity})`}
             address={paramItem.address}
             rating={paramItem.rating}
             distance={paramItem.distance}

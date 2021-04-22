@@ -23,10 +23,13 @@ import PlaceCard from '../../Components/Card/PlaceCard';
 import CustomHeader from '../../Components/CustomHeader';
 import CustomBody from '../../Components/CustomBody';
 import CustomLoader from '../../Components/CustomLoader';
+import CustomFlatList from '../../Components/CustomFlatList';
+import BackgroundImage from '../../Components/BackgroundImage';
 
 function TransportScreen({
   navigation,
   currentUser,
+  userPosition,
 
   transports,
 
@@ -89,73 +92,42 @@ function TransportScreen({
 
     if (tempTransparentOpacity < 2)
       setTransparentOpacity(tempTransparentOpacity);
-
-    console.log('transparentOpacity: ', transparentOpacity);
   };
 
   const renderHeader = () => {
     return (
-      <View>
-        <Image
-          source={Images.tourismPlace}
-          style={[AppStyles.positionAbstolute, {width: s(414), height: s(225)}]}
-        />
+      <CustomBody>
         <View
           style={[
+            AppStyles.row,
             AppStyles.alignCenter,
-            {marginTop: s(64), marginHorizontal: s(16)},
+            {marginTop: s(24), marginHorizontal: s(16)},
           ]}>
-          <Text style={[Fonts.style.title, {color: Colors.white}]}>
-            {I18n.t('transportProvider')}
+          <Svgs.IconRecommendation width={s(32)} height={s(32)} />
+          <Text style={[Fonts.style.title, {marginLeft: s(8)}]}>
+            {I18n.t('recommended')}
           </Text>
-          <View
-            style={{
-              marginTop: s(4),
-              paddingVertical: s(4),
-              paddingHorizontal: s(8),
-              borderRadius: s(16),
-              backgroundColor: Colors.blue,
-            }}>
-            <Text style={[Fonts.style.footnoteRegular, {color: Colors.white}]}>
-              {`1,350 ${I18n.t('transportProviderPlaces')}`}
-            </Text>
-          </View>
         </View>
 
-        <CustomBody style={{marginTop: s(32)}}>
-          <View
-            style={[
-              AppStyles.row,
-              AppStyles.alignCenter,
-              {marginTop: s(24), marginHorizontal: s(16)},
-            ]}>
-            <Svgs.IconRecommendation width={s(32)} height={s(32)} />
-            <Text style={[Fonts.style.title, {marginLeft: s(8)}]}>
-              {I18n.t('recommended')}
-            </Text>
-          </View>
+        <CustomFlatList
+          horizontal
+          contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
+          style={{marginTop: s(24 - 8)}}
+          data={getRecommendedTransports.payload || []}
+          renderItem={({item, index}) => (
+            <PlaceCard
+              key={item + index}
+              onPress={() => navigate('TransportDetailScreen', {item})}
+              imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
+              location={item.city}
+              name={item.name}
+              rating={item.rating || 4}
+            />
+          )}
+        />
 
-          <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={(item, index) => item + index}
-            contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
-            style={{marginTop: s(24 - 8)}}
-            data={getRecommendedTransports.payload || []}
-            renderItem={({item, index}) => (
-              <PlaceCard
-                onPress={() => navigate('TransportDetailScreen', {item})}
-                imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
-                location={item.city}
-                name={item.name}
-                rating={item.rating || 4}
-              />
-            )}
-          />
-
-          <TitleBar title={I18n.t('allTransportProviders')} />
-        </CustomBody>
-      </View>
+        <TitleBar title={I18n.t('allTransportProviders')} />
+      </CustomBody>
     );
   };
 
@@ -195,6 +167,14 @@ function TransportScreen({
         onBack={() => navigation.pop()}
         transparent={true}
         transparentOpacity={transparentOpacity}
+        title={transparentOpacity > 0.8 ? I18n.t('recommended') : null}
+        titleColor={`rgba(48,47,56, ${transparentOpacity - 0.2})`}
+        iconColor={transparentOpacity > 0.5 ? Colors.blue : Colors.white}
+      />
+      <BackgroundImage
+        imageSrc={Images.tourismPlace}
+        text={I18n.t('transportProvider')}
+        description={`1,350 ${I18n.t('transportProviderPlaces')}`}
       />
 
       <FlatList
@@ -228,6 +208,8 @@ const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
     currentUser: state.session.user,
+    userPosition: state.session.userPosition,
+
     transports: state.transport.transports,
 
     getRecommendedTransports: state.transport.getRecommendedTransports,

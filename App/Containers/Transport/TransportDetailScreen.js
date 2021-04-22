@@ -16,7 +16,7 @@ import TransportActions from '../../Redux/TransportRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
-import {IsNotEmpty} from '../../Lib';
+import {GetDistance, IsNotEmpty} from '../../Lib';
 import I18n from '../../I18n';
 
 import ButtonIcon from '../../Components/Home/ButtonIcon';
@@ -34,8 +34,9 @@ import MainDetails from '../../Components/MainDetails';
 import CarauselTop from '../../Components/CarauselTop';
 import CustomFlatList from '../../Components/CustomFlatList';
 import TypesCard from '../../Components/Card/TypesCard';
+import FacilitiesCard from '../../Components/Card/FacilitiesCard';
 
-function TransportDetailScreen({navigation, currentUser}) {
+function TransportDetailScreen({navigation, currentUser, userPosition}) {
   const {navigate} = navigation;
   const [transparentOpacity, setTransparentOpacity] = useState(0);
 
@@ -72,6 +73,9 @@ function TransportDetailScreen({navigation, currentUser}) {
               // contentWidth={contentWidth}
               containerStyle={{marginTop: s(24 - 16)}}
               baseFontStyle={Fonts.style.descriptionRegular}
+              classesStyles={{
+                'ql-align-justify': Fonts.style.alignJustify,
+              }}
             />
           </View>
         )}
@@ -88,6 +92,9 @@ function TransportDetailScreen({navigation, currentUser}) {
               // contentWidth={contentWidth}
               containerStyle={{marginTop: s(24 - 16)}}
               baseFontStyle={Fonts.style.descriptionRegular}
+              classesStyles={{
+                'ql-align-justify': Fonts.style.alignJustify,
+              }}
             />
           </View>
         )}
@@ -134,8 +141,6 @@ function TransportDetailScreen({navigation, currentUser}) {
 
     if (tempTransparentOpacity < 2)
       setTransparentOpacity(tempTransparentOpacity);
-
-    console.log('transparentOpacity: ', transparentOpacity);
   };
 
   return (
@@ -144,16 +149,19 @@ function TransportDetailScreen({navigation, currentUser}) {
         onBack={() => navigation.pop()}
         transparent={true}
         transparentOpacity={transparentOpacity}
+        title={transparentOpacity > 0.8 ? paramItem.name : null}
+        titleColor={`rgba(48,47,56, ${transparentOpacity - 0.2})`}
+        iconColor={transparentOpacity > 0.5 ? Colors.blue : Colors.white}
       />
+      <CarauselTop images={paramItem.images} cover={paramItem.cover} />
       <ScrollView
         onScroll={(event) => onScroll(event)}
         scrollEventThrottle={160} // default 16
       >
-        <CarauselTop images={paramItem.images} cover={paramItem.cover} />
-
         <CustomBody style={{marginTop: s(359)}}>
           <MainDetails
             name={paramItem.name}
+            nameColor={`rgba(48,47,56, ${1 - transparentOpacity})`}
             address={paramItem.address}
             rating={paramItem.rating}
             distance={paramItem.distance}
@@ -223,6 +231,7 @@ const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
     currentUser: state.session.user,
+    userPosition: state.session.userPosition,
   };
 };
 
