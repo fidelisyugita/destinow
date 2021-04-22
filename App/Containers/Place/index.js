@@ -15,6 +15,7 @@ import PlaceActions from '../../Redux/PlaceRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
+import {GetDistance} from '../../Lib';
 import * as Consts from '../../Lib/Consts';
 import I18n from '../../I18n';
 
@@ -29,6 +30,7 @@ import CustomFlatList from '../../Components/CustomFlatList';
 function PlaceScreen({
   navigation,
   currentUser,
+  userPosition,
 
   places,
 
@@ -91,8 +93,6 @@ function PlaceScreen({
 
     if (tempTransparentOpacity < 2)
       setTransparentOpacity(tempTransparentOpacity);
-
-    console.log('transparentOpacity: ', transparentOpacity);
   };
 
   const renderHeader = () => {
@@ -228,7 +228,7 @@ function PlaceScreen({
             name={item.name}
             rating={item.rating || 4}
             description={`${item.city} | ${item.openingHours}`}
-            caption={item.distance}
+            caption={GetDistance(userPosition, item.position)}
             hideBorderTop={index === 0}
           />
         )}
@@ -245,6 +245,8 @@ const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
     currentUser: state.session.user,
+    userPosition: state.session.userPosition,
+
     places: state.place.places,
 
     getRecommendedPlaces: state.place.getRecommendedPlaces,

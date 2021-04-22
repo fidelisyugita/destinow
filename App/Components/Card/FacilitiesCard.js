@@ -19,7 +19,7 @@ const FacilitiesCard = ({
 
   if (paramFacilities)
     Object.entries(paramFacilities).forEach((item) => {
-      console.log(`${item[0]}: ${item[1]}`);
+      // console.log(`${item[0]}: ${item[1]}`);
       if (item[1]) facilities.push(item[0]);
     });
 

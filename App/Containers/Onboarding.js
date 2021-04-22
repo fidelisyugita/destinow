@@ -90,8 +90,9 @@ function OnboardingScreen({navigation, removeOnboarding}) {
 
           style={{
             marginTop: vs(20),
+            height: s(334) + vs(32) + s(28) + vs(8) + s(44),
             // height: s(334) + vs(32) + s(28) + vs(8) + s(44) + vs(36) + s(8),
-            height: Metrics.pureScreenHeight - vs(94) - vs(152),
+            // height: Metrics.pureScreenHeight - vs(94) - vs(152),
           }}
           paginationStyle={{marginTop: vs(36)}}
           renderItem={({item, index}) => renderItem(item, index)}

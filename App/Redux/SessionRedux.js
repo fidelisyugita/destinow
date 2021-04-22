@@ -11,6 +11,8 @@ const {Types, Creators} = createActions({
   saveUser: ['data'],
   logout: null,
 
+  saveUserPosition: ['data'],
+
   changeCountry: ['data'],
   changeLanguage: ['data'],
 });
@@ -26,6 +28,12 @@ export const INITIAL_STATE = Immutable({
   token: null,
 
   user: {},
+  userPosition: {
+    //  central city | 0 km
+    longitude: -2.7405691,
+    latitude: 107.6307432,
+    isDefault: true,
+  },
 
   country: 'id',
   language: 'en',
@@ -39,6 +47,8 @@ export const SessionSelectors = {
   getToken: (state) => state.session.token,
 
   getUser: (state) => state.session.user,
+
+  getUserPosition: (state) => state.session.userPosition,
 
   getCountry: (state) => state.session.country,
   getLanguage: (state) => state.session.language,
@@ -64,6 +74,11 @@ export const logout = (state) => {
   });
 };
 
+export const saveUserPosition = (state, {data}) => {
+  console.tron.log({saveUserPosition: data});
+  return state.merge({...state, userPosition: data});
+};
+
 export const changeCountry = (state, {data}) => {
   return state.merge({...state, country: data});
 };
@@ -81,6 +96,8 @@ export const reducer = createReducer(INITIAL_STATE, {
 
   [Types.SAVE_USER]: saveUser,
   [Types.LOGOUT]: logout,
+
+  [Types.SAVE_USER_POSITION]: saveUserPosition,
 
   [Types.CHANGE_COUNTRY]: changeCountry,
   [Types.CHANGE_LANGUAGE]: changeLanguage,

@@ -16,7 +16,7 @@ import PlaceActions from '../../Redux/PlaceRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
-import {IsNotEmpty} from '../../Lib';
+import {GetDistance, IsNotEmpty} from '../../Lib';
 import I18n from '../../I18n';
 
 import ButtonIcon from '../../Components/Home/ButtonIcon';
@@ -146,8 +146,6 @@ function PlaceDetailScreen({
 
     if (tempTransparentOpacity < 2)
       setTransparentOpacity(tempTransparentOpacity);
-
-    console.log('transparentOpacity: ', transparentOpacity);
   };
 
   return (
@@ -171,7 +169,7 @@ function PlaceDetailScreen({
             nameColor={`rgba(48,47,56, ${1 - transparentOpacity})`}
             address={paramItem.address}
             rating={paramItem.rating}
-            distance={paramItem.distance}
+            distance={GetDistance(userPosition, item.position)}
             openingHours={paramItem.openingHours}
             priceEstimation={paramItem.priceEstimation}
           />
