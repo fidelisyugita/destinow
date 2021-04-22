@@ -94,6 +94,9 @@
   "emptyNotification": "Belum Ada Notifikasi",
   "emptyNotificationDescription": "Semua notifikasi yang kami kirim akan muncul di sini. Kamu bisa mengeceknya dengan mudah.",
 
+  "fromCentralCity": "dari Pusat Kota",
+  "kmAway": "km away",
+
   "transportType": "Tipe Kendaraan",
 
   "close": "Close"

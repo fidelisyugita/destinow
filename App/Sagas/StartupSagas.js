@@ -1,40 +1,29 @@
-import { put, select } from 'redux-saga/effects'
-import GithubActions, { GithubSelectors } from '../Redux/GithubRedux'
-import { is } from 'ramda'
+import {put, select} from 'redux-saga/effects';
 
-// exported to make available for tests
-export const selectAvatar = GithubSelectors.selectAvatar
+import SessionActions, {SessionSelectors} from '../Redux/SessionRedux';
+
+import {GetUserPosition} from '../Lib';
+
+const {getUser} = SessionSelectors;
 
 // process STARTUP actions
-export function * startup (action) {
+export function* startup(action) {
+  try {
+    const coords = yield GetUserPosition();
+    console.tron.log({getUserPosition: coords});
+    yield put(SessionActions.saveUserPosition(coords));
+  } catch (error) {
+    console.tron.error({error});
+    // DropDownHolder.alert(
+    //   'error',
+    //   error.message || I18n.t('errorDefault'),
+    //   I18n.t('needLocationAccess'),
+    // );
+    // setTimeout(() => BackHandler.exitApp(), 10000);
+  }
+
   if (__DEV__ && console.tron) {
     // straight-up string logging
-    console.tron.log('Hello, I\'m an example of how to log via Reactotron.')
-
-    // logging an object for better clarity
-    console.tron.log({
-      message: 'pass objects for better logging',
-      someGeneratorFunction: selectAvatar
-    })
-
-    // fully customized!
-    const subObject = { a: 1, b: [1, 2, 3], c: true }
-    subObject.circularDependency = subObject // osnap!
-    console.tron.display({
-      name: '🔥 IGNITE 🔥',
-      preview: 'You should totally expand this',
-      value: {
-        '💃': 'Welcome to the future!',
-        subObject,
-        someInlineFunction: () => true,
-        someGeneratorFunction: startup,
-        someNormalFunction: selectAvatar
-      }
-    })
-  }
-  const avatar = yield select(selectAvatar)
-  // only get if we don't have it yet
-  if (!is(String, avatar)) {
-    yield put(GithubActions.userRequest('GantMan'))
+    console.tron.log("Hello, I'm an example of how to log via Reactotron.");
   }
 }
