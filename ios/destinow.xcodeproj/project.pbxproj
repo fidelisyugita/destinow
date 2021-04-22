@@ -20,6 +20,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* destinowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* destinowTests.m */; };
 		4CC5C3EA74AFB9AB82C9606A /* libPods-destinow-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BF5F93C25A485F52E3FDD9 /* libPods-destinow-tvOS.a */; };
 		5D3223EB26064E0A002185A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5D3223EA26064E0A002185A9 /* GoogleService-Info.plist */; };
+		5DC5A48026322FAA0069BE39 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC5A47F26322FAA0069BE39 /* File.swift */; };
+		5DC5A48126322FAA0069BE39 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DC5A47F26322FAA0069BE39 /* File.swift */; };
 		7611D92D8486B454E99C0789 /* libPods-destinow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EED30F932659A457CB2261A /* libPods-destinow.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		C2B69AABE43341349259CCDF /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C9498C4F04B36A7BE6BED /* Roboto-Bold.ttf */; };
@@ -60,6 +62,9 @@
 		2D02E4901E0B4A5D006451C7 /* destinow-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "destinow-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8C9498C4F04B36A7BE6BED /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		5D3223EA26064E0A002185A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5DC5A47D26322FAA0069BE39 /* destinow-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "destinow-Bridging-Header.h"; sourceTree = "<group>"; };
+		5DC5A47E26322FAA0069BE39 /* destinow-tvOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "destinow-tvOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		5DC5A47F26322FAA0069BE39 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		621BCF17C4E448A42319B129 /* libPods-destinow-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-destinow-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6437335F92C8CD8AAB035698 /* Pods-destinow-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-destinow-tvOS.release.xcconfig"; path = "Target Support Files/Pods-destinow-tvOS/Pods-destinow-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		672FB9427B2840DFA37F41CB /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -141,6 +146,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				5DC5A47F26322FAA0069BE39 /* File.swift */,
+				5DC5A47D26322FAA0069BE39 /* destinow-Bridging-Header.h */,
+				5DC5A47E26322FAA0069BE39 /* destinow-tvOS-Bridging-Header.h */,
 			);
 			name = destinow;
 			sourceTree = "<group>";
@@ -315,10 +323,11 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = C67497M2TB;
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1240;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 1240;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E48F1E0B4A5D006451C7 = {
@@ -505,6 +514,9 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
 			name = "[CP-User] [RNFB] Core Configuration";
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -604,6 +616,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				5DC5A48026322FAA0069BE39 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */,
+				5DC5A48126322FAA0069BE39 /* File.swift in Sources */,
 				2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -645,6 +659,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0E19DB346661247F4D84F5AF /* Pods-destinow-destinowTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -668,6 +683,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C2012D1E4E4B58CC770FECB /* Pods-destinow-destinowTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = destinowTests/Info.plist;
@@ -703,6 +719,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = id.destinow;
 				PRODUCT_NAME = destinow;
+				SWIFT_OBJC_BRIDGING_HEADER = "destinow-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -727,6 +744,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = id.destinow;
 				PRODUCT_NAME = destinow;
+				SWIFT_OBJC_BRIDGING_HEADER = "destinow-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -739,6 +757,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -755,6 +774,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.destinow-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "destinow-tvOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -767,6 +789,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -783,6 +806,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.destinow-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "destinow-tvOS-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
@@ -792,6 +817,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E2108264770C824DAA8D3D4B /* Pods-destinow-tvOSTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -819,6 +845,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A197D56DCBC17AC9CEF66F84 /* Pods-destinow-tvOSTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -891,11 +918,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
-				LIBRARY_SEARCH_PATHS = (
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
-					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
-					"\"$(inherited)\"",
-				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;

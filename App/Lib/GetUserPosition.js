@@ -5,7 +5,7 @@ import I18n from '../I18n';
 export default () => {
   return new Promise((resolve, reject) => {
     if (Platform.OS === 'ios') {
-      Geolocation.requestAuthorization();
+      Geolocation.requestAuthorization('whenInUse');
       Geolocation.getCurrentPosition(
         (position) => {
           console.tron.log({position});
@@ -15,7 +15,7 @@ export default () => {
           console.tron.log({error});
           reject(error);
         },
-        {enableHighAccuracy: true, timeout: 10000, maximumAge: 3000},
+        {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
       );
     } else {
       PermissionsAndroid.request(
@@ -32,7 +32,7 @@ export default () => {
                 console.tron.log({error});
                 reject(error);
               },
-              {enableHighAccuracy: true, timeout: 10000, maximumAge: 3000},
+              {enableHighAccuracy: true, timeout: 15000, maximumAge: 10000},
             );
           } else reject({message: I18n.t('permissionDenied')});
         })

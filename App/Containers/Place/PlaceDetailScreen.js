@@ -38,6 +38,8 @@ import FacilitiesCard from '../../Components/Card/FacilitiesCard';
 function PlaceDetailScreen({
   navigation,
   currentUser,
+  userPosition,
+
   getFavoritePlaces,
   getFavoritePlacesRequest,
 }) {
@@ -169,7 +171,7 @@ function PlaceDetailScreen({
             nameColor={`rgba(48,47,56, ${1 - transparentOpacity})`}
             address={paramItem.address}
             rating={paramItem.rating}
-            distance={GetDistance(userPosition, item.position)}
+            distance={GetDistance(userPosition, paramItem.position)}
             openingHours={paramItem.openingHours}
             priceEstimation={paramItem.priceEstimation}
           />
@@ -236,6 +238,8 @@ const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
     currentUser: state.session.user,
+    userPosition: state.session.userPosition,
+
     getFavoritePlaces: state.place.getFavoritePlaces,
   };
 };
