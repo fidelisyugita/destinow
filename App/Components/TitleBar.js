@@ -9,7 +9,7 @@ const TitleBar = ({title = '', style = {}}) => {
     <Text
       style={[
         Fonts.style.title,
-        {marginTop: s(56), marginHorizontal: s(16)},
+        {marginTop: s(48), marginHorizontal: s(16)},
         style,
       ]}>
       {title}

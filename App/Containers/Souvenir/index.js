@@ -195,7 +195,7 @@ function SouvenirScreen({
         renderItem={({item, index}) => (
           <PlaceList
             onPress={() => navigate('SouvenirDetailScreen', {item})}
-            imageSrc={item.cover ? {uri: item.cover.src} : Images.default23}
+            imageSrc={item.cover ? {uri: item.cover.src} : Images.default11}
             name={item.name}
             rating={item.rating || 4}
             description={`${item.city} | ${item.openingHours}`}

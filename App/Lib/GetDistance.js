@@ -14,7 +14,7 @@ export default (fromPosition = {}, toPosition = {}) => {
 
   const caption = fromPosition.isDefault
     ? I18n.t('fromCentralCity')
-    : I18n.t('kmAway');
+    : I18n.t('away').toLowerCase();
 
-  return `${distance} ${distance ? caption : ''}`;
+  return `${distance} ${distance ? `km ${caption}` : ''}`;
 };

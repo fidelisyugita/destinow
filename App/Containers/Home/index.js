@@ -144,7 +144,7 @@ function HomeScreen({
               data={getBanners.payload || []}
               style={{height: s(150)}}
               containerStyle={{
-                marginTop: s(48),
+                marginTop: s(40),
                 // width: s(414 - 8),
                 // backgroundColor: Colors.lightBlue,
               }}

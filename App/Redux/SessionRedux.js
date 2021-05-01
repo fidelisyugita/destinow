@@ -30,8 +30,8 @@ export const INITIAL_STATE = Immutable({
   user: {},
   userPosition: {
     //  central city | 0 km
-    longitude: -2.7405691,
-    latitude: 107.6307432,
+    longitude: 107.6307432,
+    latitude: -2.7405691,
     isDefault: true,
   },
 
