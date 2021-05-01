@@ -11,7 +11,7 @@ import CustomImage from '../CustomImage';
 import CustomFlatList from '../CustomFlatList';
 
 const FacilitiesCard = ({
-  containerStyle = {marginTop: s(40)},
+  containerStyle = {marginTop: s(40), marginHorizontal: s(16)},
   onPress = () => {},
   paramFacilities = {},
 }) => {

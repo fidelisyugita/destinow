@@ -99,5 +99,11 @@
 
   "transportType": "Tipe Kendaraan",
 
+  "recommendedMenu": "Rekomendasi Menu",
+  "recommendedSouvenir": "Rekomendasi Souvenir",
+
+  "menuList": "Daftar Menu",
+  "souvenirList": "Daftar Souvenir",
+
   "close": "Close"
 }

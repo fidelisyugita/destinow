@@ -82,8 +82,8 @@ function PlaceDetailScreen({
               // contentWidth={contentWidth}
               containerStyle={{marginTop: s(24 - 20)}}
               baseFontStyle={Fonts.style.descriptionRegular}
-              classesStyles={{
-                'ql-align-justify': Fonts.style.alignJustify,
+              tagsStyles={{
+                p: Fonts.style.alignJustify,
               }}
             />
           </View>
@@ -99,8 +99,8 @@ function PlaceDetailScreen({
               // contentWidth={contentWidth}
               containerStyle={{marginTop: s(24 - 4)}}
               baseFontStyle={Fonts.style.descriptionRegular}
-              classesStyles={{
-                'ql-align-justify': Fonts.style.alignJustify,
+              tagsStyles={{
+                p: Fonts.style.alignJustify,
               }}
             />
           </View>

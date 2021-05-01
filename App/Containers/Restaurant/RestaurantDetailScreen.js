@@ -47,6 +47,10 @@ function RestaurantDetailScreen({navigation, currentUser, userPosition}) {
       renderContent: () => renderDescription(),
     },
     {
+      title: I18n.t('menuList'),
+      renderContent: () => renderMenus(),
+    },
+    {
       title: I18n.t('review'),
       renderContent: () => renderReview(),
     },
@@ -65,7 +69,7 @@ function RestaurantDetailScreen({navigation, currentUser, userPosition}) {
     return (
       <View>
         {paramItem.description && (
-          <View style={{marginTop: s(24)}}>
+          <View style={{marginTop: s(24), marginHorizontal: s(16)}}>
             <Text style={[Fonts.style.subTitle]}>
               {I18n.t('aboutTourismPlace')}
             </Text>
@@ -74,9 +78,39 @@ function RestaurantDetailScreen({navigation, currentUser, userPosition}) {
               // contentWidth={contentWidth}
               containerStyle={{marginTop: s(24 - 20)}}
               baseFontStyle={Fonts.style.descriptionRegular}
-              classesStyles={{
-                'ql-align-justify': Fonts.style.alignJustify,
+              tagsStyles={{
+                p: Fonts.style.alignJustify,
               }}
+            />
+          </View>
+        )}
+
+        {IsNotEmpty(paramItem.menus) && (
+          <View style={{marginTop: s(40)}}>
+            <Text style={[Fonts.style.subTitle, {marginHorizontal: s(16)}]}>
+              {I18n.t('recommendedMenu')}
+            </Text>
+            <CustomFlatList
+              data={paramItem.menus.filter((menu) => menu.isRecommended)}
+              numColumns={2}
+              style={{marginTop: s(12), marginHorizontal: s(8)}}
+              renderItem={({item, index}) => (
+                <View
+                  key={item + index}
+                  style={{marginVertical: s(12), marginHorizontal: s(8)}}>
+                  <CustomImage
+                    source={
+                      item.image.src ? {uri: item.image.src} : Images.default11
+                    }
+                    defaultSource={Images.default11}
+                    style={{width: s(183), height: s(181), borderRadius: s(16)}}
+                  />
+                  <Text
+                    style={[Fonts.style.descriptionBold, {marginTop: s(16)}]}>
+                    {item.name}
+                  </Text>
+                </View>
+              )}
             />
           </View>
         )}
@@ -84,20 +118,39 @@ function RestaurantDetailScreen({navigation, currentUser, userPosition}) {
         <FacilitiesCard paramFacilities={paramItem.facilities} />
 
         {paramItem.travelTips && (
-          <View style={{marginTop: s(40)}}>
+          <View style={{marginTop: s(40), marginHorizontal: s(16)}}>
             <Text style={[Fonts.style.subTitle]}>{I18n.t('travelTips')}</Text>
             <HTML
               source={{html: paramItem.travelTips}}
               // contentWidth={contentWidth}
               containerStyle={{marginTop: s(24 - 4)}}
               baseFontStyle={Fonts.style.descriptionRegular}
-              classesStyles={{
-                'ql-align-justify': Fonts.style.alignJustify,
+              tagsStyles={{
+                p: Fonts.style.alignJustify,
               }}
             />
           </View>
         )}
       </View>
+    );
+  };
+
+  const renderMenus = () => {
+    return (
+      <CustomFlatList
+        data={paramItem.menus}
+        numColumns={3}
+        style={{marginTop: s(24 - 4), marginHorizontal: s(16 - 4)}}
+        renderItem={({item, index}) => (
+          <View key={item + index} style={{margin: s(4)}}>
+            <CustomImage
+              source={item.image.src ? {uri: item.image.src} : Images.default11}
+              defaultSource={Images.default11}
+              style={{width: s(122), height: s(122), borderRadius: s(16)}}
+            />
+          </View>
+        )}
+      />
     );
   };
 
@@ -173,7 +226,7 @@ function RestaurantDetailScreen({navigation, currentUser, userPosition}) {
           <View
             style={{
               marginTop: s(56),
-              marginHorizontal: s(16),
+              // marginHorizontal: s(16),
             }}>
             <View
               style={[
@@ -181,6 +234,7 @@ function RestaurantDetailScreen({navigation, currentUser, userPosition}) {
                 {
                   borderBottomWidth: s(1),
                   borderColor: Colors.neutral3,
+                  marginHorizontal: s(16),
                 },
               ]}>
               {TAB_MENUS.map((menu) => {
