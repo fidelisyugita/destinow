@@ -35,6 +35,7 @@ import CarauselTop from '../../Components/CarauselTop';
 import CustomFlatList from '../../Components/CustomFlatList';
 import TypesCard from '../../Components/Card/TypesCard';
 import FacilitiesCard from '../../Components/Card/FacilitiesCard';
+import TransportList from '../../Components/List/TransportList';
 
 function TransportDetailScreen({navigation, currentUser, userPosition}) {
   const {navigate} = navigation;
@@ -44,8 +45,12 @@ function TransportDetailScreen({navigation, currentUser, userPosition}) {
 
   const TAB_MENUS = [
     {
-      title: I18n.t('description'),
+      title: I18n.t('transport'),
       renderContent: () => renderDescription(),
+    },
+    {
+      title: I18n.t('conditions'),
+      renderContent: () => renderConditions(),
     },
     {
       title: I18n.t('review'),
@@ -65,6 +70,38 @@ function TransportDetailScreen({navigation, currentUser, userPosition}) {
   const renderDescription = () => {
     return (
       <View>
+        <TypesCard paramTransportTypes={paramItem.types} />
+
+        {IsNotEmpty(paramItem.menus) && (
+          <View style={{marginTop: s(40)}}>
+            <Text style={[Fonts.style.subTitle, {marginHorizontal: s(16)}]}>
+              {I18n.t('transportList')}
+            </Text>
+            <CustomFlatList
+              data={paramItem.menus}
+              style={{marginTop: s(24 - 16), marginHorizontal: s(16)}}
+              renderItem={({item, index}) => (
+                <TransportList
+                  key={item + index}
+                  imageSrc={
+                    item.image.src ? {uri: item.image.src} : Images.default11
+                  }
+                  name={item.name}
+                  description={item.description}
+                  capacity={item.capacity}
+                  hideBorderTop={index === 0}
+                />
+              )}
+            />
+          </View>
+        )}
+      </View>
+    );
+  };
+
+  const renderConditions = () => {
+    return (
+      <View style={{marginHorizontal: s(16)}}>
         {paramItem.policy && (
           <View style={{marginTop: s(24)}}>
             <Text style={[Fonts.style.subTitle]}>{I18n.t('rentPolicy')}</Text>
@@ -80,15 +117,13 @@ function TransportDetailScreen({navigation, currentUser, userPosition}) {
           </View>
         )}
 
-        <TypesCard paramTransportTypes={paramItem.types} />
-
-        {paramItem.termConditions && (
+        {paramItem.termsConditions && (
           <View style={{marginTop: s(40)}}>
             <Text style={[Fonts.style.subTitle]}>
               {I18n.t('rentTermsCondition')}
             </Text>
             <HTML
-              source={{html: paramItem.termConditions}}
+              source={{html: paramItem.termsConditions}}
               // contentWidth={contentWidth}
               containerStyle={{marginTop: s(24 - 16)}}
               baseFontStyle={Fonts.style.descriptionRegular}
@@ -164,15 +199,17 @@ function TransportDetailScreen({navigation, currentUser, userPosition}) {
             nameColor={`rgba(48,47,56, ${1 - transparentOpacity})`}
             address={paramItem.address}
             rating={paramItem.rating}
-            distance={paramItem.distance}
+            distance={GetDistance(userPosition, paramItem.position)}
             openingHours={paramItem.openingHours}
-            priceEstimation={paramItem.priceEstimation}
+            startFrom={paramItem.startFrom}
+            coordinate={paramItem.position}
+            caption={I18n.t('transportCaption')}
           />
 
           <View
             style={{
               marginTop: s(56),
-              marginHorizontal: s(16),
+              // marginHorizontal: s(16),
             }}>
             <View
               style={[
@@ -180,6 +217,7 @@ function TransportDetailScreen({navigation, currentUser, userPosition}) {
                 {
                   borderBottomWidth: s(1),
                   borderColor: Colors.neutral3,
+                  marginHorizontal: s(16),
                 },
               ]}>
               {TAB_MENUS.map((menu) => {

@@ -98,12 +98,19 @@
   "away": "Away",
 
   "transportType": "Tipe Kendaraan",
+  "transportCaption": "Hubungi pemilik untuk penyewaan transportasi",
+
+  "conditions": "Ketentuan",
 
   "recommendedMenu": "Rekomendasi Menu",
   "recommendedSouvenir": "Rekomendasi Souvenir",
 
   "menuList": "Daftar Menu",
   "souvenirList": "Daftar Souvenir",
+  "transportList": "Daftar Kendaraan",
+
+  "startFrom": "Start From",
+  "person": "Orang",
 
   "close": "Close"
 }

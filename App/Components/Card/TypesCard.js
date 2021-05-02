@@ -11,7 +11,7 @@ import CustomImage from '../CustomImage';
 import CustomFlatList from '../CustomFlatList';
 
 const TypesCard = ({
-  containerStyle = {marginTop: s(40)},
+  containerStyle = {marginTop: s(40), marginHorizontal: s(16)},
   onPress = () => {},
   paramTransportTypes = {},
 }) => {

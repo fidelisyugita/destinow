@@ -173,7 +173,8 @@ function PlaceDetailScreen({
             rating={paramItem.rating}
             distance={GetDistance(userPosition, paramItem.position)}
             openingHours={paramItem.openingHours}
-            priceEstimation={paramItem.priceEstimation}
+            startFrom={paramItem.startFrom}
+            coordinate={paramItem.position}
           />
 
           <View

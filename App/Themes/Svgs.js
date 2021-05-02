@@ -52,6 +52,8 @@ import IconMotorcycle from '../Svgs/Icons/IconMotorcycle.svg';
 import IconBike from '../Svgs/Icons/IconBike.svg';
 import IconBoat from '../Svgs/Icons/IconBoat.svg';
 
+import IconPeople from '../Svgs/Icons/IconPeople.svg';
+
 const svgs = {
   LogoHorizontal,
 
@@ -106,6 +108,8 @@ const svgs = {
   IconMotorcycle,
   IconBike,
   IconBoat,
+
+  IconPeople,
 };
 
 export default svgs;

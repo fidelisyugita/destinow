@@ -218,9 +218,10 @@ function RestaurantDetailScreen({navigation, currentUser, userPosition}) {
             nameColor={`rgba(48,47,56, ${1 - transparentOpacity})`}
             address={paramItem.address}
             rating={paramItem.rating}
-            distance={paramItem.distance}
+            distance={GetDistance(userPosition, paramItem.position)}
             openingHours={paramItem.openingHours}
-            priceEstimation={paramItem.priceEstimation}
+            startFrom={paramItem.startFrom}
+            coordinate={paramItem.position}
           />
 
           <View
@@ -286,6 +287,7 @@ const mapStateToProps = (state) => {
   console.tron.log({state});
   return {
     currentUser: state.session.user,
+    userPosition: state.session.userPosition,
   };
 };
 

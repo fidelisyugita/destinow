@@ -8,6 +8,7 @@ import I18n from '../I18n';
 import RatingStar from './RatingStar';
 import VerticalLine from './VerticalLine';
 import ButtonDefault from './Button/ButtonDefault';
+import {OpenMaps} from '../Lib';
 
 const MainDetails = ({
   style = {},
@@ -17,7 +18,9 @@ const MainDetails = ({
   rating = 0,
   distance,
   openingHours,
-  priceEstimation,
+  startFrom,
+  coordinate = {},
+  caption = null,
 }) => {
   return (
     <View style={[{marginTop: s(24), marginHorizontal: s(16)}, style]}>
@@ -52,10 +55,10 @@ const MainDetails = ({
         <VerticalLine />
         <View style={[AppStyles.flex1]}>
           <Text style={[Fonts.style.footnoteRegular, {color: Colors.neutral2}]}>
-            {I18n.t('priceEstimation')}
+            {I18n.t('startFrom')}
           </Text>
           <Text style={[Fonts.style.subDescriptionMedium]}>
-            {`IDR ${priceEstimation}`}
+            {`IDR ${startFrom}`}
           </Text>
         </View>
       </View>
@@ -64,6 +67,7 @@ const MainDetails = ({
         <ButtonDefault
           SvgIcon={Svgs.IconDirection}
           text={I18n.t('openLocation')}
+          onPress={() => OpenMaps(coordinate)}
         />
         <ButtonDefault
           SvgIcon={Svgs.IconPhone}
@@ -73,6 +77,17 @@ const MainDetails = ({
           isBordered
         />
       </View>
+
+      {caption && (
+        <Text
+          style={[
+            Fonts.style.captionRegular,
+            Fonts.style.alignCenter,
+            {color: Colors.neutral2, marginTop: s(16)},
+          ]}>
+          {caption}
+        </Text>
+      )}
     </View>
   );
 };
