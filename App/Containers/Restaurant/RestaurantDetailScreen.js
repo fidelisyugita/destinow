@@ -34,6 +34,7 @@ import MainDetails from '../../Components/MainDetails';
 import CarauselTop from '../../Components/CarauselTop';
 import CustomFlatList from '../../Components/CustomFlatList';
 import FacilitiesCard from '../../Components/Card/FacilitiesCard';
+import ImageCard from '../../Components/Card/ImageCard';
 
 function RestaurantDetailScreen({navigation, currentUser, userPosition}) {
   const {navigate} = navigation;
@@ -90,27 +91,9 @@ function RestaurantDetailScreen({navigation, currentUser, userPosition}) {
             <Text style={[Fonts.style.subTitle, {marginHorizontal: s(16)}]}>
               {I18n.t('recommendedMenu')}
             </Text>
-            <CustomFlatList
-              data={paramItem.menus.filter((menu) => menu.isRecommended)}
-              numColumns={2}
-              style={{marginTop: s(12), marginHorizontal: s(8)}}
-              renderItem={({item, index}) => (
-                <View
-                  key={item + index}
-                  style={{marginVertical: s(12), marginHorizontal: s(8)}}>
-                  <CustomImage
-                    source={
-                      item.image.src ? {uri: item.image.src} : Images.default11
-                    }
-                    defaultSource={Images.default11}
-                    style={{width: s(183), height: s(181), borderRadius: s(16)}}
-                  />
-                  <Text
-                    style={[Fonts.style.descriptionBold, {marginTop: s(16)}]}>
-                    {item.name}
-                  </Text>
-                </View>
-              )}
+
+            <ImageCard
+              images={paramItem.menus.filter((menu) => menu.isRecommended)}
             />
           </View>
         )}
@@ -136,22 +119,7 @@ function RestaurantDetailScreen({navigation, currentUser, userPosition}) {
   };
 
   const renderMenus = () => {
-    return (
-      <CustomFlatList
-        data={paramItem.menus}
-        numColumns={3}
-        style={{marginTop: s(24 - 4), marginHorizontal: s(16 - 4)}}
-        renderItem={({item, index}) => (
-          <View key={item + index} style={{margin: s(4)}}>
-            <CustomImage
-              source={item.image.src ? {uri: item.image.src} : Images.default11}
-              defaultSource={Images.default11}
-              style={{width: s(122), height: s(122), borderRadius: s(16)}}
-            />
-          </View>
-        )}
-      />
-    );
+    return <ImageCard images={paramItem.menus} small />;
   };
 
   const renderReview = () => {
