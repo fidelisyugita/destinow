@@ -85,12 +85,29 @@ function HomeScreen({
         <View style={{marginTop: s(80), marginHorizontal: s(16)}}>
           <View style={[AppStyles.row, AppStyles.alignCenter]}>
             <Image
-              source={Images.defaultProfile}
-              style={{width: s(24), height: s(24), marginRight: s(8)}}
+              source={
+                currentUser.photoURL
+                  ? {uri: currentUser.photoURL}
+                  : Images.defaultProfile
+              }
+              style={{
+                width: s(24),
+                height: s(24),
+                borderRadius: s(12),
+                marginRight: s(8),
+              }}
             />
             <Text
-              style={[Fonts.style.descriptionRegular, {color: Colors.white}]}>
-              {`${I18n.t('login')}/${I18n.t('signUp')}`}
+              onPress={currentUser.email ? () => navigate('Auth') : null}
+              numberOfLines={1}
+              style={[
+                AppStyles.flex1,
+                Fonts.style.descriptionRegular,
+                {color: Colors.white},
+              ]}>
+              {currentUser.displayName
+                ? currentUser.displayName
+                : `${I18n.t('login')}/${I18n.t('signUp')}`}
             </Text>
           </View>
           <Text

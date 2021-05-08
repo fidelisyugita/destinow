@@ -8,6 +8,7 @@ import DebugConfig from '../Config/DebugConfig';
 import {StartupTypes} from '../Redux/StartupRedux';
 import {GithubTypes} from '../Redux/GithubRedux';
 
+import {AuthTypes} from '../Redux/AuthRedux';
 import {BannerTypes} from '../Redux/BannerRedux';
 
 import {PlaceTypes} from '../Redux/PlaceRedux';
@@ -20,6 +21,7 @@ import {TransportTypes} from '../Redux/TransportRedux';
 import {startup} from './StartupSagas';
 import {getUserAvatar} from './GithubSagas';
 
+import {loginGoogle, signOut} from './AuthSagas';
 import {getBanners} from './BannerSagas';
 
 import {getPlaces, getFavoritePlaces, getRecommendedPlaces} from './PlaceSagas';
@@ -42,6 +44,9 @@ export default function* root() {
 
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
+
+    takeLatest(AuthTypes.LOGIN_GOOGLE_REQUEST, loginGoogle, api),
+    takeLatest(AuthTypes.SIGN_OUT_REQUEST, signOut, api),
 
     takeLatest(BannerTypes.GET_BANNERS_REQUEST, getBanners, api),
 

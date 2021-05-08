@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import SessionActions from '../../Redux/SessionRedux';
+import AuthActions from '../../Redux/AuthRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
@@ -19,7 +20,7 @@ import ButtonList from '../../Components/Button/ButtonList';
 import CustomHeader from '../../Components/CustomHeader';
 import CustomTextInput from '../../Components/CustomTextInput';
 
-function LoginScreen({navigation, currentUser, logout}) {
+function LoginScreen({navigation, currentUser, logout, loginGoogleRequest}) {
   const {navigate} = navigation;
 
   const [email, setEmail] = useState('');
@@ -30,6 +31,13 @@ function LoginScreen({navigation, currentUser, logout}) {
   }, []);
 
   function loadData() {}
+
+  const onPressLoginGoogle = () => {
+    loginGoogleRequest({}, loginGoogleCallback);
+  };
+  const loginGoogleCallback = (response) => {
+    if (response.ok) navigate('Bottom');
+  };
 
   return (
     <SafeAreaView>
@@ -124,21 +132,22 @@ function LoginScreen({navigation, currentUser, logout}) {
               AppStyles.justifyCenter,
               {marginTop: s(16)},
             ]}>
-            <View style={{width: s(48)}}>
+            <View style={{width: s(56)}}>
               <ButtonDefault
+                onPress={onPressLoginGoogle}
                 SvgIcon={Svgs.IconGoogle}
                 buttonColor={Colors.white}
                 isBordered
                 textColor={Colors.neutral3}
               />
             </View>
-            <View style={{width: s(48), marginHorizontal: s(16)}}>
+            <View style={{width: s(56), marginHorizontal: s(16)}}>
               <ButtonDefault
                 SvgIcon={Svgs.IconFacebook}
                 buttonColor={Colors.facebook}
               />
             </View>
-            <View style={{width: s(48)}}>
+            <View style={{width: s(56)}}>
               <ButtonDefault
                 SvgIcon={Svgs.IconApple}
                 buttonColor={Colors.black}
@@ -174,6 +183,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   logout: (data, callback) => dispatch(SessionActions.logout(data, callback)),
+  loginGoogleRequest: (data, callback) =>
+    dispatch(AuthActions.loginGoogleRequest(data, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

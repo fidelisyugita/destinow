@@ -11,8 +11,9 @@ export const reducers = combineReducers({
   search: require('./SearchRedux').reducer,
 
   session: require('./SessionRedux').reducer,
+  auth: require('./AuthRedux').reducer,
   banner: require('./BannerRedux').reducer,
-  
+
   place: require('./PlaceRedux').reducer,
   restaurant: require('./RestaurantRedux').reducer,
   souvenir: require('./SouvenirRedux').reducer,

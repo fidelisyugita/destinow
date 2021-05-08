@@ -63,6 +63,10 @@ import IconGoogle from '../Svgs/Icons/IconGoogle.svg';
 import IconFacebook from '../Svgs/Icons/IconFacebook.svg';
 import IconApple from '../Svgs/Icons/IconApple.svg';
 
+import IconLogout from '../Svgs/Icons/IconLogout.svg';
+
+import IconEdit from '../Svgs/Icons/IconEdit.svg';
+
 const svgs = {
   LogoHorizontal,
 
@@ -128,6 +132,10 @@ const svgs = {
   IconGoogle,
   IconFacebook,
   IconApple,
+
+  IconLogout,
+
+  IconEdit,
 };
 
 export default svgs;

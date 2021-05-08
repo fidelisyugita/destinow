@@ -18,6 +18,10 @@ import TransportDetailScreen from '../Containers/Transport/TransportDetailScreen
 const MainNav = createStackNavigator(
   {
     Bottom: BottomNav,
+    /**
+     * TODO
+     * make sure auth navigation
+     */
     Auth: AuthNav,
 
     PlaceScreen: {screen: PlaceScreen},

@@ -57,6 +57,7 @@ export const SessionSelectors = {
 /* ------------- Reducers ------------- */
 
 export const removeOnboarding = (state) => {
+  console.tron.log({removeOnboarding: 'success'});
   return state.merge({...state, isFirstOpen: false});
 };
 
@@ -65,10 +66,12 @@ export const saveToken = (state, {data}) => {
 };
 
 export const saveUser = (state, {data}) => {
+  console.tron.log({saveUser: data});
   return state.merge({...state, user: data});
 };
 
 export const logout = (state) => {
+  console.tron.log({logoutRedux: 'success'});
   return state.merge({
     ...INITIAL_STATE,
   });
