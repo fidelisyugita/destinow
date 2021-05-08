@@ -1,4 +1,6 @@
 import {put, select} from 'redux-saga/effects';
+import Secrets from 'react-native-config';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 
 import SessionActions, {SessionSelectors} from '../Redux/SessionRedux';
 
@@ -21,6 +23,11 @@ export function* startup(action) {
     // );
     // setTimeout(() => BackHandler.exitApp(), 10000);
   }
+
+  GoogleSignin.configure({
+    webClientId: Secrets.WEB_CLIENT_ID,
+    iosClientId: Secrets.IOS_CLIENT_ID,
+  });
 
   if (__DEV__ && console.tron) {
     // straight-up string logging

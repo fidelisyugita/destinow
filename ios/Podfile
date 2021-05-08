@@ -39,3 +39,12 @@ target 'destinow-tvOS' do
     # Pods for testing
   end
 end
+
+
+post_install do |installer|
+  installer.pods_project.build_configurations.each do |config|
+    if config.name != 'Release'
+      config.build_settings["VALID_ARCHS[sdk=iphonesimulator*]"] = "arm64, arm64e, armv7, armv6, i386, x86_64"
+    end
+  end
+end

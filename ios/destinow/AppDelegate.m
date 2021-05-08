@@ -2,6 +2,7 @@
 @import Firebase;
 
 #import <Firebase.h>
+#import "RNGoogleSignin.h"
 
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
