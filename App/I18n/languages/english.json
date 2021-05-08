@@ -6,7 +6,7 @@
   "onboardingTitle3": "Berikan Pendapatmu",
   "onboardingDescription3": "Velit integer porta eget egestas malesuada ac neque. Feugiat nisl, quis quis id in amet felis.",
 
-  "logIn": "Masuk",
+  "login": "Masuk",
   "signUp": "Daftar",
   "skip": "Lewati",
 
@@ -111,6 +111,23 @@
 
   "startFrom": "Start From",
   "person": "Orang",
+
+  "loginNow": "Masuk ke Akunmu Sekarang",
+  "loginNowDescription": "Nikmati kemudahan untuk mencari destinasimu selama di Belitung.",
+
+  "noAccount": "Belum Punya Akun",
+  "signUpNow": "Daftar Sekarang",
+
+  "setting": "Pengaturan",
+  "language": "Bahasa",
+  "currentLanguage": "Indonesia",
+
+  "loginDescription": "Silahkan masuk dengan nomor HP-mu yang terdaftar.",
+  "phoneNumber": "Nomor HP",
+  "fullName": "Nama Lengkap",
+  "email": "Email",
+  "password": "Password",
+  "orLoginWith": "atau masuk dengan",
 
   "close": "Close"
 }

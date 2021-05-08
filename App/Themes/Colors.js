@@ -11,6 +11,8 @@ const colors = {
   neutral2: '#8F8CA7',
   neutral3: '#E3E1EE',
   neutral4: '#F7F7FE',
+
+  facebook: '#415A93',
 };
 
 export default colors;

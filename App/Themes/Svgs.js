@@ -7,6 +7,8 @@ import Onboarding3 from '../Svgs/Onboarding3.svg';
 import EmptyReview from '../Svgs/EmptyReview.svg';
 import EmptyNotification from '../Svgs/EmptyNotification.svg';
 
+import LoginSignUp from '../Svgs/LoginSignUp.svg';
+
 import IconHome from '../Svgs/Icons/IconHome.svg';
 import IconInbox from '../Svgs/Icons/IconInbox.svg';
 import IconProfile from '../Svgs/Icons/IconProfile.svg';
@@ -23,6 +25,7 @@ import IconStar from '../Svgs/Icons/IconStar.svg';
 import IconStarFill from '../Svgs/Icons/IconStarFill.svg';
 
 import IconArrowLeft from '../Svgs/Icons/IconArrowLeft.svg';
+import IconArrowRight from '../Svgs/Icons/IconArrowRight.svg';
 
 import IconRecommendation from '../Svgs/Icons/IconRecommendation.svg';
 
@@ -54,6 +57,12 @@ import IconBoat from '../Svgs/Icons/IconBoat.svg';
 
 import IconPeople from '../Svgs/Icons/IconPeople.svg';
 
+import IconLanguage from '../Svgs/Icons/IconLanguage.svg';
+
+import IconGoogle from '../Svgs/Icons/IconGoogle.svg';
+import IconFacebook from '../Svgs/Icons/IconFacebook.svg';
+import IconApple from '../Svgs/Icons/IconApple.svg';
+
 const svgs = {
   LogoHorizontal,
 
@@ -63,6 +72,8 @@ const svgs = {
 
   EmptyReview,
   EmptyNotification,
+
+  LoginSignUp,
 
   IconHome,
   IconInbox,
@@ -80,6 +91,7 @@ const svgs = {
   IconStarFill,
 
   IconArrowLeft,
+  IconArrowRight,
 
   IconRecommendation,
 
@@ -110,6 +122,12 @@ const svgs = {
   IconBoat,
 
   IconPeople,
+
+  IconLanguage,
+
+  IconGoogle,
+  IconFacebook,
+  IconApple,
 };
 
 export default svgs;

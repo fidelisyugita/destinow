@@ -27,10 +27,10 @@ function LaunchScreen({navigation, rehydrated, isFirstOpen}) {
     <View
       style={[AppStyles.flex1, AppStyles.alignCenter, AppStyles.justifyCenter]}>
       <Image
-        source={Images.default11}
+        source={Images.logo}
         style={{
-          width: s(334),
-          height: s(334),
+          width: s(169),
+          height: s(169),
         }}
       />
     </View>

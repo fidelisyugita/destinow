@@ -90,7 +90,7 @@ function HomeScreen({
             />
             <Text
               style={[Fonts.style.descriptionRegular, {color: Colors.white}]}>
-              {`${I18n.t('logIn')}/${I18n.t('signUp')}`}
+              {`${I18n.t('login')}/${I18n.t('signUp')}`}
             </Text>
           </View>
           <Text

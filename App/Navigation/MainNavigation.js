@@ -1,7 +1,7 @@
 import {createStackNavigator} from 'react-navigation-stack';
 
 import BottomNav from './BottomNavigation';
-// import AuthNav from './AuthNavigation';
+import AuthNav from './AuthNavigation';
 
 import PlaceScreen from '../Containers/Place';
 import PlaceDetailScreen from '../Containers/Place/PlaceDetailScreen';
@@ -18,7 +18,7 @@ import TransportDetailScreen from '../Containers/Transport/TransportDetailScreen
 const MainNav = createStackNavigator(
   {
     Bottom: BottomNav,
-    // Auth: AuthNav,
+    Auth: AuthNav,
 
     PlaceScreen: {screen: PlaceScreen},
     PlaceDetailScreen: {screen: PlaceDetailScreen},

@@ -108,7 +108,8 @@ function OnboardingScreen({navigation, removeOnboarding}) {
             },
           ]}>
           <ButtonDefault
-            text={I18n.t('logIn')}
+            onPress={() => navigate('Auth')}
+            text={I18n.t('login')}
             textColor={Colors.blue}
             buttonColor={Colors.white}
             isBordered
