@@ -39,9 +39,9 @@ const data = [
 function OnboardingScreen({navigation, isFirstOpen, removeOnboarding}) {
   const {navigate} = navigation;
 
-  useEffect(() => {
-    if (!isFirstOpen) navigate('Main');
-  }, [isFirstOpen]);
+  // useEffect(() => {
+  //   if (!isFirstOpen) navigate('Main');
+  // }, [isFirstOpen]);
 
   const renderItem = ({title, description, ImageSvg}, index) => {
     return (

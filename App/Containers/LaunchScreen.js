@@ -12,16 +12,16 @@ import {s, vs} from '../Lib/Scaling';
 function LaunchScreen({navigation, rehydrated, isFirstOpen}) {
   const {navigate} = navigation;
 
-  // useEffect(() => {
-  //   if (rehydrated) {
-  //     if (isFirstOpen) navigate('Onboarding');
-  //     else navigate('Main');
-  //   }
-  // }, [rehydrated]);
-
   useEffect(() => {
-    navigate('Onboarding');
-  }, []);
+    if (rehydrated) {
+      if (isFirstOpen) navigate('Onboarding');
+      else navigate('Main');
+    }
+  }, [rehydrated]);
+
+  // useEffect(() => {
+  //   navigate('Onboarding');
+  // }, []);
 
   return (
     <View

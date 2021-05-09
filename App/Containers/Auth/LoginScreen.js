@@ -36,7 +36,7 @@ function LoginScreen({navigation, currentUser, logout, loginGoogleRequest}) {
     loginGoogleRequest({}, loginGoogleCallback);
   };
   const loginGoogleCallback = (response) => {
-    if (response.ok) navigate('Bottom');
+    // if (response.ok) navigate('Bottom');
   };
 
   return (

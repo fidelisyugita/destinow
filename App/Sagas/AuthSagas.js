@@ -11,12 +11,18 @@ import {REGION} from './Consts';
 
 export function* loginGoogle(api, action) {
   try {
-    // Get the users ID token
+    yield GoogleSignin.hasPlayServices();
     const {idToken} = yield GoogleSignin.signIn();
     console.tron.log({idToken});
 
+    const {accessToken} = yield GoogleSignin.getTokens();
+    console.tron.log({accessToken});
+
     // Create a Google credential with the token
-    const googleCredential = yield auth.GoogleAuthProvider.credential(idToken);
+    const googleCredential = yield auth.GoogleAuthProvider.credential(
+      idToken,
+      accessToken,
+    );
     console.tron.log({googleCredential});
 
     // Sign-in the user with the credential
@@ -46,6 +52,7 @@ export function* loginGoogle(api, action) {
        * TODO
        * - make navigationServices works
        */
+      NavigationServices.navigate('Bottom');
       // NavigationServices.pop();
     }
   } catch (error) {
