@@ -18,6 +18,8 @@ export const reducers = combineReducers({
   restaurant: require('./RestaurantRedux').reducer,
   souvenir: require('./SouvenirRedux').reducer,
   transport: require('./TransportRedux').reducer,
+  news: require('./NewsRedux').reducer,
+  localDiary: require('./LocalDiaryRedux').reducer,
 });
 
 export default () => {

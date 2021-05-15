@@ -13,13 +13,15 @@ import {
 } from 'react-native';
 
 import SessionActions from '../../Redux/SessionRedux';
-import PlaceActions from '../../Redux/PlaceRedux';
 import BannerActions from '../../Redux/BannerRedux';
+import PlaceActions from '../../Redux/PlaceRedux';
+import NewsActions from '../../Redux/NewsRedux';
+import LocalDiaryActions from '../../Redux/LocalDiaryRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
 import I18n from '../../I18n';
-import {IsNotEmpty} from '../../Lib';
+import {DateFormatter, IsNotEmpty} from '../../Lib';
 
 import ButtonIcon from '../../Components/Home/ButtonIcon';
 import PlaceCard from '../../Components/Card/PlaceCard';
@@ -36,10 +38,14 @@ function HomeScreen({
   navigation,
   currentUser,
 
-  getFavoritePlaces,
-  getFavoritePlacesRequest,
   getBanners,
   getBannersRequest,
+  getFavoritePlaces,
+  getFavoritePlacesRequest,
+  news,
+  getNewsRequest,
+  localDiaries,
+  getLocalDiariesRequest,
 }) {
   const {navigate} = navigation;
 
@@ -50,8 +56,11 @@ function HomeScreen({
   }, []);
 
   function loadData() {
-    getFavoritePlacesRequest();
     getBannersRequest();
+
+    getFavoritePlacesRequest();
+    getNewsRequest();
+    getLocalDiariesRequest();
   }
 
   const onScroll = (event) => {
@@ -221,36 +230,13 @@ function HomeScreen({
             keyExtractor={(item, index) => item + index}
             contentContainerStyle={{paddingHorizontal: s(16 - 8)}}
             style={{marginTop: s(24)}}
-            data={[
-              {
-                cover: {
-                  src:
-                    'https://www.pesonaindo.com/wp-content/uploads/2016/04/Paket-Wisata-Belitung-Island-Pesona-Indonesia-Foto-Trip-1.jpg',
-                },
-                title:
-                  'Mi, at lobortis vitae pellentesque urna at senectus et ornare suspendisse et.',
-                description:
-                  'Nisl tristique facilisi lectus malesuada tristique in eget diam. Purus ultricies venenatis senec...',
-                author: 'Ronald Richards',
-              },
-              {
-                cover: {
-                  src:
-                    'https://cache.marriott.com/marriottassets/marriott/TJQSI/tjqsi-lobby-5988-hor-feat.jpg',
-                },
-                title:
-                  'Mi, at lobortis vitae pellentesque urna at senectus et ornare suspendisse et.',
-                description:
-                  'Nisl tristique facilisi lectus malesuada tristique in eget diam. Purus ultricies venenatis senec...',
-                author: 'Annette Black',
-              },
-            ]}
+            data={localDiaries.slice(0, 10)}
             renderItem={({item, index}) => (
               <LocalDiaryCard
                 imageSrc={item.cover ? {uri: item.cover.src} : Images.default32}
                 title={item.title}
                 description={item.description}
-                author={item.author}
+                author={item.createdBy}
               />
             )}
           />
@@ -264,42 +250,14 @@ function HomeScreen({
 
           <TitleBar title={I18n.t('news')} />
           <CustomFlatList
-            data={[
-              {
-                cover: {
-                  src:
-                    'https://www.pesonaindo.com/wp-content/uploads/2016/04/Paket-Wisata-Belitung-Island-Pesona-Indonesia-Foto-Trip-1.jpg',
-                },
-                title: '3 jam yang lalu',
-                description:
-                  'Nisl tristique facilisi lectus malesuada tristique in eget diam. Purus ultricies venenatis senec...',
-              },
-              {
-                cover: {
-                  src:
-                    'https://cache.marriott.com/marriottassets/marriott/TJQSI/tjqsi-lobby-5988-hor-feat.jpg',
-                },
-                title: '1 hari yang lalu',
-                description:
-                  'Nisl tristique facilisi lectus malesuada tristique in eget diam. Purus ultricies venenatis senec...',
-              },
-              {
-                cover: {
-                  src:
-                    'https://www.pesonaindo.com/wp-content/uploads/2016/04/Paket-Wisata-Belitung-Island-Pesona-Indonesia-Foto-Trip-1.jpg',
-                },
-                title: '3 jam yang lalu',
-                description:
-                  'Nisl tristique facilisi lectus malesuada tristique in eget diam. Purus ultricies venenatis senec...',
-              },
-            ]}
+            data={news.slice(0, 5)}
             style={{marginTop: s(24 - 8)}}
             renderItem={({item, index}) => (
               <NewsList
                 key={item + index}
                 imageSrc={item.cover ? {uri: item.cover.src} : Images.default11}
-                caption={item.title}
-                text={item.description}
+                caption={DateFormatter(item.createdAt)}
+                text={item.title}
                 hideBorderTop={index === 0}
               />
             )}
@@ -325,15 +283,21 @@ const mapStateToProps = (state) => {
 
     getFavoritePlaces: state.place.getFavoritePlaces,
     getBanners: state.banner.getBanners,
+    news: state.news.news,
+    localDiaries: state.localDiary.localDiaries,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   logout: (data, callback) => dispatch(SessionActions.logout(data, callback)),
-  getFavoritePlacesRequest: (data, callback) =>
-    dispatch(PlaceActions.getFavoritePlacesRequest(data, callback)),
   getBannersRequest: (data, callback) =>
     dispatch(BannerActions.getBannersRequest(data, callback)),
+  getFavoritePlacesRequest: (data, callback) =>
+    dispatch(PlaceActions.getFavoritePlacesRequest(data, callback)),
+  getNewsRequest: (data, callback) =>
+    dispatch(NewsActions.getNewsRequest(data, callback)),
+  getLocalDiariesRequest: (data, callback) =>
+    dispatch(LocalDiaryActions.getLocalDiariesRequest(data, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

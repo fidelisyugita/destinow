@@ -14,3 +14,9 @@ export const GET_RECOMMENDED_SOUVENIRS = 'souvenir-recommended';
 
 export const GET_TRANSPORTS = 'transport-get';
 export const GET_RECOMMENDED_TRANSPORTS = 'transport-recommended';
+
+export const GET_NEWS = 'news-get';
+export const GET_RECOMMENDED_NEWS = 'news-recommended';
+
+export const GET_LOCAL_DIARIES = 'localDiary-get';
+export const GET_RECOMMENDED_LOCAL_DIARIES = 'localDiary-recommended';

@@ -15,6 +15,8 @@ import {PlaceTypes} from '../Redux/PlaceRedux';
 import {RestaurantTypes} from '../Redux/RestaurantRedux';
 import {SouvenirTypes} from '../Redux/SouvenirRedux';
 import {TransportTypes} from '../Redux/TransportRedux';
+import {NewsTypes} from '../Redux/NewsRedux';
+import {LocalDiaryTypes} from '../Redux/LocalDiaryRedux';
 
 /* ------------- Sagas ------------- */
 
@@ -28,6 +30,8 @@ import {getPlaces, getFavoritePlaces, getRecommendedPlaces} from './PlaceSagas';
 import {getRestaurants, getRecommendedRestaurants} from './RestaurantSagas';
 import {getSouvenirs, getRecommendedSouvenirs} from './SouvenirSagas';
 import {getTransports, getRecommendedTransports} from './TransportSagas';
+import {getNews, getRecommendedNews} from './NewsSagas';
+import {getLocalDiaries, getRecommendedLocalDiaries} from './LocalDiarySagas';
 
 /* ------------- API ------------- */
 
@@ -76,6 +80,16 @@ export default function* root() {
     takeLatest(
       TransportTypes.GET_RECOMMENDED_TRANSPORTS_REQUEST,
       getRecommendedTransports,
+      api,
+    ),
+
+    takeLatest(NewsTypes.GET_NEWS_REQUEST, getNews, api),
+    takeLatest(NewsTypes.GET_RECOMMENDED_NEWS_REQUEST, getRecommendedNews, api),
+
+    takeLatest(LocalDiaryTypes.GET_LOCAL_DIARIES_REQUEST, getLocalDiaries, api),
+    takeLatest(
+      LocalDiaryTypes.GET_RECOMMENDED_LOCAL_DIARIES_REQUEST,
+      getRecommendedLocalDiaries,
       api,
     ),
   ]);
