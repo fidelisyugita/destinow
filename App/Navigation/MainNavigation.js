@@ -15,6 +15,12 @@ import SouvenirDetailScreen from '../Containers/Souvenir/SouvenirDetailScreen';
 import TransportScreen from '../Containers/Transport';
 import TransportDetailScreen from '../Containers/Transport/TransportDetailScreen';
 
+import NewsScreen from '../Containers/News';
+import NewsDetailScreen from '../Containers/News/NewsDetailScreen';
+
+import LocalDiaryScreen from '../Containers/LocalDiary';
+import LocalDiaryDetailScreen from '../Containers/LocalDiary/LocalDiaryDetailScreen';
+
 const MainNav = createStackNavigator(
   {
     Bottom: BottomNav,
@@ -35,6 +41,12 @@ const MainNav = createStackNavigator(
 
     TransportScreen: {screen: TransportScreen},
     TransportDetailScreen: {screen: TransportDetailScreen},
+
+    NewsScreen: {screen: NewsScreen},
+    NewsDetailScreen: {screen: NewsDetailScreen},
+
+    LocalDiaryScreen: {screen: LocalDiaryScreen},
+    LocalDiaryDetailScreen: {screen: LocalDiaryDetailScreen},
   },
   {
     headerMode: 'none',

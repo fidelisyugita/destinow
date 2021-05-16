@@ -73,6 +73,9 @@
   "youHaveSeenAllSouvenirPlaces": "Kamu sudah melihat semua tempat souvenir",
   "youHaveSeenAllTransportProviders": "Kamu sudah melihat semua penyedia transportasi",
 
+  "youHaveSeenAllNews": "Kamu sudah melihat semua berita",
+  "youHaveSeenAllLocalDiaries": "Kamu sudah melihat semua lokal bersuara",
+
   "backToTop": "Kembali ke atas",
 
   "parking": "Tempat Parkir",
@@ -132,6 +135,9 @@
   "logOut": "Log Out",
 
   "editProfile": "Ubah Profile",
+
+  "allNews": "Semua Berita",
+  "localDiaries": "Lokal Bersuara",
 
   "close": "Close"
 }

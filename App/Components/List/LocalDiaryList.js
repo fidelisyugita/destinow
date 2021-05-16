@@ -8,13 +8,14 @@ import I18n from '../../I18n';
 import RatingStar from '../RatingStar';
 import CustomImage from '../CustomImage';
 
-const NewsList = ({
+const LocalDiaryList = ({
   containerStyle = {marginHorizontal: s(16)},
   onPress = () => {},
   imageSrc = Images.default11,
-  caption = '',
   title = '',
-  description = null,
+  description = '',
+  authorImageSrc = null,
+  authorName = '',
   hideBorderTop = false,
   hideBorderBottom = true,
 }) => (
@@ -37,26 +38,34 @@ const NewsList = ({
         style={{width: s(84), height: s(84), borderRadius: s(16)}}
       />
       <View style={{marginLeft: s(16), width: s(282)}}>
-        <Text
-          numberOfLines={1}
-          style={[Fonts.style.captionRegular, {color: Colors.neutral2}]}>
-          {caption}
+        <Text numberOfLines={2} style={[Fonts.style.descriptionBold]}>
+          {title || '-'}
         </Text>
         <Text
           numberOfLines={2}
-          style={[Fonts.style.descriptionBold, {marginTop: s(8)}]}>
-          {title}
+          style={[Fonts.style.subDescriptionRegular, {marginTop: s(2)}]}>
+          {description || '-'}
         </Text>
-        {description && (
+
+        <View style={[AppStyles.row, AppStyles.alignCenter, {marginTop: s(8)}]}>
+          <CustomImage
+            source={
+              authorImageSrc ? {uri: authorImageSrc} : Images.defaultProfile
+            }
+            defaultSource={Images.defaultProfile}
+            style={{width: s(32), height: s(32), borderRadius: s(16)}}
+          />
           <Text
-            numberOfLines={2}
-            style={[Fonts.style.subDescriptionRegular, {marginTop: s(2)}]}>
-            {description}
+            style={[
+              Fonts.style.captionMedium,
+              {width: s(242), marginLeft: s(8)},
+            ]}>
+            {authorName || '-'}
           </Text>
-        )}
+        </View>
       </View>
     </TouchableOpacity>
   </View>
 );
 
-export default NewsList;
+export default LocalDiaryList;

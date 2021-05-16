@@ -14,7 +14,8 @@ const LocalDiaryCard = ({
   imageSrc = Images.default11,
   title = '',
   description = '',
-  author = '',
+  authorImageSrc = null,
+  authorName = '',
 }) => (
   <TouchableOpacity style={containerStyle} onPress={onPress}>
     <CustomImage
@@ -38,13 +39,13 @@ const LocalDiaryCard = ({
 
     <View style={[AppStyles.row, AppStyles.alignCenter, {marginTop: s(8)}]}>
       <CustomImage
-        source={Images.defaultProfile}
-        defaultSource={Images.default11}
+        source={authorImageSrc ? {uri: authorImageSrc} : Images.defaultProfile}
+        defaultSource={Images.defaultProfile}
         style={{width: s(32), height: s(32), borderRadius: s(16)}}
       />
       <Text
         style={[Fonts.style.captionMedium, {width: s(260), marginLeft: s(8)}]}>
-        {author || '-'}
+        {authorName || '-'}
       </Text>
     </View>
   </TouchableOpacity>

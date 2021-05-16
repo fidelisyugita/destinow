@@ -233,14 +233,16 @@ function HomeScreen({
             data={localDiaries.slice(0, 10)}
             renderItem={({item, index}) => (
               <LocalDiaryCard
+                onPress={() => navigate('LocalDiaryDetailScreen', {item})}
                 imageSrc={item.cover ? {uri: item.cover.src} : Images.default32}
                 title={item.title}
                 description={item.description}
-                author={item.createdBy}
+                authorName={item.createdBy}
               />
             )}
           />
           <ButtonDefault
+            onPress={() => navigate('LocalDiaryScreen')}
             text={I18n.t('viewAll')}
             buttonStyle={{marginTop: s(32), marginHorizontal: s(16)}}
             buttonColor={Colors.white}
@@ -254,15 +256,17 @@ function HomeScreen({
             style={{marginTop: s(24 - 8)}}
             renderItem={({item, index}) => (
               <NewsList
+                onPress={() => navigate('NewsDetailScreen', {item})}
                 key={item + index}
                 imageSrc={item.cover ? {uri: item.cover.src} : Images.default11}
                 caption={DateFormatter(item.createdAt)}
-                text={item.title}
+                title={item.title}
                 hideBorderTop={index === 0}
               />
             )}
           />
           <ButtonDefault
+            onPress={() => navigate('NewsScreen')}
             text={I18n.t('viewAll')}
             buttonStyle={{marginTop: s(32 - 16), marginHorizontal: s(16)}}
             buttonColor={Colors.white}
