@@ -120,7 +120,40 @@ function LocalDiaryScreen({
         transparentOpacity={1}
         title={I18n.t('localDiaries')}
         iconColor={Colors.blue}
+        rightIcons={[
+          {
+            SvgIcon: Svgs.IconPlus,
+            onPress: () => navigate('SubmitLocalDiaryScreen'),
+          },
+        ]}
       />
+
+      <View
+        style={[
+          AppStyles.row,
+          AppStyles.alignCenter,
+          {
+            margin: s(16),
+            paddingHorizontal: s(16),
+            paddingVertical: s(8),
+            borderRadius: s(8),
+            backgroundColor: Colors.lightBlue,
+          },
+        ]}>
+        <Svgs.IconStarComment
+          width={s(32)}
+          height={s(32)}
+          fill={Colors.darkBlue}
+        />
+        <View style={{marginLeft: s(16)}}>
+          <Text style={[Fonts.style.subDescriptionMedium]}>
+            {`${I18n.t('submitYourThoughtAboutBelitung')}!`}
+          </Text>
+          <Text style={[Fonts.style.captionRegular, {marginTop: s(2)}]}>
+            {I18n.t('submitYourThoughtAboutBelitungDescription')}
+          </Text>
+        </View>
+      </View>
 
       <FlatList
         ref={flatListRef}
@@ -137,6 +170,7 @@ function LocalDiaryScreen({
             caption={DateFormatter(item.createdAt)}
             title={item.title}
             description={item.description}
+            authorName={item.createdBy}
             hideBorderTop={index === 0}
           />
         )}

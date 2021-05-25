@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useState, useEffect, memo} from 'react';
 import {
   View,
   Text,
@@ -21,42 +21,63 @@ const CustomTextInput = ({
   errorMessage = null,
   onChangeText = () => {},
   containerStyle = {},
-}) => (
-  <View
-    style={[
-      AppStyles.justifyCenter,
-      {
-        height: s(48),
-        paddingHorizontal: s(16),
-        borderRadius: s(6),
-        borderColor: Colors.neutral3,
-        borderWidth: s(1),
-      },
-      containerStyle,
-    ]}>
-    {(placeholder || value.length > 0) && label && (
-      <Text style={[Fonts.style.footnoteRegular, {color: Colors.neutral2}]}>
-        {label}
-      </Text>
-    )}
-    <TextInput
-      value={value}
-      onChangeText={onChangeText}
-      secureTextEntry={secureTextEntry}
-      placeholder={placeholder || label}
-      style={[Fonts.style.subDescriptionRegular]}
-      placeholderTextColor={placeholder ? Colors.neutral3 : Colors.neutral2}
-    />
-    {errorMessage && (
-      <Text
+  textInputStyle = {},
+  multiline = false,
+}) => {
+  const [isFocus, setFocus] = useState(false);
+
+  return (
+    <View>
+      <View
         style={[
-          Fonts.style.captionRegular,
-          {marginTop: s(4), color: Colors.red},
+          AppStyles.justifyCenter,
+          {
+            height: s(48),
+            paddingHorizontal: s(16),
+            borderRadius: s(6),
+            borderWidth: s(1),
+            borderColor: errorMessage
+              ? Colors.red
+              : isFocus
+              ? Colors.blue
+              : Colors.neutral3,
+          },
+          containerStyle,
         ]}>
-        {errorMessage}
-      </Text>
-    )}
-  </View>
-);
+        {(placeholder || value.length > 0) && label && (
+          <Text style={[Fonts.style.footnoteRegular, {color: Colors.neutral2}]}>
+            {label}
+          </Text>
+        )}
+        <TextInput
+          onFocus={() => setFocus(true)}
+          onEndEditing={() => setFocus(false)}
+          // onTouchEnd={() => setFocus(false)}
+          value={value}
+          onChangeText={onChangeText}
+          secureTextEntry={secureTextEntry}
+          placeholder={placeholder || label}
+          style={[
+            Fonts.style.subDescriptionRegular,
+            {padding: 0, height: s(20), textAlignVertical: 'top'},
+            textInputStyle,
+          ]}
+          placeholderTextColor={placeholder ? Colors.neutral3 : Colors.neutral2}
+          multiline={multiline}
+        />
+      </View>
+
+      {errorMessage && (
+        <Text
+          style={[
+            Fonts.style.subDescriptionRegular,
+            {marginTop: s(8), color: Colors.red},
+          ]}>
+          {errorMessage}
+        </Text>
+      )}
+    </View>
+  );
+};
 
 export default CustomTextInput;

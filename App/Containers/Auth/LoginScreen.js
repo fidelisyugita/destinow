@@ -159,7 +159,7 @@ function LoginScreen({navigation, currentUser, logout, loginGoogleRequest}) {
         <Text
           style={[
             Fonts.style.alignCenter,
-            {width: s(382), marginTop: s(236), marginBottom: s(34)},
+            {width: s(382), marginTop: s(96), marginBottom: s(34)},
           ]}>
           <Text
             style={[Fonts.style.descriptionRegular, {color: Colors.neutral2}]}>

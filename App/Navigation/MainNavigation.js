@@ -20,6 +20,7 @@ import NewsDetailScreen from '../Containers/News/NewsDetailScreen';
 
 import LocalDiaryScreen from '../Containers/LocalDiary';
 import LocalDiaryDetailScreen from '../Containers/LocalDiary/LocalDiaryDetailScreen';
+import SubmitLocalDiaryScreen from '../Containers/LocalDiary/SubmitLocalDiaryScreen';
 
 const MainNav = createStackNavigator(
   {
@@ -47,6 +48,7 @@ const MainNav = createStackNavigator(
 
     LocalDiaryScreen: {screen: LocalDiaryScreen},
     LocalDiaryDetailScreen: {screen: LocalDiaryDetailScreen},
+    SubmitLocalDiaryScreen: {screen: SubmitLocalDiaryScreen},
   },
   {
     headerMode: 'none',

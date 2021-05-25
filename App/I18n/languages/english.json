@@ -139,5 +139,19 @@
   "allNews": "Semua Berita",
   "localDiaries": "Lokal Bersuara",
 
+  "submitYourThoughtAboutBelitung": "Suarakan Pendapatmu Mengenai Belitung",
+  "submitYourThoughtAboutBelitungDescription": "Klik pada tanda + di atas, untuk mengirimkan konten.",
+
+  "submitLocalDiary": "Submit Lokal Bersuara",
+  "title": "Judul",
+
+  "uploadImageCover": "Upload Image Cover",
+  "tellYourStory": "Isi Ceritamu di Lokal Bersuara",
+  "uploadImage": "Upload Image",
+  "paragraph": "Paragraph",
+  "typeYourStory": "Isi Ceritamu",
+  "addParagraph": "Tambah Paragraph",
+  "submitStory": "Kirim Cerita",
+
   "close": "Close"
 }

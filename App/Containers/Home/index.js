@@ -91,8 +91,16 @@ function HomeScreen({
             },
           ]}
         />
+      </View>
+
+      <ScrollView
+        onScroll={(event) => onScroll(event)}
+        scrollEventThrottle={1600} // default 16
+        showsVerticalScrollIndicator={false}>
         <View style={{marginTop: s(80), marginHorizontal: s(16)}}>
-          <View style={[AppStyles.row, AppStyles.alignCenter]}>
+          <TouchableOpacity
+            style={[AppStyles.row, AppStyles.alignCenter]}
+            onPress={!currentUser.email ? () => navigate('Auth') : null}>
             <Image
               source={
                 currentUser.photoURL
@@ -107,7 +115,6 @@ function HomeScreen({
               }}
             />
             <Text
-              onPress={currentUser.email ? () => navigate('Auth') : null}
               numberOfLines={1}
               style={[
                 AppStyles.flex1,
@@ -118,19 +125,13 @@ function HomeScreen({
                 ? currentUser.displayName
                 : `${I18n.t('login')}/${I18n.t('signUp')}`}
             </Text>
-          </View>
+          </TouchableOpacity>
           <Text
             style={[Fonts.style.title, {marginTop: s(2), color: Colors.white}]}>
             {`${I18n.t('findYourFavoriteDestinationHere')}!`}
           </Text>
         </View>
-      </View>
-
-      <ScrollView
-        onScroll={(event) => onScroll(event)}
-        scrollEventThrottle={1600} // default 16
-        showsVerticalScrollIndicator={false}>
-        <CustomBody>
+        <CustomBody style={{marginTop: s(16)}}>
           <View
             style={[
               AppStyles.row,

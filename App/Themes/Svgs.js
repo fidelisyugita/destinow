@@ -67,6 +67,12 @@ import IconLogout from '../Svgs/Icons/IconLogout.svg';
 
 import IconEdit from '../Svgs/Icons/IconEdit.svg';
 
+import IconPlus from '../Svgs/Icons/IconPlus.svg';
+
+import IconStarComment from '../Svgs/Icons/IconStarComment.svg';
+
+import IconBurger from '../Svgs/Icons/IconBurger.svg';
+
 const svgs = {
   LogoHorizontal,
 
@@ -136,6 +142,12 @@ const svgs = {
   IconLogout,
 
   IconEdit,
+
+  IconPlus,
+
+  IconStarComment,
+
+  IconBurger,
 };
 
 export default svgs;
