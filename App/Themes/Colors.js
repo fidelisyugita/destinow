@@ -2,6 +2,7 @@ const colors = {
   black: '#000',
   white: '#FFF',
   transparent: 'rgba(0,0,0,0)',
+  backDrop: 'rgba(0, 0, 0, 0.5)',
 
   darkBlue: '#026E78',
   blue: '#00A9BA',

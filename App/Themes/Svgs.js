@@ -73,6 +73,9 @@ import IconStarComment from '../Svgs/Icons/IconStarComment.svg';
 
 import IconBurger from '../Svgs/Icons/IconBurger.svg';
 
+import IconCamera from '../Svgs/Icons/IconCamera.svg';
+import IconGallery from '../Svgs/Icons/IconGallery.svg';
+
 const svgs = {
   LogoHorizontal,
 
@@ -148,6 +151,9 @@ const svgs = {
   IconStarComment,
 
   IconBurger,
+
+  IconCamera,
+  IconGallery,
 };
 
 export default svgs;

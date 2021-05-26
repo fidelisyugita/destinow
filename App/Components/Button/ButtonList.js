@@ -8,9 +8,12 @@ import I18n from '../../I18n';
 const ButtonList = ({
   onPress = () => {},
 
-  SvgIcon = Svgs.IconLanguage,
+  SvgLeftIcon = null,
   iconSize = s(24),
   iconColor = Colors.blue,
+
+  SvgRightIcon = Svgs.IconArrowRight,
+  rightIconColor = Colors.neutral3,
 
   text = null,
   textStyle = Fonts.style.descriptionMedium,
@@ -39,8 +42,12 @@ const ButtonList = ({
       },
       buttonStyle,
     ]}>
-    <SvgIcon width={iconSize} height={iconSize} fill={iconColor} />
-    <View style={[AppStyles.flex1, {marginHorizontal: s(12)}]}>
+    {SvgLeftIcon && (
+      <View style={{marginRight: s(12)}}>
+        <SvgLeftIcon width={iconSize} height={iconSize} fill={iconColor} />
+      </View>
+    )}
+    <View style={[AppStyles.flex1]}>
       {text && <Text style={[textStyle, {color: textColor}]}>{text}</Text>}
       {description && (
         <Text
@@ -52,11 +59,16 @@ const ButtonList = ({
         </Text>
       )}
     </View>
-    <Svgs.IconArrowRight
-      width={iconSize}
-      height={iconSize}
-      fill={Colors.neutral3}
-    />
+
+    {SvgRightIcon && (
+      <View style={{marginLeft: s(12)}}>
+        <SvgRightIcon
+          width={iconSize}
+          height={iconSize}
+          fill={rightIconColor}
+        />
+      </View>
+    )}
   </TouchableOpacity>
 );
 

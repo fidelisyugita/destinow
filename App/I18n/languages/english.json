@@ -2,9 +2,9 @@
   "onboardingTitle1": "Jelajah Belitung dalam Genggamanmu",
   "onboardingDescription1": "Temukan panduan untuk wisata, tempat makan, souvenir sampai transportasi di Belitung.",
   "onboardingTitle2": "Update Langsung dari Warga Lokal",
-  "onboardingDescription2": "Velit integer porta eget egestas malesuada ac neque. Feugiat nisl, quis quis id in amet felis.",
+  "onboardingDescription2": "Dapatkan cerita mengenai Belitung, langsung dari warga lokal.",
   "onboardingTitle3": "Berikan Pendapatmu",
-  "onboardingDescription3": "Velit integer porta eget egestas malesuada ac neque. Feugiat nisl, quis quis id in amet felis.",
+  "onboardingDescription3": "Ceritakan pengalamanmu setelah mengunjungi destinasi di Belitung.",
 
   "login": "Masuk",
   "signUp": "Daftar",
@@ -152,6 +152,11 @@
   "typeYourStory": "Isi Ceritamu",
   "addParagraph": "Tambah Paragraph",
   "submitStory": "Kirim Cerita",
+
+  "cancel": "Batal",
+
+  "camera": "Kamera",
+  "gallery": "Galeri",
 
   "close": "Close"
 }

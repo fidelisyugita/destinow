@@ -26,7 +26,7 @@ const ButtonDefault = ({
     disabled={disabled}
     onPress={onPress}
     style={[
-      AppStyles.flex1,
+      // AppStyles.flex1,
       AppStyles.row,
       AppStyles.justifyCenter,
       AppStyles.alignCenter,

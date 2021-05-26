@@ -23,6 +23,7 @@ import CustomImage from '../../Components/CustomImage';
 import CustomFlatList from '../../Components/CustomFlatList';
 import CustomTextInput from '../../Components/CustomTextInput';
 import ButtonDefault from '../../Components/Button/ButtonDefault';
+import ModalOption from '../../Components/Modal/ModalOption';
 
 const INITIATE_PARAGRAPH = {text: '', image: ''};
 
@@ -35,6 +36,8 @@ function SubmitLocalDiaryScreen({navigation, currentUser, userPosition}) {
   const [title, setTitle] = useState('');
   const [paragraphs, setParagraphs] = useState([INITIATE_PARAGRAPH]);
   const [isValid, setValid] = useState(false);
+
+  const [isModalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -108,6 +111,25 @@ function SubmitLocalDiaryScreen({navigation, currentUser, userPosition}) {
 
   return (
     <SafeAreaView>
+      <ModalOption
+        onPressCancel={() => setModalVisible(false)}
+        visible={isModalVisible}
+        transparent
+        title={I18n.t('uploadImage')}
+        options={[
+          {
+            onPress: () => {},
+            text: I18n.t('camera'),
+            SvgIcon: Svgs.IconCamera,
+          },
+          {
+            onPress: () => {},
+            text: I18n.t('gallery'),
+            SvgIcon: Svgs.IconGallery,
+          },
+        ]}
+      />
+
       <CustomHeader
         onBack={() => navigation.pop()}
         // transparent={true}
@@ -127,6 +149,7 @@ function SubmitLocalDiaryScreen({navigation, currentUser, userPosition}) {
           />
 
           <TouchableOpacity
+            onPress={() => setModalVisible(true)}
             style={[
               AppStyles.alignCenter,
               AppStyles.justifyCenter,
