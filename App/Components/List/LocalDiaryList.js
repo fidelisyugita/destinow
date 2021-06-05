@@ -29,9 +29,7 @@ const LocalDiaryList = ({
       },
       containerStyle,
     ]}>
-    <TouchableOpacity
-      style={[AppStyles.row, AppStyles.alignCenter]}
-      onPress={onPress}>
+    <TouchableOpacity style={[AppStyles.row]} onPress={onPress}>
       <CustomImage
         source={imageSrc}
         defaultSource={Images.default11}

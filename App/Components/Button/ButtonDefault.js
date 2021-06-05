@@ -33,6 +33,7 @@ const ButtonDefault = ({
       {
         backgroundColor: buttonColor,
         borderRadius: s(8),
+        width: '100%',
         height: s(48),
         borderColor: textColor,
         borderWidth: isBordered ? s(1) : 0,

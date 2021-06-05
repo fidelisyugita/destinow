@@ -67,7 +67,7 @@ function LocalDiaryDetailScreen({navigation, currentUser, userPosition}) {
             <CustomImage
               source={
                 paramItem.createdBy
-                  ? {uri: paramItem.createdBy}
+                  ? {uri: paramItem.createdBy.photoURL}
                   : Images.defaultProfile
               }
               defaultSource={Images.defaultProfile}
@@ -78,14 +78,12 @@ function LocalDiaryDetailScreen({navigation, currentUser, userPosition}) {
                 Fonts.style.captionMedium,
                 {width: s(260), marginLeft: s(8)},
               ]}>
-              {paramItem.createdBy || '-'}
+              {paramItem.createdBy?.displayName}
             </Text>
           </View>
 
           <CustomImage
-            source={
-              paramItem.cover ? {uri: paramItem.cover.src} : Images.default32
-            }
+            source={paramItem.cover ? {uri: paramItem.cover} : Images.default32}
             defaultSource={Images.default32}
             style={{
               width: s(382),
@@ -99,9 +97,9 @@ function LocalDiaryDetailScreen({navigation, currentUser, userPosition}) {
             data={paramItem.paragraphs}
             renderItem={({item, index}) => (
               <View key={item + index}>
-                {item.content && (
+                {item.text && (
                   <HTML
-                    source={{html: item.content}}
+                    source={{html: item.text}}
                     containerStyle={{marginTop: s(24)}}
                     baseFontStyle={Fonts.style.descriptionRegular}
                     tagsStyles={{
@@ -112,7 +110,7 @@ function LocalDiaryDetailScreen({navigation, currentUser, userPosition}) {
 
                 {item.image && (
                   <CustomImage
-                    source={{uri: item.image.src}}
+                    source={{uri: item.image}}
                     defaultSource={Images.default32}
                     style={{
                       width: s(382),

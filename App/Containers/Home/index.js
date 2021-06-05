@@ -235,10 +235,11 @@ function HomeScreen({
             renderItem={({item, index}) => (
               <LocalDiaryCard
                 onPress={() => navigate('LocalDiaryDetailScreen', {item})}
-                imageSrc={item.cover ? {uri: item.cover.src} : Images.default32}
+                imageSrc={item.cover ? {uri: item.cover} : Images.default32}
                 title={item.title}
-                description={item.description}
-                authorName={item.createdBy}
+                description={item.paragraphs[0]?.text}
+                authorImageSrc={item.createdBy?.photoURL}
+                authorName={item.createdBy?.displayName}
               />
             )}
           />

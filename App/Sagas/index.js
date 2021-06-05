@@ -31,7 +31,11 @@ import {getRestaurants, getRecommendedRestaurants} from './RestaurantSagas';
 import {getSouvenirs, getRecommendedSouvenirs} from './SouvenirSagas';
 import {getTransports, getRecommendedTransports} from './TransportSagas';
 import {getNews, getRecommendedNews} from './NewsSagas';
-import {getLocalDiaries, getRecommendedLocalDiaries} from './LocalDiarySagas';
+import {
+  getLocalDiaries,
+  getRecommendedLocalDiaries,
+  saveLocalDiary,
+} from './LocalDiarySagas';
 
 /* ------------- API ------------- */
 
@@ -92,5 +96,6 @@ export default function* root() {
       getRecommendedLocalDiaries,
       api,
     ),
+    takeLatest(LocalDiaryTypes.SAVE_LOCAL_DIARY_REQUEST, saveLocalDiary, api),
   ]);
 }

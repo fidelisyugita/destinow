@@ -116,10 +116,14 @@ function OnboardingScreen({navigation, isFirstOpen, removeOnboarding}) {
             text={I18n.t('login')}
             textColor={Colors.blue}
             buttonColor={Colors.white}
+            buttonStyle={{width: s(187)}}
             isBordered
           />
-          <View style={{width: s(8)}} />
-          <ButtonDefault text={I18n.t('signUp')} />
+          {/* <View style={{width: s(8)}} /> */}
+          <ButtonDefault
+            text={I18n.t('signUp')}
+            buttonStyle={{width: s(187)}}
+          />
         </View>
 
         <TouchableOpacity

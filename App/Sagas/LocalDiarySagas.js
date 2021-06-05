@@ -3,7 +3,11 @@ import {put} from 'redux-saga/effects';
 import LocalDiaryActions from '../Redux/LocalDiaryRedux';
 
 import {httpsCallable} from './Utils';
-import {GET_LOCAL_DIARIES, GET_RECOMMENDED_LOCAL_DIARIES} from './Consts';
+import {
+  GET_LOCAL_DIARIES,
+  GET_RECOMMENDED_LOCAL_DIARIES,
+  SAVE_LOCAL_DIARY,
+} from './Consts';
 
 export function* getLocalDiaries(api, action) {
   try {
@@ -56,6 +60,27 @@ export function* getRecommendedLocalDiaries(api, action) {
     }
   } catch (error) {
     yield put(LocalDiaryActions.getRecommendedLocalDiariesFailure(error));
+    if (action.callback) action.callback({ok: false, error});
+  }
+}
+
+export function* saveLocalDiary(api, action) {
+  try {
+    const response = yield httpsCallable(SAVE_LOCAL_DIARY, action.data);
+
+    console.tron.log({saveLocalDiary: response});
+
+    if (response.data.ok) {
+      yield put(LocalDiaryActions.saveLocalDiarySuccess(response.data.payload));
+      if (action.callback)
+        action.callback({ok: true, data: response.data.payload});
+    } else {
+      yield put(LocalDiaryActions.saveLocalDiaryFailure(response.data.error));
+      if (action.callback)
+        action.callback({ok: false, error: response.data.error});
+    }
+  } catch (error) {
+    yield put(LocalDiaryActions.saveLocalDiaryFailure(error));
     if (action.callback) action.callback({ok: false, error});
   }
 }

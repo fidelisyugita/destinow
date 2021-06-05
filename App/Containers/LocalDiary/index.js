@@ -78,6 +78,11 @@ function LocalDiaryScreen({
     flatListRef.current.scrollToOffset({animated: true, offset: 0});
   };
 
+  const onPressAdd = () => {
+    if (currentUser.email) navigate('SubmitLocalDiaryScreen');
+    else navigate('Auth');
+  };
+
   const renderHeader = () => {
     return <View></View>;
   };
@@ -123,7 +128,7 @@ function LocalDiaryScreen({
         rightIcons={[
           {
             SvgIcon: Svgs.IconPlus,
-            onPress: () => navigate('SubmitLocalDiaryScreen'),
+            onPress: onPressAdd,
           },
         ]}
       />
@@ -166,11 +171,12 @@ function LocalDiaryScreen({
           <LocalDiaryList
             onPress={() => navigate('LocalDiaryDetailScreen', {item})}
             key={item + index}
-            imageSrc={item.cover ? {uri: item.cover.src} : Images.default11}
+            imageSrc={item.cover ? {uri: item.cover} : Images.default32}
             caption={DateFormatter(item.createdAt)}
             title={item.title}
-            description={item.description}
-            authorName={item.createdBy}
+            description={item.paragraphs[0]?.text}
+            authorImageSrc={item.createdBy?.photoURL}
+            authorName={item.createdBy?.displayName}
             hideBorderTop={index === 0}
           />
         )}

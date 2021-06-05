@@ -13,6 +13,10 @@ const {Types, Creators} = createActions({
   getRecommendedLocalDiariesRequest: ['data', 'callback'],
   getRecommendedLocalDiariesSuccess: ['payload'],
   getRecommendedLocalDiariesFailure: ['error'],
+
+  saveLocalDiaryRequest: ['data', 'callback'],
+  saveLocalDiarySuccess: ['payload'],
+  saveLocalDiaryFailure: ['error'],
 });
 
 export const LocalDiaryTypes = Types;
@@ -32,6 +36,7 @@ export const INITIAL_STATE = Immutable({
 
   getLocalDiaries: DEFAULT_STATE,
   getRecommendedLocalDiaries: DEFAULT_STATE,
+  saveLocalDiary: DEFAULT_STATE,
 });
 
 /* ------------- Reducers ------------- */
@@ -86,6 +91,33 @@ export const getRecommendedLocalDiariesFailure = (state, {error}) => {
   });
 };
 
+export const saveLocalDiaryRequest = (state, {data}) => {
+  return state.merge({
+    ...state,
+    saveLocalDiary: {
+      ...state.saveLocalDiary,
+      fetching: true,
+      data,
+    },
+  });
+};
+export const saveLocalDiarySuccess = (state, {payload}) => {
+  return state.merge({
+    ...state,
+    saveLocalDiary: {DEFAULT_STATE, payload},
+  });
+};
+export const saveLocalDiaryFailure = (state, {error}) => {
+  return state.merge({
+    ...state,
+    saveLocalDiary: {
+      ...state.saveLocalDiary,
+      fetching: false,
+      error,
+    },
+  });
+};
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -96,4 +128,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_RECOMMENDED_LOCAL_DIARIES_REQUEST]: getRecommendedLocalDiariesRequest,
   [Types.GET_RECOMMENDED_LOCAL_DIARIES_SUCCESS]: getRecommendedLocalDiariesSuccess,
   [Types.GET_RECOMMENDED_LOCAL_DIARIES_FAILURE]: getRecommendedLocalDiariesFailure,
+
+  [Types.SAVE_LOCAL_DIARY_REQUEST]: saveLocalDiaryRequest,
+  [Types.SAVE_LOCAL_DIARY_SUCCESS]: saveLocalDiarySuccess,
+  [Types.SAVE_LOCAL_DIARY_FAILURE]: saveLocalDiaryFailure,
 });
