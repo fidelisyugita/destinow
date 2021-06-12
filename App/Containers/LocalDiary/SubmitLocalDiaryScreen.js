@@ -17,7 +17,7 @@ import LocalDiaryActions from '../../Redux/LocalDiaryRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
-import {DateFormatter, GetDistance, IsNotEmpty} from '../../Lib';
+import {DateFormatter, GetDistance, IsNotEmpty, Toast} from '../../Lib';
 import I18n from '../../I18n';
 
 import CustomHeader from '../../Components/CustomHeader';
@@ -26,6 +26,7 @@ import CustomFlatList from '../../Components/CustomFlatList';
 import CustomTextInput from '../../Components/CustomTextInput';
 import ButtonDefault from '../../Components/Button/ButtonDefault';
 import ModalOption from '../../Components/Modal/ModalOption';
+import {showLoader} from '../../Components/Modal/Loader/Handler';
 
 const INITIATE_PARAGRAPH = {text: '', image: null};
 
@@ -120,6 +121,7 @@ function SubmitLocalDiaryScreen({
   };
 
   const onPressSubmit = () => {
+    showLoader();
     setLoading(true);
     const data = {
       title: title,
@@ -132,7 +134,10 @@ function SubmitLocalDiaryScreen({
 
   const submitCallback = (response) => {
     setLoading(false);
-    if (response.ok) navigation.pop();
+    if (response.ok) {
+      Toast.show('success', I18n.t('storySubmitted'));
+      navigation.pop();
+    }
   };
 
   const onScroll = (event) => {

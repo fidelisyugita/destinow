@@ -158,5 +158,11 @@
   "camera": "Kamera",
   "gallery": "Galeri",
 
+  "success": "Success",
+  "anErrorOccured": "An error occured while processing your request",
+  "unknownError": "Unknown Error",
+
+  "storySubmitted": "Submit Success",
+
   "close": "Close"
 }

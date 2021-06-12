@@ -4,6 +4,7 @@ import ConvertDistance from './ConvertDistance';
 import GetDistance from './GetDistance';
 import OpenMaps from './OpenMaps';
 import DateFormatter from './DateFormatter';
+import Toast from './Toast';
 
 export {
   IsNotEmpty,
@@ -12,4 +13,5 @@ export {
   GetDistance,
   OpenMaps,
   DateFormatter,
+  Toast,
 };

@@ -8,6 +8,9 @@ import ReduxPersist from '../Config/ReduxPersist';
 // Styles
 import styles from './Styles/RootContainerStyles';
 
+import Loader from '../Components/Modal/Loader';
+import {setLoaderInstance} from '../Components/Modal/Loader/Handler';
+
 class RootContainer extends Component {
   componentDidMount() {
     // if redux persist is not active fire startup action
@@ -21,6 +24,7 @@ class RootContainer extends Component {
       <View style={styles.applicationView}>
         <StatusBar barStyle="dark-content" />
         <ReduxNavigation />
+        <Loader ref={(ref) => setLoaderInstance(ref)} />
       </View>
     );
   }
