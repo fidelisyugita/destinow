@@ -96,7 +96,8 @@ function ProfileScreen({navigation, currentUser, signOutRequest}) {
           <Text numberOfLines={1} style={[Fonts.style.title]}>
             {currentUser.displayName}
           </Text>
-          <View
+          <TouchableOpacity
+            onPress={() => navigate('EditProfileScreen')}
             style={[AppStyles.row, AppStyles.alignCenter, {marginTop: s(2)}]}>
             <Svgs.IconEdit width={s(16)} height={s(16)} fill={Colors.blue} />
             <Text
@@ -106,7 +107,7 @@ function ProfileScreen({navigation, currentUser, signOutRequest}) {
               ]}>
               {I18n.t('editProfile')}
             </Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         <Image

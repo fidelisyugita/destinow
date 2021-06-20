@@ -164,5 +164,13 @@
 
   "storySubmitted": "Submit Success",
 
+  "save": "Simpan",
+
+  "submitReview": "Berikan Ulasan",
+  "submitReviewPlaceholder": "Ceritakan pengalamanmu di sini",
+  "photo": "Foto",
+  "addPhoto": "Tambah Foto",
+  "saveReview": "Kirim Ulasan",
+
   "close": "Close"
 }

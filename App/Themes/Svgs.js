@@ -22,7 +22,7 @@ import IconSouvenir from '../Svgs/Icons/IconSouvenir.svg';
 import IconTransport from '../Svgs/Icons/IconTransport.svg';
 
 import IconStar from '../Svgs/Icons/IconStar.svg';
-import IconStarFill from '../Svgs/Icons/IconStarFill.svg';
+import IconStarFilled from '../Svgs/Icons/IconStarFilled.svg';
 
 import IconArrowLeft from '../Svgs/Icons/IconArrowLeft.svg';
 import IconArrowRight from '../Svgs/Icons/IconArrowRight.svg';
@@ -101,7 +101,7 @@ const svgs = {
   IconTransport,
 
   IconStar,
-  IconStarFill,
+  IconStarFilled,
 
   IconArrowLeft,
   IconArrowRight,

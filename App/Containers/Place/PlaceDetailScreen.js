@@ -130,6 +130,7 @@ function PlaceDetailScreen({
             {I18n.t('emptyReviewDescription')}
           </Text>
           <ButtonDefault
+            onPress={() => navigate('SubmitReviewScreen', {item: paramItem})}
             text={I18n.t('submitYourReview')}
             textColor={Colors.blue}
             buttonStyle={{marginTop: s(24), width: s(382)}}

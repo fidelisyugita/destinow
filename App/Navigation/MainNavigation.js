@@ -22,6 +22,10 @@ import LocalDiaryScreen from '../Containers/LocalDiary';
 import LocalDiaryDetailScreen from '../Containers/LocalDiary/LocalDiaryDetailScreen';
 import SubmitLocalDiaryScreen from '../Containers/LocalDiary/SubmitLocalDiaryScreen';
 
+import EditProfileScreen from '../Containers/Profile/EditProfileScreen';
+
+import SubmitReviewScreen from '../Containers/Review/SubmitReviewScreen';
+
 const MainNav = createStackNavigator(
   {
     Bottom: BottomNav,
@@ -49,6 +53,10 @@ const MainNav = createStackNavigator(
     LocalDiaryScreen: {screen: LocalDiaryScreen},
     LocalDiaryDetailScreen: {screen: LocalDiaryDetailScreen},
     SubmitLocalDiaryScreen: {screen: SubmitLocalDiaryScreen},
+
+    EditProfileScreen: {screen: EditProfileScreen},
+
+    SubmitReviewScreen: {screen: SubmitReviewScreen},
   },
   {
     headerMode: 'none',

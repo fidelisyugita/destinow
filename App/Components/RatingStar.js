@@ -8,7 +8,7 @@ import I18n from '../I18n';
 const RatingStar = ({
   totalStar = 4,
   containerStyle = {marginTop: s(8)},
-  iconSize = s(12),
+  iconSize = s(16),
   color = Colors.lightBlue,
   showText = true,
 }) => (
@@ -16,10 +16,10 @@ const RatingStar = ({
     {Array(5)
       .fill({})
       .map((item, index) => {
-        const SvgIcon = index < totalStar ? Svgs.IconStarFill : Svgs.IconStar;
+        const SvgIcon = index < totalStar ? Svgs.IconStarFilled : Svgs.IconStar;
 
         return (
-          <View key={item + index} style={{marginRight: s(4)}}>
+          <View key={item + index}>
             <SvgIcon width={iconSize} height={iconSize} fill={color} />
           </View>
         );
