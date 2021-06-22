@@ -20,6 +20,7 @@ export const reducers = combineReducers({
   transport: require('./TransportRedux').reducer,
   news: require('./NewsRedux').reducer,
   localDiary: require('./LocalDiaryRedux').reducer,
+  review: require('./ReviewRedux').reducer,
 });
 
 export default () => {

@@ -13,7 +13,7 @@ import HTML from 'react-native-render-html';
 import ImagePicker from 'react-native-image-crop-picker';
 
 import SessionActions from '../../Redux/SessionRedux';
-import LocalDiaryActions from '../../Redux/LocalDiaryRedux';
+import ReviewActions from '../../Redux/ReviewRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
@@ -34,8 +34,8 @@ function SubmitReviewScreen({
   navigation,
   currentUser,
   userPosition,
-  saveLocalDiary,
-  saveLocalDiaryRequest,
+  saveReview,
+  saveReviewRequest,
 }) {
   const {navigate} = navigation;
   const [transparentOpacity, setTransparentOpacity] = useState(0);
@@ -105,21 +105,22 @@ function SubmitReviewScreen({
   };
 
   const onPressSubmit = () => {
-    // showLoader();
+    showLoader();
     setLoading(true);
     const data = {
+      placeId: paramItem.id,
       rate: reviewRate,
       text: reviewText,
       images: reviewPics,
     };
 
-    // saveLocalDiaryRequest(data, submitCallback);
+    saveReviewRequest(data, submitCallback);
   };
 
   const submitCallback = (response) => {
     setLoading(false);
     if (response.ok) {
-      Toast.show('success', I18n.t('storySubmitted'));
+      Toast.show('success', I18n.t('reviewSubmitted'));
       navigation.pop();
     }
   };
@@ -232,6 +233,7 @@ function SubmitReviewScreen({
             <View style={[AppStyles.row, {marginTop: s(8)}]}>
               {reviewPics.map((item, index) => (
                 <CustomImage
+                  key={item + index}
                   source={{uri: item}}
                   style={{
                     width: s(70),
@@ -287,14 +289,14 @@ const mapStateToProps = (state) => {
     currentUser: state.session.user,
     userPosition: state.session.userPosition,
 
-    saveLocalDiary: state.localDiary.saveLocalDiary,
+    saveReview: state.review.saveReview,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   logout: (data, callback) => dispatch(SessionActions.logout(data, callback)),
-  saveLocalDiaryRequest: (data, callback) =>
-    dispatch(LocalDiaryActions.saveLocalDiaryRequest(data, callback)),
+  saveReviewRequest: (data, callback) =>
+    dispatch(ReviewActions.saveReviewRequest(data, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubmitReviewScreen);

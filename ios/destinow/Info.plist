@@ -2,12 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>Destinow membutuhkan akses galeri anda untuk proses submit berita</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Destinow membutuhkan akses galeri anda untuk proses submit berita</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Destinow membutuhkan akses galeri anda untuk proses submit berita</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -56,10 +50,16 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Destinow membutuhkan akses galeri anda untuk proses submit berita</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Destinow membutuhkan akses lokasi anda untuk memberikan estimasi jarak ke lokasi tujuan</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Destinow membutuhkan akses lokasi anda untuk memberikan estimasi jarak ke lokasi tujuan</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Destinow membutuhkan akses galeri anda untuk proses submit berita</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Destinow membutuhkan akses galeri anda untuk proses submit berita</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Bold.ttf</string>

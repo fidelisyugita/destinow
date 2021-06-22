@@ -17,6 +17,7 @@ import {SouvenirTypes} from '../Redux/SouvenirRedux';
 import {TransportTypes} from '../Redux/TransportRedux';
 import {NewsTypes} from '../Redux/NewsRedux';
 import {LocalDiaryTypes} from '../Redux/LocalDiaryRedux';
+import {ReviewTypes} from '../Redux/ReviewRedux';
 
 /* ------------- Sagas ------------- */
 
@@ -36,6 +37,7 @@ import {
   getRecommendedLocalDiaries,
   saveLocalDiary,
 } from './LocalDiarySagas';
+import {getReviews, saveReview} from './ReviewSagas';
 
 /* ------------- API ------------- */
 
@@ -97,5 +99,8 @@ export default function* root() {
       api,
     ),
     takeLatest(LocalDiaryTypes.SAVE_LOCAL_DIARY_REQUEST, saveLocalDiary, api),
+
+    takeLatest(ReviewTypes.GET_REVIEWS_REQUEST, getReviews, api),
+    takeLatest(ReviewTypes.SAVE_REVIEW_REQUEST, saveReview, api),
   ]);
 }

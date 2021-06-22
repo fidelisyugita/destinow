@@ -171,6 +171,8 @@
   "photo": "Foto",
   "addPhoto": "Tambah Foto",
   "saveReview": "Kirim Ulasan",
+  "reviewSubmitted": "Review Success",
+  "allReviews": "Semua Review",
 
   "close": "Close"
 }

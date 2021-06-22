@@ -13,10 +13,11 @@ import HTML from 'react-native-render-html';
 
 import SessionActions from '../../Redux/SessionRedux';
 import PlaceActions from '../../Redux/PlaceRedux';
+import ReviewActions from '../../Redux/ReviewRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
-import {GetDistance, IsNotEmpty} from '../../Lib';
+import {DateFormatter, GetDistance, IsNotEmpty} from '../../Lib';
 import I18n from '../../I18n';
 
 import ButtonIcon from '../../Components/Home/ButtonIcon';
@@ -34,14 +35,17 @@ import MainDetails from '../../Components/MainDetails';
 import CarauselTop from '../../Components/CarauselTop';
 import CustomFlatList from '../../Components/CustomFlatList';
 import FacilitiesCard from '../../Components/Card/FacilitiesCard';
+import ReviewList from '../../Components/List/ReviewList';
 
 function PlaceDetailScreen({
   navigation,
   currentUser,
   userPosition,
+  reviews,
 
   getFavoritePlaces,
   getFavoritePlacesRequest,
+  getReviewsRequest,
 }) {
   const {navigate} = navigation;
   const [transparentOpacity, setTransparentOpacity] = useState(0);
@@ -66,7 +70,7 @@ function PlaceDetailScreen({
 
   function loadData() {
     console.log('paramItem: ', paramItem);
-    // getFavoritePlacesRequest({});
+    getReviewsRequest({placeId: paramItem.id});
   }
 
   const renderDescription = () => {
@@ -112,32 +116,105 @@ function PlaceDetailScreen({
   const renderReview = () => {
     return (
       <View style={{marginTop: s(24)}}>
-        <View style={[AppStyles.alignCenter]}>
-          <Svgs.EmptyReview width={s(224)} height={s(224)} fill={Colors.blue} />
-          <Text
-            style={[
-              Fonts.style.descriptionBold,
-              {marginTop: s(16), color: Colors.black},
-            ]}>
-            {I18n.t('emptyReview')}
-          </Text>
-          <Text
-            style={[
-              Fonts.style.descriptionRegular,
-              Fonts.style.alignCenter,
-              {marginTop: s(8), color: Colors.neutral2, width: s(348)},
-            ]}>
-            {I18n.t('emptyReviewDescription')}
-          </Text>
-          <ButtonDefault
-            onPress={() => navigate('SubmitReviewScreen', {item: paramItem})}
-            text={I18n.t('submitYourReview')}
-            textColor={Colors.blue}
-            buttonStyle={{marginTop: s(24), width: s(382)}}
-            buttonColor={Colors.white}
-            isBordered
-          />
-        </View>
+        {IsNotEmpty(reviews) ? (
+          <View>
+            <TouchableOpacity
+              style={[
+                AppStyles.row,
+                AppStyles.alignCenter,
+                {
+                  marginTop: s(32),
+                  height: s(54),
+                  borderRadius: s(16),
+                  borderColor: Colors.neutral3,
+                  borderWidth: s(1),
+                  paddingHorizontal: s(16),
+                },
+              ]}
+              onPress={() => navigate('SubmitReviewScreen', {item: paramItem})}>
+              <Text style={[Fonts.style.descriptionRegular, AppStyles.flex1]}>
+                {I18n.t('submitYourReview')}
+              </Text>
+              <View style={[AppStyles.row]}>
+                {Array(5)
+                  .fill(false)
+                  .map((item, index) => {
+                    return (
+                      <View key={item + index}>
+                        <Svgs.IconStar
+                          width={s(24)}
+                          height={s(24)}
+                          fill={Colors.blue}
+                        />
+                      </View>
+                    );
+                  })}
+              </View>
+            </TouchableOpacity>
+            <Text style={[Fonts.style.subTitle, {marginTop: s(32)}]}>
+              {I18n.t('allReviews')}
+            </Text>
+
+            <CustomFlatList
+              style={{marginTop: s(32 - 24)}}
+              data={reviews}
+              renderItem={({item, index}) => {
+                const {createdBy, images, rate, text} = item;
+                return (
+                  <ReviewList
+                    key={item + index}
+                    creatorName={createdBy.displayName}
+                    creatorImageSrc={
+                      createdBy
+                        ? {uri: createdBy.photoURL}
+                        : Images.defaultProfile
+                    }
+                    rate={rate}
+                    caption={DateFormatter(item.createdAt)}
+                    text={text}
+                    images={images}
+                    hideBorderTop={index === 0}
+                  />
+                );
+              }}
+            />
+          </View>
+        ) : (
+          <View>
+            <View style={[AppStyles.alignCenter]}>
+              <Svgs.EmptyReview
+                width={s(224)}
+                height={s(224)}
+                fill={Colors.blue}
+              />
+              <Text
+                style={[
+                  Fonts.style.descriptionBold,
+                  {marginTop: s(16), color: Colors.black},
+                ]}>
+                {I18n.t('emptyReview')}
+              </Text>
+              <Text
+                style={[
+                  Fonts.style.descriptionRegular,
+                  Fonts.style.alignCenter,
+                  {marginTop: s(8), color: Colors.neutral2, width: s(348)},
+                ]}>
+                {I18n.t('emptyReviewDescription')}
+              </Text>
+              <ButtonDefault
+                onPress={() =>
+                  navigate('SubmitReviewScreen', {item: paramItem})
+                }
+                text={I18n.t('submitYourReview')}
+                textColor={Colors.blue}
+                buttonStyle={{marginTop: s(24), width: s(382)}}
+                buttonColor={Colors.white}
+                isBordered
+              />
+            </View>
+          </View>
+        )}
       </View>
     );
   };
@@ -243,6 +320,7 @@ const mapStateToProps = (state) => {
     userPosition: state.session.userPosition,
 
     getFavoritePlaces: state.place.getFavoritePlaces,
+    reviews: state.review.reviews,
   };
 };
 
@@ -250,6 +328,8 @@ const mapDispatchToProps = (dispatch) => ({
   logout: (data, callback) => dispatch(SessionActions.logout(data, callback)),
   getFavoritePlacesRequest: (data, callback) =>
     dispatch(PlaceActions.getFavoritePlacesRequest(data, callback)),
+  getReviewsRequest: (data, callback) =>
+    dispatch(ReviewActions.getReviewsRequest(data, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceDetailScreen);
