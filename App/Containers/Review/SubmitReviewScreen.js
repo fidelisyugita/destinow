@@ -41,6 +41,10 @@ function SubmitReviewScreen({
   const [transparentOpacity, setTransparentOpacity] = useState(0);
 
   const paramItem = navigation.getParam('item', {});
+  const placeId = navigation.getParam('placeId', null);
+  const restaurantId = navigation.getParam('restaurantId', null);
+  const souvenirId = navigation.getParam('souvenirId', null);
+  const transportId = navigation.getParam('transportId', null);
 
   const [reviewText, setReviewText] = useState('');
   const [reviewRate, setReviewRate] = useState(0);
@@ -108,7 +112,10 @@ function SubmitReviewScreen({
     showLoader();
     setLoading(true);
     const data = {
-      placeId: paramItem.id,
+      placeId: placeId,
+      restaurantId: restaurantId,
+      souvenirId: souvenirId,
+      transportId: transportId,
       rate: reviewRate,
       text: reviewText,
       images: reviewPics,

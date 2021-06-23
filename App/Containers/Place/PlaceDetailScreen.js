@@ -73,6 +73,12 @@ function PlaceDetailScreen({
     getReviewsRequest({placeId: paramItem.id});
   }
 
+  const onPressReview = () => {
+    if (currentUser.email)
+      navigate('SubmitReviewScreen', {item: paramItem, placeId: paramItem.id});
+    else navigate('Auth');
+  };
+
   const renderDescription = () => {
     return (
       <View>
@@ -131,7 +137,7 @@ function PlaceDetailScreen({
                   paddingHorizontal: s(16),
                 },
               ]}
-              onPress={() => navigate('SubmitReviewScreen', {item: paramItem})}>
+              onPress={onPressReview}>
               <Text style={[Fonts.style.descriptionRegular, AppStyles.flex1]}>
                 {I18n.t('submitYourReview')}
               </Text>
@@ -203,9 +209,7 @@ function PlaceDetailScreen({
                 {I18n.t('emptyReviewDescription')}
               </Text>
               <ButtonDefault
-                onPress={() =>
-                  navigate('SubmitReviewScreen', {item: paramItem})
-                }
+                onPress={onPressReview}
                 text={I18n.t('submitYourReview')}
                 textColor={Colors.blue}
                 buttonStyle={{marginTop: s(24), width: s(382)}}

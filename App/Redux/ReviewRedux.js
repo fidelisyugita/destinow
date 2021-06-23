@@ -40,6 +40,7 @@ export const getReviewsRequest = (state, {data}) => {
   return state.merge({
     ...state,
     getReviews: {...state.getReviews, fetching: true, data},
+    reviews: [],
   });
 };
 export const getReviewsSuccess = (state, {payload}) => {
