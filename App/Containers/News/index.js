@@ -105,7 +105,7 @@ function NewsScreen({
             </Text>
           </View>
         )}
-        {/* <View style={{height: s(56)}} /> */}
+        <View style={{height: s(56)}} />
       </View>
     );
   };
@@ -122,8 +122,8 @@ function NewsScreen({
 
       <FlatList
         ref={flatListRef}
-        onScroll={(event) => onScroll(event)}
-        scrollEventThrottle={160} //  default 16
+        // onScroll={(event) => onScroll(event)}
+        // scrollEventThrottle={160} //  default 16
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => item + index}
         data={news}

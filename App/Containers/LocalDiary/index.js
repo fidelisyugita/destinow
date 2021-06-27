@@ -84,7 +84,34 @@ function LocalDiaryScreen({
   };
 
   const renderHeader = () => {
-    return <View></View>;
+    return (
+      <View
+        style={[
+          AppStyles.row,
+          AppStyles.alignCenter,
+          {
+            margin: s(16),
+            paddingHorizontal: s(16),
+            paddingVertical: s(8),
+            borderRadius: s(8),
+            backgroundColor: Colors.lightBlue,
+          },
+        ]}>
+        <Svgs.IconStarComment
+          width={s(32)}
+          height={s(32)}
+          fill={Colors.darkBlue}
+        />
+        <View style={{marginLeft: s(16)}}>
+          <Text style={[Fonts.style.subDescriptionMedium]}>
+            {`${I18n.t('submitYourThoughtAboutBelitung')}!`}
+          </Text>
+          <Text style={[Fonts.style.captionRegular, {marginTop: s(2)}]}>
+            {I18n.t('submitYourThoughtAboutBelitungDescription')}
+          </Text>
+        </View>
+      </View>
+    );
   };
 
   const renderFooter = () => {
@@ -112,7 +139,7 @@ function LocalDiaryScreen({
             </Text>
           </View>
         )}
-        {/* <View style={{height: s(56)}} /> */}
+        <View style={{height: s(56)}} />
       </View>
     );
   };
@@ -133,37 +160,10 @@ function LocalDiaryScreen({
         ]}
       />
 
-      <View
-        style={[
-          AppStyles.row,
-          AppStyles.alignCenter,
-          {
-            margin: s(16),
-            paddingHorizontal: s(16),
-            paddingVertical: s(8),
-            borderRadius: s(8),
-            backgroundColor: Colors.lightBlue,
-          },
-        ]}>
-        <Svgs.IconStarComment
-          width={s(32)}
-          height={s(32)}
-          fill={Colors.darkBlue}
-        />
-        <View style={{marginLeft: s(16)}}>
-          <Text style={[Fonts.style.subDescriptionMedium]}>
-            {`${I18n.t('submitYourThoughtAboutBelitung')}!`}
-          </Text>
-          <Text style={[Fonts.style.captionRegular, {marginTop: s(2)}]}>
-            {I18n.t('submitYourThoughtAboutBelitungDescription')}
-          </Text>
-        </View>
-      </View>
-
       <FlatList
         ref={flatListRef}
-        onScroll={(event) => onScroll(event)}
-        scrollEventThrottle={160} //  default 16
+        // onScroll={(event) => onScroll(event)}
+        // scrollEventThrottle={160} //  default 16
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => item + index}
         data={localDiaries}

@@ -66,7 +66,7 @@ function LocalDiaryDetailScreen({navigation, currentUser, userPosition}) {
             style={[AppStyles.row, AppStyles.alignCenter, {marginTop: s(16)}]}>
             <CustomImage
               source={
-                paramItem.createdBy
+                paramItem.createdBy && paramItem.createdBy.photoURL
                   ? {uri: paramItem.createdBy.photoURL}
                   : Images.defaultProfile
               }
