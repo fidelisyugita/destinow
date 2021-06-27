@@ -102,7 +102,7 @@ export function* loginApple(api, action) {
 
       // Create a Firebase credential from the response
       const {identityToken, nonce} = appleAuthRequestResponse;
-      const appleCredential = auth.AppleAuthProvider.credential(
+      const appleCredential = yield auth.AppleAuthProvider.credential(
         identityToken,
         nonce,
       );
@@ -118,7 +118,7 @@ export function* loginApple(api, action) {
 
       // Configure the request
       appleAuthAndroid.configure({
-        clientId: 'id.destinow',
+        clientId: 'id.destinow.service',
         redirectUri: 'https://destinow.firebaseapp.com/__/auth/handler',
         responseType: appleAuthAndroid.ResponseType.ALL,
         scope: appleAuthAndroid.Scope.ALL,
@@ -130,16 +130,16 @@ export function* loginApple(api, action) {
       const appleAuthRequestResponse = yield appleAuthAndroid.signIn();
       console.tron.log({appleAuthRequestResponse});
 
-      // Create a Firebase credential from the response
-      const appleCredential = auth.AppleAuthProvider.credential(
-        appleAuthRequestResponse.id_token,
-        rawNonce,
-      );
+      // // Create a Firebase credential from the response
+      // const appleCredential = yield auth.AppleAuthProvider.credential(
+      //   appleAuthRequestResponse.id_token,
+      //   rawNonce,
+      // );
 
-      // Sign the user in with the credential
-      appleResponse = yield auth().signInWithCredential(appleCredential);
-      console.tron.log({appleResponse});
-      console.log('appleResponse: ', appleResponse);
+      // // Sign the user in with the credential
+      // appleResponse = yield auth().signInWithCredential(appleCredential);
+      // console.tron.log({appleResponse});
+      // console.log('appleResponse: ', appleResponse);
     }
 
     throw 'Not ready';
