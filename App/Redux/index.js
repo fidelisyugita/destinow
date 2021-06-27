@@ -13,6 +13,7 @@ export const reducers = combineReducers({
   session: require('./SessionRedux').reducer,
   auth: require('./AuthRedux').reducer,
   banner: require('./BannerRedux').reducer,
+  user: require('./UserRedux').reducer,
 
   place: require('./PlaceRedux').reducer,
   restaurant: require('./RestaurantRedux').reducer,

@@ -10,6 +10,7 @@ import {GithubTypes} from '../Redux/GithubRedux';
 
 import {AuthTypes} from '../Redux/AuthRedux';
 import {BannerTypes} from '../Redux/BannerRedux';
+import {UserTypes} from '../Redux/UserRedux';
 
 import {PlaceTypes} from '../Redux/PlaceRedux';
 import {RestaurantTypes} from '../Redux/RestaurantRedux';
@@ -26,6 +27,7 @@ import {getUserAvatar} from './GithubSagas';
 
 import {loginGoogle, signOut} from './AuthSagas';
 import {getBanners} from './BannerSagas';
+import {saveUser} from './UserSagas';
 
 import {getPlaces, getFavoritePlaces, getRecommendedPlaces} from './PlaceSagas';
 import {getRestaurants, getRecommendedRestaurants} from './RestaurantSagas';
@@ -59,6 +61,8 @@ export default function* root() {
     takeLatest(AuthTypes.SIGN_OUT_REQUEST, signOut, api),
 
     takeLatest(BannerTypes.GET_BANNERS_REQUEST, getBanners, api),
+
+    takeLatest(UserTypes.SAVE_USER_REQUEST, saveUser, api),
 
     takeLatest(PlaceTypes.GET_PLACES_REQUEST, getPlaces, api),
     takeLatest(PlaceTypes.GET_FAVORITE_PLACES_REQUEST, getFavoritePlaces, api),

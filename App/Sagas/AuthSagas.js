@@ -35,7 +35,6 @@ export function* loginGoogle(api, action) {
       email: googleResponse.user.email,
       displayName: googleResponse.user.displayName,
       phoneNumber: googleResponse.user.phoneNumber,
-      photoURL: googleResponse.user.photoURL,
     };
 
     yield put(SessionActions.removeOnboarding());
@@ -65,7 +64,7 @@ export function* loginGoogle(api, action) {
 export function* signOut(api, action) {
   try {
     yield GoogleSignin.signOut();
-    // yield auth().signOut();
+    yield auth().signOut();
 
     console.tron.log({logout: 'success'});
 

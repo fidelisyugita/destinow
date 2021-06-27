@@ -13,7 +13,7 @@ import HTML from 'react-native-render-html';
 import ImagePicker from 'react-native-image-crop-picker';
 
 import SessionActions from '../../Redux/SessionRedux';
-import LocalDiaryActions from '../../Redux/LocalDiaryRedux';
+import UserActions from '../../Redux/UserRedux';
 
 import {Colors, Fonts, Metrics, Images, Svgs, AppStyles} from '../../Themes';
 import {s, vs} from '../../Lib/Scaling';
@@ -26,7 +26,7 @@ import CustomFlatList from '../../Components/CustomFlatList';
 import CustomTextInput from '../../Components/CustomTextInput';
 import ButtonDefault from '../../Components/Button/ButtonDefault';
 import ModalOption from '../../Components/Modal/ModalOption';
-import {showLoader} from '../../Components/Modal/Loader/Handler';
+import {hideLoader, showLoader} from '../../Components/Modal/Loader/Handler';
 
 const INITIATE_PARAGRAPH = {text: '', image: null};
 
@@ -34,8 +34,8 @@ function EditProfileScreen({
   navigation,
   currentUser,
   userPosition,
-  saveLocalDiary,
-  saveLocalDiaryRequest,
+  saveUser,
+  saveUserRequest,
 }) {
   const {navigate} = navigation;
   const [transparentOpacity, setTransparentOpacity] = useState(0);
@@ -44,6 +44,7 @@ function EditProfileScreen({
 
   const [displayName, setDisplayName] = useState(currentUser.displayName);
   const [photoURL, setPhotoURL] = useState(currentUser.photoURL);
+  const [phoneNumber, setPhoneNumber] = useState(currentUser.phoneNumber || '');
 
   const [isValid, setValid] = useState(false);
 
@@ -105,20 +106,22 @@ function EditProfileScreen({
   };
 
   const onPressSubmit = () => {
-    // showLoader();
+    showLoader();
     setLoading(true);
     const data = {
       displayName: displayName,
       photoURL: photoURL,
+      phoneNumber: phoneNumber,
     };
 
-    // saveLocalDiaryRequest(data, submitCallback);
+    saveUserRequest(data, submitCallback);
   };
 
   const submitCallback = (response) => {
+    hideLoader();
     setLoading(false);
     if (response.ok) {
-      Toast.show('success', I18n.t('storySubmitted'));
+      Toast.show('success', I18n.t('profileUpdated'));
       navigation.pop();
     }
   };
@@ -190,13 +193,14 @@ function EditProfileScreen({
             label={`${I18n.t('fullName')}*`}
             value={displayName}
             onChangeText={setDisplayName}
-            // containerStyle={{marginTop: s(32), width: '100%'}}
           />
-          {/* <CustomTextInput
-            label={`${I18n.t('gender')}*`}
-            value={fullName}
-            onChangeText={setFullName}
-          /> */}
+          <CustomTextInput
+            label={`${I18n.t('phoneNumber')}`}
+            value={phoneNumber}
+            onChangeText={setPhoneNumber}
+            containerStyle={{marginTop: s(16)}}
+            keyboardType="phone-pad"
+          />
 
           <ButtonDefault
             onPress={onPressSubmit}
@@ -221,14 +225,14 @@ const mapStateToProps = (state) => {
     currentUser: state.session.user,
     userPosition: state.session.userPosition,
 
-    saveLocalDiary: state.localDiary.saveLocalDiary,
+    saveUser: state.user.saveUser,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   logout: (data, callback) => dispatch(SessionActions.logout(data, callback)),
-  saveLocalDiaryRequest: (data, callback) =>
-    dispatch(LocalDiaryActions.saveLocalDiaryRequest(data, callback)),
+  saveUserRequest: (data, callback) =>
+    dispatch(UserActions.saveUserRequest(data, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditProfileScreen);

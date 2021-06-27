@@ -26,7 +26,7 @@ import CustomFlatList from '../../Components/CustomFlatList';
 import CustomTextInput from '../../Components/CustomTextInput';
 import ButtonDefault from '../../Components/Button/ButtonDefault';
 import ModalOption from '../../Components/Modal/ModalOption';
-import {showLoader} from '../../Components/Modal/Loader/Handler';
+import {showLoader, hideLoader} from '../../Components/Modal/Loader/Handler';
 
 const INITIATE_PARAGRAPH = {text: '', image: null};
 
@@ -133,6 +133,7 @@ function SubmitLocalDiaryScreen({
   };
 
   const submitCallback = (response) => {
+    hideLoader();
     setLoading(false);
     if (response.ok) {
       Toast.show('success', I18n.t('storySubmitted'));

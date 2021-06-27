@@ -158,11 +158,11 @@
   "camera": "Kamera",
   "gallery": "Galeri",
 
-  "success": "Success",
+  "success": "Sukses",
   "anErrorOccured": "An error occured while processing your request",
   "unknownError": "Unknown Error",
 
-  "storySubmitted": "Submit Success",
+  "storySubmitted": "Submit Sukses",
 
   "save": "Simpan",
 
@@ -171,8 +171,10 @@
   "photo": "Foto",
   "addPhoto": "Tambah Foto",
   "saveReview": "Kirim Ulasan",
-  "reviewSubmitted": "Review Success",
+  "reviewSubmitted": "Review Sukses",
   "allReviews": "Semua Review",
+
+  "profileUpdated": "Edit Profile Sukses",
 
   "close": "Close"
 }

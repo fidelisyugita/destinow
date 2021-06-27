@@ -23,6 +23,7 @@ const CustomTextInput = ({
   containerStyle = {},
   textInputStyle = {},
   multiline = false,
+  ...textInputProps
 }) => {
   const [isFocus, setFocus] = useState(false);
 
@@ -64,6 +65,7 @@ const CustomTextInput = ({
           ]}
           placeholderTextColor={placeholder ? Colors.neutral3 : Colors.neutral2}
           multiline={multiline}
+          {...textInputProps}
         />
       </View>
 

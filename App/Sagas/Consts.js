@@ -1,6 +1,7 @@
 export const REGION = 'asia-southeast2';
 
 export const GET_BANNERS = 'banner-get';
+export const SAVE_USER = 'user-save';
 
 export const GET_PLACES = 'place-get';
 export const GET_FAVORITE_PLACES = 'place-favorite';
