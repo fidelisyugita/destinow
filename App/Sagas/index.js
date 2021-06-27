@@ -25,7 +25,7 @@ import {ReviewTypes} from '../Redux/ReviewRedux';
 import {startup} from './StartupSagas';
 import {getUserAvatar} from './GithubSagas';
 
-import {loginGoogle, signOut} from './AuthSagas';
+import {loginGoogle, loginApple, signOut} from './AuthSagas';
 import {getBanners} from './BannerSagas';
 import {saveUser} from './UserSagas';
 
@@ -58,6 +58,7 @@ export default function* root() {
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
 
     takeLatest(AuthTypes.LOGIN_GOOGLE_REQUEST, loginGoogle, api),
+    takeLatest(AuthTypes.LOGIN_APPLE_REQUEST, loginApple, api),
     takeLatest(AuthTypes.SIGN_OUT_REQUEST, signOut, api),
 
     takeLatest(BannerTypes.GET_BANNERS_REQUEST, getBanners, api),

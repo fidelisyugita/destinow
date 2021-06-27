@@ -1,7 +1,13 @@
+import {Platform} from 'react-native';
 import {put} from 'redux-saga/effects';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import messaging from '@react-native-firebase/messaging';
+import {
+  appleAuth,
+  appleAuthAndroid,
+} from '@invertase/react-native-apple-authentication';
+import {v4 as uuid} from 'uuid';
 
 import AuthActions from '../Redux/AuthRedux';
 import SessionActions from '../Redux/SessionRedux';
@@ -75,6 +81,114 @@ export function* loginGoogle(api, action) {
   } catch (error) {
     console.tron.error({error});
     yield put(AuthActions.loginGoogleFailure(error));
+    if (action.callback) action.callback({ok: false, error});
+  }
+}
+
+export function* loginApple(api, action) {
+  try {
+    let appleResponse = {};
+    if (Platform.OS === 'ios') {
+      // Start the sign-in request
+      const appleAuthRequestResponse = yield appleAuth.performRequest({
+        requestedOperation: appleAuth.Operation.LOGIN,
+        requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+      });
+
+      // Ensure Apple returned a user identityToken
+      if (!appleAuthRequestResponse.identityToken) {
+        throw 'Apple Sign-In failed - no identify token returned';
+      }
+
+      // Create a Firebase credential from the response
+      const {identityToken, nonce} = appleAuthRequestResponse;
+      const appleCredential = auth.AppleAuthProvider.credential(
+        identityToken,
+        nonce,
+      );
+
+      // Sign the user in with the credential
+      appleResponse = yield auth().signInWithCredential(appleCredential);
+      console.tron.log({appleResponse});
+      console.log('appleResponse: ', appleResponse);
+    } else {
+      // Generate secure, random values for state and nonce
+      const rawNonce = uuid();
+      const state = uuid();
+
+      // Configure the request
+      appleAuthAndroid.configure({
+        clientId: 'id.destinow',
+        redirectUri: 'https://destinow.firebaseapp.com/__/auth/handler',
+        responseType: appleAuthAndroid.ResponseType.ALL,
+        scope: appleAuthAndroid.Scope.ALL,
+        nonce: rawNonce,
+        state,
+      });
+
+      // Open the browser window for user sign in
+      const appleAuthRequestResponse = yield appleAuthAndroid.signIn();
+      console.tron.log({appleAuthRequestResponse});
+
+      // Create a Firebase credential from the response
+      const appleCredential = auth.AppleAuthProvider.credential(
+        appleAuthRequestResponse.id_token,
+        rawNonce,
+      );
+
+      // Sign the user in with the credential
+      appleResponse = yield auth().signInWithCredential(appleCredential);
+      console.tron.log({appleResponse});
+      console.log('appleResponse: ', appleResponse);
+    }
+
+    throw 'Not ready';
+
+    let user = {
+      id: appleResponse.user.uid,
+      photoURL: appleResponse.user.photoURL,
+      email: appleResponse.user.email,
+      displayName: appleResponse.user.displayName,
+      phoneNumber: appleResponse.user.phoneNumber,
+    };
+
+    const authStatus = yield messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+    let fcmToken = null;
+
+    if (enabled) {
+      console.log('Authorization status:', authStatus);
+      fcmToken = yield messaging().getToken();
+      user = {
+        ...user,
+        fcmToken,
+      };
+    }
+
+    const response = yield httpsCallable(SAVE_USER, {fcmToken});
+    console.tron.log({response});
+
+    if (response.data.ok) user = {...user, ...response.data.payload};
+    console.tron.log({user});
+
+    yield put(SessionActions.removeOnboarding());
+    yield put(SessionActions.saveUser(user));
+    yield put(AuthActions.loginAppleSuccess({ok: true, success: true}));
+    if (action.callback) {
+      action.callback({ok: true, success: true});
+      /**
+       * TODO
+       * - make navigationServices works
+       */
+      NavigationServices.navigate('Bottom');
+      // NavigationServices.pop();
+    }
+  } catch (error) {
+    console.tron.error({error});
+    yield put(AuthActions.loginAppleFailure(error));
     if (action.callback) action.callback({ok: false, error});
   }
 }

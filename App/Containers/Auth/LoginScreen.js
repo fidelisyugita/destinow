@@ -20,7 +20,13 @@ import ButtonList from '../../Components/Button/ButtonList';
 import CustomHeader from '../../Components/CustomHeader';
 import CustomTextInput from '../../Components/CustomTextInput';
 
-function LoginScreen({navigation, currentUser, logout, loginGoogleRequest}) {
+function LoginScreen({
+  navigation,
+  currentUser,
+  logout,
+  loginGoogleRequest,
+  loginAppleRequest,
+}) {
   const {navigate} = navigation;
 
   const [email, setEmail] = useState('');
@@ -36,6 +42,13 @@ function LoginScreen({navigation, currentUser, logout, loginGoogleRequest}) {
     loginGoogleRequest({}, loginGoogleCallback);
   };
   const loginGoogleCallback = (response) => {
+    // if (response.ok) navigate('Bottom');
+  };
+
+  const onPressLoginApple = () => {
+    loginAppleRequest({}, loginAppleCallback);
+  };
+  const loginAppleCallback = (response) => {
     // if (response.ok) navigate('Bottom');
   };
 
@@ -149,6 +162,7 @@ function LoginScreen({navigation, currentUser, logout, loginGoogleRequest}) {
             </View>
             <View style={{width: s(56)}}>
               <ButtonDefault
+                onPress={onPressLoginApple}
                 SvgIcon={Svgs.IconApple}
                 buttonColor={Colors.black}
               />
@@ -185,6 +199,8 @@ const mapDispatchToProps = (dispatch) => ({
   logout: (data, callback) => dispatch(SessionActions.logout(data, callback)),
   loginGoogleRequest: (data, callback) =>
     dispatch(AuthActions.loginGoogleRequest(data, callback)),
+  loginAppleRequest: (data, callback) =>
+    dispatch(AuthActions.loginAppleRequest(data, callback)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

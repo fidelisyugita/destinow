@@ -10,6 +10,10 @@ const {Types, Creators} = createActions({
   loginGoogleSuccess: ['payload'],
   loginGoogleFailure: ['error'],
 
+  loginAppleRequest: ['data', 'callback'],
+  loginAppleSuccess: ['payload'],
+  loginAppleFailure: ['error'],
+
   signOutRequest: ['data', 'callback'],
   signOutSuccess: ['payload'],
   signOutFailure: ['error'],
@@ -29,6 +33,7 @@ export const DEFAULT_STATE = {
 
 export const INITIAL_STATE = Immutable({
   loginGoogle: DEFAULT_STATE,
+  loginApple: DEFAULT_STATE,
   signOut: DEFAULT_STATE,
 });
 
@@ -52,6 +57,30 @@ export const loginGoogleFailure = (state, {error}) => {
     ...state,
     loginGoogle: {
       ...state.loginGoogle,
+      fetching: false,
+      error,
+    },
+  });
+};
+
+export const loginAppleRequest = (state, {data}) => {
+  return state.merge({
+    ...state,
+    loginApple: {...state.loginApple, fetching: true, data},
+  });
+};
+export const loginAppleSuccess = (state, {payload}) => {
+  console.tron.log({payload});
+  return state.merge({
+    ...state,
+    loginApple: {DEFAULT_STATE, payload},
+  });
+};
+export const loginAppleFailure = (state, {error}) => {
+  return state.merge({
+    ...state,
+    loginApple: {
+      ...state.loginApple,
       fetching: false,
       error,
     },
@@ -88,6 +117,10 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOGIN_GOOGLE_REQUEST]: loginGoogleRequest,
   [Types.LOGIN_GOOGLE_SUCCESS]: loginGoogleSuccess,
   [Types.LOGIN_GOOGLE_FAILURE]: loginGoogleFailure,
+
+  [Types.LOGIN_APPLE_REQUEST]: loginAppleRequest,
+  [Types.LOGIN_APPLE_SUCCESS]: loginAppleSuccess,
+  [Types.LOGIN_APPLE_FAILURE]: loginAppleFailure,
 
   [Types.SIGN_OUT_REQUEST]: signOutRequest,
   [Types.SIGN_OUT_SUCCESS]: signOutSuccess,
