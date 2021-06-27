@@ -1,13 +1,14 @@
 import {put} from 'redux-saga/effects';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import messaging from '@react-native-firebase/messaging';
 
 import AuthActions from '../Redux/AuthRedux';
 import SessionActions from '../Redux/SessionRedux';
 
 import NavigationServices from '../Services/NavigationServices';
 import {httpsCallable} from './Utils';
-import {REGION} from './Consts';
+import {REGION, SAVE_USER} from './Consts';
 
 export function* loginGoogle(api, action) {
   try {
@@ -29,7 +30,7 @@ export function* loginGoogle(api, action) {
     const googleResponse = yield auth().signInWithCredential(googleCredential);
     console.tron.log({googleResponse});
 
-    const user = {
+    let user = {
       id: googleResponse.user.uid,
       photoURL: googleResponse.user.photoURL,
       email: googleResponse.user.email,
@@ -37,14 +38,31 @@ export function* loginGoogle(api, action) {
       phoneNumber: googleResponse.user.phoneNumber,
     };
 
+    const authStatus = yield messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+    let fcmToken = null;
+
+    if (enabled) {
+      console.log('Authorization status:', authStatus);
+      fcmToken = yield messaging().getToken();
+      user = {
+        ...user,
+        fcmToken,
+      };
+    }
+
+    const response = yield httpsCallable(SAVE_USER, {fcmToken});
+    console.tron.log({response});
+
+    if (response.data.ok) user = {...user, ...response.data.payload};
+    console.tron.log({user});
+
     yield put(SessionActions.removeOnboarding());
     yield put(SessionActions.saveUser(user));
     yield put(AuthActions.loginGoogleSuccess({ok: true, success: true}));
-    // yield all([
-    //   put(SessionActions.removeOnboarding()),
-    //   put(SessionActions.saveUser(googleResponse.user)),
-    //   put(AuthActions.loginGoogleSuccess({ok: true, success: true})),
-    // ]);
     if (action.callback) {
       action.callback({ok: true, success: true});
       /**

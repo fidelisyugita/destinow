@@ -22,6 +22,9 @@ PODS:
   - Firebase/Functions (7.11.0):
     - Firebase/CoreOnly
     - FirebaseFunctions (~> 7.11.0)
+  - Firebase/Messaging (7.11.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 7.11.0)
   - FirebaseAuth (7.11.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
@@ -39,6 +42,24 @@ PODS:
   - FirebaseFunctions (7.11.0):
     - FirebaseCore (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
+  - FirebaseInstallations (7.11.0):
+    - FirebaseCore (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (7.11.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
+  - FirebaseMessaging (7.11.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - FirebaseInstanceID (~> 7.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/Reachability (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
   - Folly (2020.01.13.00):
     - boost-for-react-native
     - DoubleConversion
@@ -71,6 +92,8 @@ PODS:
     - GoogleUtilities/Reachability
   - "GoogleUtilities/NSData+zlib (7.4.1)"
   - GoogleUtilities/Reachability (7.4.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (7.4.1):
     - GoogleUtilities/Logger
   - GTMAppAuth (1.2.1):
     - AppAuth/Core (~> 1.4)
@@ -331,6 +354,10 @@ PODS:
     - Firebase/Functions (= 7.11.0)
     - React-Core
     - RNFBApp
+  - RNFBMessaging (12.1.0):
+    - Firebase/Messaging (= 7.11.0)
+    - React-Core
+    - RNFBApp
   - RNGestureHandler (1.6.1):
     - React
   - RNGoogleSignin (6.0.0):
@@ -394,6 +421,7 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBFunctions (from `../node_modules/@react-native-firebase/functions`)"
+  - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
   - RNI18n (from `../node_modules/react-native-i18n`)
@@ -412,6 +440,9 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseFunctions
+    - FirebaseInstallations
+    - FirebaseInstanceID
+    - FirebaseMessaging
     - GoogleDataTransport
     - GoogleSignIn
     - GoogleUtilities
@@ -490,6 +521,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/auth"
   RNFBFunctions:
     :path: "../node_modules/@react-native-firebase/functions"
+  RNFBMessaging:
+    :path: "../node_modules/@react-native-firebase/messaging"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
@@ -518,6 +551,9 @@ SPEC CHECKSUMS:
   FirebaseCore: 907447d8917a4d3eb0cce2829c5a0ad21d90b432
   FirebaseCoreDiagnostics: 68ad972f99206cef818230f3f3179d52ccfb7f8c
   FirebaseFunctions: cf3d041e5292b1c4bda868d542071a0f8291a4d4
+  FirebaseInstallations: a58d4f72ec5861840b84df489f2668d970df558a
+  FirebaseInstanceID: ad5135045a498d7775903efd39762d2cdfa1be27
+  FirebaseMessaging: 163435fb6db065e3b6228f1e577b10ed2cc506d2
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   GoogleDataTransport: cd9db2180fcecd8da1b561aea31e3e56cf834aa7
@@ -556,6 +592,7 @@ SPEC CHECKSUMS:
   RNFBApp: 9c90f9d576861947ba75fe0830567c570bcbcf6d
   RNFBAuth: 99fdbce04ff3d39e57a7a3956d632ee69145685b
   RNFBFunctions: 570969b0b7a104066374d4f6e840d6d8a217e3ad
+  RNFBMessaging: 87012ba03da36fed5e0297ee564cc8d52cdb3791
   RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNGoogleSignin: 111fd4792913208f338fe3178005f7a22e490ff9
   RNI18n: ae012568644105311254f877f32e4157e063217f
