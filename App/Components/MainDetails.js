@@ -68,10 +68,11 @@ const MainDetails = ({
           SvgIcon={Svgs.IconDirection}
           text={I18n.t('openLocation')}
           onPress={() => OpenMaps(coordinate)}
+          buttonStyle={AppStyles.flex1}
         />
         <ButtonDefault
           SvgIcon={Svgs.IconPhone}
-          buttonStyle={{flex: 0, width: s(48), marginLeft: s(8)}}
+          buttonStyle={{width: s(48), marginLeft: s(8)}}
           textColor={Colors.blue}
           buttonColor={Colors.white}
           isBordered

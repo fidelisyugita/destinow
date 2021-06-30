@@ -54,6 +54,7 @@ export function* loginGoogle(api, action) {
     if (enabled) {
       console.log('Authorization status:', authStatus);
       fcmToken = yield messaging().getToken();
+      console.log('fcmToken:', fcmToken);
       user = {
         ...user,
         fcmToken,
@@ -140,16 +141,15 @@ export function* loginApple(api, action) {
       // appleResponse = yield auth().signInWithCredential(appleCredential);
       // console.tron.log({appleResponse});
       // console.log('appleResponse: ', appleResponse);
+      throw 'Not ready';
     }
 
-    throw 'Not ready';
-
     let user = {
-      id: appleResponse.user.uid,
-      photoURL: appleResponse.user.photoURL,
-      email: appleResponse.user.email,
-      displayName: appleResponse.user.displayName,
-      phoneNumber: appleResponse.user.phoneNumber,
+      // id: appleResponse.additionalUserInfo.profile.uid,
+      // photoURL: appleResponse.additionalUserInfo.profile.photoURL,
+      email: appleResponse.additionalUserInfo.profile.email,
+      // displayName: appleResponse.additionalUserInfo.profile.displayName,
+      // phoneNumber: appleResponse.additionalUserInfo.profile.phoneNumber,
     };
 
     const authStatus = yield messaging().requestPermission();
@@ -162,6 +162,7 @@ export function* loginApple(api, action) {
     if (enabled) {
       console.log('Authorization status:', authStatus);
       fcmToken = yield messaging().getToken();
+      console.log('fcmToken:', fcmToken);
       user = {
         ...user,
         fcmToken,

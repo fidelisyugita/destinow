@@ -17,11 +17,14 @@ import I18n from '../../I18n';
 
 import ButtonDefault from '../../Components/Button/ButtonDefault';
 import ButtonList from '../../Components/Button/ButtonList';
+import ModalConfirmation from '../../Components/Modal/ModalConfirmation';
 
 function ProfileScreen({navigation, currentUser, signOutRequest}) {
   const {navigate} = navigation;
 
   const [isScrolling, setScrolling] = useState(false);
+
+  const [isModalVisible, setModalVisible] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -34,6 +37,11 @@ function ProfileScreen({navigation, currentUser, signOutRequest}) {
 
     if (contentOffsetY > 0 && !isScrolling) setScrolling(true);
     if (contentOffsetY <= 0 && isScrolling) setScrolling(false);
+  };
+
+  const onPressLogout = () => {
+    setModalVisible(false);
+    signOutRequest();
   };
 
   const renderNotLoggedInUser = () => (
@@ -94,7 +102,7 @@ function ProfileScreen({navigation, currentUser, signOutRequest}) {
         ]}>
         <View style={{width: s(310), marginRight: s(16)}}>
           <Text numberOfLines={1} style={[Fonts.style.title]}>
-            {currentUser.displayName}
+            {currentUser.displayName || currentUser.email}
           </Text>
           <TouchableOpacity
             onPress={() => navigate('EditProfileScreen')}
@@ -137,6 +145,14 @@ function ProfileScreen({navigation, currentUser, signOutRequest}) {
 
   return (
     <SafeAreaView>
+      <ModalConfirmation
+        title={I18n.t('logoutTitle')}
+        description={I18n.t('logoutDescription')}
+        visible={isModalVisible}
+        onPressConfirm={onPressLogout}
+        onPressCancel={() => setModalVisible(false)}
+        confirmText={I18n.t('logout')}
+      />
       <ScrollView
         onScroll={(event) => onScroll(event)}
         showsVerticalScrollIndicator={false}>
@@ -155,7 +171,7 @@ function ProfileScreen({navigation, currentUser, signOutRequest}) {
 
           {currentUser.email && (
             <ButtonList
-              onPress={() => signOutRequest()}
+              onPress={() => setModalVisible(true)}
               SvgIcon={Svgs.IconLogout}
               text={I18n.t('logOut')}
             />

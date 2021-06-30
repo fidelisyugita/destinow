@@ -121,8 +121,8 @@ function HomeScreen({
                 Fonts.style.descriptionRegular,
                 {color: Colors.white},
               ]}>
-              {currentUser.displayName
-                ? currentUser.displayName
+              {currentUser.email
+                ? currentUser.displayName || currentUser.email
                 : `${I18n.t('login')}/${I18n.t('signUp')}`}
             </Text>
           </TouchableOpacity>

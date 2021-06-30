@@ -42,7 +42,7 @@ function EditProfileScreen({
 
   const paramItem = navigation.getParam('item', {});
 
-  const [displayName, setDisplayName] = useState(currentUser.displayName);
+  const [displayName, setDisplayName] = useState(currentUser.displayName || '');
   const [photoURL, setPhotoURL] = useState(currentUser.photoURL);
   const [phoneNumber, setPhoneNumber] = useState(currentUser.phoneNumber || '');
 

@@ -76,6 +76,8 @@ import IconBurger from '../Svgs/Icons/IconBurger.svg';
 import IconCamera from '../Svgs/Icons/IconCamera.svg';
 import IconGallery from '../Svgs/Icons/IconGallery.svg';
 
+import IconClose from '../Svgs/Icons/IconClose.svg';
+
 const svgs = {
   LogoHorizontal,
 
@@ -154,6 +156,8 @@ const svgs = {
 
   IconCamera,
   IconGallery,
+
+  IconClose,
 };
 
 export default svgs;

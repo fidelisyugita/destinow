@@ -119,7 +119,7 @@ function OnboardingScreen({navigation, isFirstOpen, removeOnboarding}) {
             buttonStyle={{width: s(187)}}
             isBordered
           />
-          {/* <View style={{width: s(8)}} /> */}
+          <View style={{width: s(8)}} />
           <ButtonDefault
             text={I18n.t('signUp')}
             buttonStyle={{width: s(187)}}

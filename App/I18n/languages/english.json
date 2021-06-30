@@ -154,6 +154,7 @@
   "submitStory": "Kirim Cerita",
 
   "cancel": "Batal",
+  "ok": "Ok",
 
   "camera": "Kamera",
   "gallery": "Galeri",
@@ -175,6 +176,10 @@
   "allReviews": "Semua Review",
 
   "profileUpdated": "Edit Profile Sukses",
+
+  "logout": "Keluar",
+  "logoutTitle": "Keluar dari Akun",
+  "logoutDescription": "Kamu akan tertinggal info-info terbaru mengenai Belitung. Apakah kamu yakin untuk keluar?",
 
   "close": "Close"
 }
