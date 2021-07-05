@@ -169,7 +169,7 @@ function PlaceDetailScreen({
                 return (
                   <ReviewList
                     key={item + index}
-                    creatorName={createdBy.displayName}
+                    creatorName={createdBy.displayName || '-'}
                     creatorImageSrc={
                       createdBy
                         ? {uri: createdBy.photoURL}

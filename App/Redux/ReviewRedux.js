@@ -71,9 +71,12 @@ export const saveReviewRequest = (state, {data}) => {
   });
 };
 export const saveReviewSuccess = (state, {payload}) => {
+  const updatedReviews = [...state.reviews, {...payload}];
+
   return state.merge({
     ...state,
     saveReview: {DEFAULT_STATE, payload},
+    reviews: updatedReviews,
   });
 };
 export const saveReviewFailure = (state, {error}) => {

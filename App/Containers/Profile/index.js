@@ -70,7 +70,7 @@ function ProfileScreen({navigation, currentUser, signOutRequest}) {
         text={I18n.t('login')}
       />
 
-      <Text
+      {/* <Text
         style={[Fonts.style.alignCenter, {width: s(382), marginTop: s(24)}]}>
         <Text
           style={[Fonts.style.descriptionRegular, {color: Colors.neutral2}]}>
@@ -79,7 +79,7 @@ function ProfileScreen({navigation, currentUser, signOutRequest}) {
         <Text style={[Fonts.style.descriptionBold, {color: Colors.blue}]}>
           {I18n.t('signUpNow')}
         </Text>
-      </Text>
+      </Text> */}
 
       <View
         style={{

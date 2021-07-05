@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Linking,
   Platform,
+  RefreshControl,
 } from 'react-native';
 
 import SessionActions from '../../Redux/SessionRedux';
@@ -50,10 +51,17 @@ function HomeScreen({
   const {navigate} = navigation;
 
   const [isScrolling, setScrolling] = useState(false);
+  const [isRefresh, setRefresh] = useState(false);
 
   useEffect(() => {
     loadData();
   }, []);
+
+  const onRefresh = () => {
+    setRefresh(true);
+    loadData();
+    setTimeout(() => setRefresh(false));
+  };
 
   function loadData() {
     getBannersRequest();
@@ -96,7 +104,15 @@ function HomeScreen({
       <ScrollView
         onScroll={(event) => onScroll(event)}
         scrollEventThrottle={1600} // default 16
-        showsVerticalScrollIndicator={false}>
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            onRefresh={onRefresh}
+            refreshing={isRefresh}
+            // style={styles.refresh}
+            colors={[Colors.blue]}
+          />
+        }>
         <View style={{marginTop: s(80), marginHorizontal: s(16)}}>
           <TouchableOpacity
             style={[AppStyles.row, AppStyles.alignCenter]}

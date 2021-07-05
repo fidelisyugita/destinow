@@ -170,7 +170,9 @@ function LoginScreen({
           </View>
         </View>
 
-        <Text
+        <View style={{height: s(120)}} />
+
+        {/* <Text
           style={[
             Fonts.style.alignCenter,
             {width: s(382), marginTop: s(96), marginBottom: s(34)},
@@ -182,7 +184,7 @@ function LoginScreen({
           <Text style={[Fonts.style.descriptionBold, {color: Colors.blue}]}>
             {I18n.t('signUpNow')}
           </Text>
-        </Text>
+        </Text> */}
       </ScrollView>
     </SafeAreaView>
   );

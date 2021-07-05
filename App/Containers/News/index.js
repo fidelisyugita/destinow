@@ -7,6 +7,7 @@ import {
   View,
   Image,
   FlatList,
+  RefreshControl,
 } from 'react-native';
 
 import SessionActions from '../../Redux/SessionRedux';
@@ -37,12 +38,20 @@ function NewsScreen({
   const {navigate} = navigation;
 
   const [isEnd, setEnd] = useState(false);
+  const [isRefresh, setRefresh] = useState(false);
 
   const [page, setPage] = useState(0);
 
   useEffect(() => {
     loadData();
   }, []);
+
+  const onRefresh = () => {
+    setRefresh(true);
+    setPage(0);
+    loadData();
+    setTimeout(() => setRefresh(false));
+  };
 
   useEffect(() => {
     loadNews();
@@ -124,6 +133,14 @@ function NewsScreen({
         ref={flatListRef}
         // onScroll={(event) => onScroll(event)}
         // scrollEventThrottle={160} //  default 16
+        refreshControl={
+          <RefreshControl
+            onRefresh={onRefresh}
+            refreshing={isRefresh}
+            // style={styles.refresh}
+            colors={[Colors.blue]}
+          />
+        }
         showsVerticalScrollIndicator={false}
         keyExtractor={(item, index) => item + index}
         data={news}
