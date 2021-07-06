@@ -68,7 +68,7 @@ function LocalDiaryScreen({
       page: forcePage || page,
     };
 
-    console.log('data: ', data);
+    // console.log('data: ', data);
 
     if (!getLocalDiaries.fetching || forcePage === 0)
       getLocalDiariesRequest(data);

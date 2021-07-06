@@ -78,7 +78,7 @@ function RestaurantScreen({
       page: forcePage || page,
     };
 
-    console.log('data: ', data);
+    // console.log('data: ', data);
 
     if (!getRestaurants.fetching || forcePage === 0)
       getRestaurantsRequest(data);

@@ -72,7 +72,7 @@ function SouvenirDetailScreen({
   }, []);
 
   function loadData() {
-    console.log('paramItem: ', paramItem);
+    // console.log('paramItem: ', paramItem);
     getReviewsRequest({souvenirId: paramItem.id});
   }
 
@@ -252,7 +252,7 @@ function SouvenirDetailScreen({
     if (tempTransparentOpacity < 2)
       setTransparentOpacity(tempTransparentOpacity);
 
-    console.log('transparentOpacity: ', transparentOpacity);
+    // console.log('transparentOpacity: ', transparentOpacity);
   };
 
   return (

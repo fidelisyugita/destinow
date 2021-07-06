@@ -69,7 +69,7 @@ function InboxScreen({
       page: forcePage || page,
     };
 
-    console.log('data: ', data);
+    // console.log('data: ', data);
 
     if (!getNews.fetching || forcePage === 0) getNewsRequest(data);
   }

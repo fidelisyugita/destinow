@@ -78,7 +78,7 @@ function PlaceScreen({
       page: forcePage || page,
     };
 
-    console.log('data: ', data);
+    // console.log('data: ', data);
 
     if (!getPlaces.fetching || forcePage === 0) getPlacesRequest(data);
   }

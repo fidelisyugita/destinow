@@ -1,7 +1,7 @@
 import openMap, {createOpenLink} from 'react-native-open-maps';
 
 export default (coordinate = {}) => {
-  console.log('coordinate: ', coordinate);
+  // console.log('coordinate: ', coordinate);
   if (coordinate && coordinate.latitude && coordinate.longitude) {
     openMap({
       ...coordinate,

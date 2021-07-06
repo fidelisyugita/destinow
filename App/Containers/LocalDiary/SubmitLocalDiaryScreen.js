@@ -62,7 +62,7 @@ function SubmitLocalDiaryScreen({
   }, [title, imageCover]);
 
   function loadData() {
-    console.log('paramItem: ', paramItem);
+    // console.log('paramItem: ', paramItem);
   }
 
   const onPressChooseImage = () => {
@@ -102,10 +102,10 @@ function SubmitLocalDiaryScreen({
   };
 
   const updateImage = (image) => {
-    console.log('selectedParagraphIndex: ', selectedParagraphIndex);
+    // console.log('selectedParagraphIndex: ', selectedParagraphIndex);
     const base64Image = `data:${image.mime};base64,${image.data}`;
     if (selectedParagraphIndex > -1) {
-      console.log('asdasdsadas: ', selectedParagraphIndex);
+      // console.log('asdasdsadas: ', selectedParagraphIndex);
       const updatedParagraph = {
         ...paragraphs[selectedParagraphIndex],
         image: base64Image,

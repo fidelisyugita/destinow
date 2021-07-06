@@ -52,9 +52,9 @@ export function* loginGoogle(api, action) {
     let fcmToken = null;
 
     if (enabled) {
-      console.log('Authorization status:', authStatus);
+      // console.log('Authorization status:', authStatus);
       fcmToken = yield messaging().getToken();
-      console.log('fcmToken:', fcmToken);
+      // console.log('fcmToken:', fcmToken);
       user = {
         ...user,
         fcmToken,
@@ -111,7 +111,7 @@ export function* loginApple(api, action) {
       // Sign the user in with the credential
       appleResponse = yield auth().signInWithCredential(appleCredential);
       console.tron.log({appleResponse});
-      console.log('appleResponse: ', appleResponse);
+      // console.log('appleResponse: ', appleResponse);
     } else {
       // Generate secure, random values for state and nonce
       const rawNonce = uuid();
@@ -160,9 +160,9 @@ export function* loginApple(api, action) {
     let fcmToken = null;
 
     if (enabled) {
-      console.log('Authorization status:', authStatus);
+      // console.log('Authorization status:', authStatus);
       fcmToken = yield messaging().getToken();
-      console.log('fcmToken:', fcmToken);
+      // console.log('fcmToken:', fcmToken);
       user = {
         ...user,
         fcmToken,

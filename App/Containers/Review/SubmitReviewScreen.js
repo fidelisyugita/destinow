@@ -66,7 +66,7 @@ function SubmitReviewScreen({
   }, [reviewText, reviewRate]);
 
   function loadData() {
-    console.log('paramItem: ', paramItem);
+    // console.log('paramItem: ', paramItem);
   }
 
   const onPressChooseImage = () => {

@@ -69,7 +69,7 @@ function PlaceDetailScreen({
   }, []);
 
   function loadData() {
-    console.log('paramItem: ', paramItem);
+    // console.log('paramItem: ', paramItem);
     getReviewsRequest({placeId: paramItem.id});
   }
 

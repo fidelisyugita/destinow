@@ -63,7 +63,7 @@ function EditProfileScreen({
   }, [displayName, photoURL]);
 
   function loadData() {
-    console.log('paramItem: ', paramItem);
+    // console.log('paramItem: ', paramItem);
   }
 
   const onPressChooseImage = () => {

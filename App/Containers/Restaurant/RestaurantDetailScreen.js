@@ -72,7 +72,7 @@ function RestaurantDetailScreen({
   }, []);
 
   function loadData() {
-    console.log('paramItem: ', paramItem);
+    // console.log('paramItem: ', paramItem);
     getReviewsRequest({restaurantId: paramItem.id});
   }
 
@@ -253,7 +253,7 @@ function RestaurantDetailScreen({
     if (tempTransparentOpacity < 2)
       setTransparentOpacity(tempTransparentOpacity);
 
-    console.log('transparentOpacity: ', transparentOpacity);
+    // console.log('transparentOpacity: ', transparentOpacity);
   };
 
   return (

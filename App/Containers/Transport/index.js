@@ -76,7 +76,7 @@ function TransportScreen({
       page: forcePage || page,
     };
 
-    console.log('data: ', data);
+    // console.log('data: ', data);
 
     if (!getTransports.fetching || forcePage === 0) getTransportsRequest(data);
   }

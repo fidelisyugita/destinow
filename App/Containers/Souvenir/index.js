@@ -77,7 +77,7 @@ function SouvenirScreen({
       page: forcePage || page,
     };
 
-    console.log('data: ', data);
+    // console.log('data: ', data);
 
     if (!getSouvenirs.fetching || forcePage === 0) getSouvenirsRequest(data);
   }

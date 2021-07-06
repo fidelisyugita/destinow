@@ -73,7 +73,7 @@ function TransportDetailScreen({
   }, []);
 
   function loadData() {
-    console.log('paramItem: ', paramItem);
+    // console.log('paramItem: ', paramItem);
     getReviewsRequest({transportId: paramItem.id});
   }
 

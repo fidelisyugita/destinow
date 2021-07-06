@@ -33,7 +33,7 @@ function NewsDetailScreen({navigation, currentUser, userPosition}) {
   }, []);
 
   function loadData() {
-    console.log('paramItem: ', paramItem);
+    // console.log('paramItem: ', paramItem);
   }
 
   const onScroll = (event) => {

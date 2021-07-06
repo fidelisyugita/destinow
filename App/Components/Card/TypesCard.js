@@ -19,7 +19,7 @@ const TypesCard = ({
 
   if (paramTransportTypes)
     Object.entries(paramTransportTypes).forEach((item) => {
-      console.log(`${item[0]}: ${item[1]}`);
+      // console.log(`${item[0]}: ${item[1]}`);
       if (item[1]) transportTypes.push(item[0]);
     });
 
